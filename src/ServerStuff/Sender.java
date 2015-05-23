@@ -22,7 +22,7 @@ public class Sender implements Runnable{
             try {
                 grabScreen(outputStream);
 
-                Thread.sleep(1000);
+                Thread.sleep(33);
 
             } catch (AWTException e) {
                 e.printStackTrace();
