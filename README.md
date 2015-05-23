@@ -1,6 +1,6 @@
 # Slash
 
-Really Simple Screen viewer.
+Really Simple Screen share.
 Server -> Multiple Clients
 
 Currently still really buggy
