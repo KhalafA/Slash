@@ -20,7 +20,7 @@ public class CapturePane extends JPanel {
         screenPane = new ClientStuff.ScreenPane();
         grabButton = new JButton("Grab");
         try {
-            socket = new Socket("localhost", 6789);
+            socket = new Socket("192.168.87.105", 6789);
         } catch (IOException ex) {
             grabButton.setEnabled(false);
             ex.printStackTrace();

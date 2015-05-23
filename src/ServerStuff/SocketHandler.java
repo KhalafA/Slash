@@ -36,19 +36,16 @@ public class SocketHandler implements Runnable{
                     sender = new Sender(os);
                     senderThread = new Thread(sender);
                     senderThread.start();
-                }else if("done".equalsIgnoreCase(request)){
-                    interrupt();
                 }
 
-
+                //TODO: Disconnect
             }
 
         } catch (IOException exp) {
             exp.printStackTrace();
         }
     }
-    // Reads a request from the client
-    // All requests must be terminated with a new line (\n)
+
     public String readRequest(InputStream is) throws IOException {
         StringBuilder sb = new StringBuilder(128);
         int in = -1;

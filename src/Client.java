@@ -25,7 +25,7 @@ public class Client {
 
                 final CapturePane capturePane = new CapturePane();
 
-                JFrame frame = new JFrame("Testing");
+                JFrame frame = new JFrame("Live Connection");
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.add(capturePane);
                 frame.pack();

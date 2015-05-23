@@ -30,22 +30,19 @@ public class Receiver implements Runnable {
             try {
                 is = socket.getInputStream();
                 os = socket.getOutputStream();
-                // Send the "grab" request...
+
                 writeRequest(os, "grab");
 
                 while (!isInterrupted){
                     System.out.println("Reading image...");
-                    // Read back the expected byte size of the image
                     String size = readResponse(is);
 
                     int expectedByteCount = Integer.parseInt(size);
                     System.out.println("Expecting " + expectedByteCount);
-                    // Create a buffer for the image bytes...
                     baos = new ByteArrayOutputStream(expectedByteCount);
                     byte[] buffer = new byte[1024];
                     int bytesRead = 0;
                     int bytesIn = 0;
-                    // Read the image from the server...
                     while (bytesRead < expectedByteCount) {
                         bytesIn = is.read(buffer);
                         bytesRead += bytesIn;
@@ -55,10 +52,9 @@ public class Receiver implements Runnable {
 
                     System.out.println("Read " + bytesRead);
                     baos.close();
-                    // Wrap the result in an InputStream
+
                     bais = new ByteArrayInputStream(baos.toByteArray());
 
-                    // Read the image...
                     BufferedImage image = ImageIO.read(bais);
                     System.out.println("Got image...");
                     screenPane.setImage(image);
