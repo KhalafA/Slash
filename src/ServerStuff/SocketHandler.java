@@ -1,5 +1,7 @@
 package ServerStuff;
 
+import com.sun.org.apache.xpath.internal.SourceTree;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -15,7 +17,6 @@ public class SocketHandler implements Runnable{
 
     Sender sender;
     Thread senderThread;
-
 
     public SocketHandler(Socket socket) {
         this.socket = socket;
@@ -37,26 +38,53 @@ public class SocketHandler implements Runnable{
                     senderThread = new Thread(sender);
                     senderThread.start();
                 }
-
-                //TODO: Disconnect
             }
-
+            close();
         } catch (IOException exp) {
-            exp.printStackTrace();
+            close();
         }
     }
 
     public String readRequest(InputStream is) throws IOException {
         StringBuilder sb = new StringBuilder(128);
         int in = -1;
-        while ((in = is.read()) != '\n') {
-            sb.append((char) in);
+
+        try{
+            while ((in = is.read()) != '\n') {
+                sb.append((char) in);
+            }
+        }catch (Error e){
+            //Hack, find better way to do this
+            close();
         }
+
         return sb.toString();
     }
 
-    public void interrupt() throws IOException {
+    //TODO: Do not close when client stops the stream
+    //TODO: Keep sending to other clients.
+    public void close() {
+        System.out.println("Closing");
         isInterrupted = true;
-        socket.close();
+
+        try {
+            socket.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            if (os != null) {
+                os.flush();
+                os.close();
+            }
+            if (is != null) {
+                is.close();
+            }
+        } catch (IOException e) {
+            //Do nothing
+        }
+
+        System.exit(0);
     }
 }

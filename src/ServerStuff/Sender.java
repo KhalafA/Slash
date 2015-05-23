@@ -22,13 +22,12 @@ public class Sender implements Runnable{
             try {
                 grabScreen(outputStream);
 
-                Thread.sleep(33);
+                Thread.sleep(300);
 
             } catch (AWTException e) {
                 e.printStackTrace();
             } catch (IOException e) {
                 isInterrupted = true;
-                e.printStackTrace();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -44,6 +43,7 @@ public class Sender implements Runnable{
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         ImageIO.write(capture, "jpg", baos);
         baos.close();
+
         System.out.println("Write byte size = " + baos.size());
         os.write((Integer.toString(baos.size()) + "\n").getBytes());
         System.out.println("Write byte stream");

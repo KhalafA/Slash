@@ -30,14 +30,10 @@ public class Client {
                 frame.add(capturePane);
                 frame.pack();
                 frame.setLocationRelativeTo(null);
-                frame.addWindowListener(new WindowAdapter() {
+                  frame.addWindowListener(new WindowAdapter() {
                     @Override
                     public void windowClosing(WindowEvent e) {
-                        try {
-                            capturePane.close();
-                        } catch (IOException ex) {
-                            ex.printStackTrace();
-                        }
+                        capturePane.close();
                     }
                 });
                 frame.setVisible(true);

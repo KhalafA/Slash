@@ -26,7 +26,6 @@ public class Receiver implements Runnable {
     @Override
     public void run() {
         if (socket != null) {
-
             try {
                 is = socket.getInputStream();
                 os = socket.getOutputStream();
@@ -37,7 +36,14 @@ public class Receiver implements Runnable {
                     System.out.println("Reading image...");
                     String size = readResponse(is);
 
-                    int expectedByteCount = Integer.parseInt(size);
+                    int expectedByteCount = 0;
+
+                    try{
+                        expectedByteCount = Integer.parseInt(size);
+                    }catch (NumberFormatException e){
+                        break;
+                    }
+
                     System.out.println("Expecting " + expectedByteCount);
                     baos = new ByteArrayOutputStream(expectedByteCount);
                     byte[] buffer = new byte[1024];
@@ -48,7 +54,6 @@ public class Receiver implements Runnable {
                         bytesRead += bytesIn;
                         baos.write(buffer, 0, bytesIn);
                     }
-
 
                     System.out.println("Read " + bytesRead);
                     baos.close();
@@ -63,46 +68,62 @@ public class Receiver implements Runnable {
 
 
             } catch (IOException exp) {
-                exp.printStackTrace();
+                close();
             }
         }
     }
 
-    protected String readResponse(InputStream is) throws IOException {
+    private String readResponse(InputStream is) throws IOException {
+
         StringBuilder sb = new StringBuilder(128);
         int in = -1;
+
         while ((in = is.read()) != '\n') {
             sb.append((char) in);
         }
+
         return sb.toString();
+
     }
 
-    protected void writeRequest(OutputStream os, String request) throws IOException {
+    public void writeRequest(OutputStream os, String request) throws IOException {
         os.write((request + "\n").getBytes());
         os.flush();
     }
 
-    public void close() throws IOException {
+    public void close(){
+        isInterrupted = true;
+
         try {
-            try {
-                System.out.println("Write done...");
-                writeRequest(socket.getOutputStream(), "shutdown");
-            } finally {
-                try {
-                    System.out.println("Close outputstream");
-                    socket.getOutputStream().close();
-                } finally {
-                    try {
-                        System.out.println("Close inputStream");
-                        socket.getInputStream().close();
-                    } finally {
-                        System.out.println("Close socket");
-                        socket.close();
-                    }
-                }
-            }
-        } finally {
-            socket = null;
+            socket.close();
+        } catch (IOException e) {
+            //Do nothing
         }
+
+        try {
+            if (os != null) {
+                os.flush();
+                os.close();
+            }
+            if (is != null) {
+                is.close();
+            }
+        } catch (IOException e) {
+            //Do nothing
+        }
+
+        try {
+            if (baos != null) {
+                baos.flush();
+                baos.close();
+            }
+            if (bais != null) {
+                bais.close();
+            }
+        } catch (IOException e) {
+            //Do nothing
+        }
+
+        System.exit(0);
     }
 }
