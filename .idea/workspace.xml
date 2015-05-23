@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b9ff94a7-10b9-4ec1-8c45-9fa5dbadc642" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Slash/ClientStuff/CapturePane.class" afterPath="$PROJECT_DIR$/out/production/Slash/ClientStuff/CapturePane.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Slash/Client$1.class" afterPath="$PROJECT_DIR$/out/production/Slash/Client$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Slash/ClientStuff/Receiver.class" afterPath="$PROJECT_DIR$/out/production/Slash/ClientStuff/Receiver.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Slash/Server.class" afterPath="$PROJECT_DIR$/out/production/Slash/Server.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Slash/ServerStuff/SocketHandler.class" afterPath="$PROJECT_DIR$/out/production/Slash/ServerStuff/SocketHandler.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ServerStuff/Sender.java" afterPath="$PROJECT_DIR$/src/ServerStuff/Sender.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Slash/ServerStuff/Sender.class" afterPath="$PROJECT_DIR$/out/production/Slash/ServerStuff/Sender.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Slash.iws" />
@@ -60,8 +55,8 @@
       <file leaf-file-name="Sender.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ServerStuff/Sender.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4811321" vertical-offset="204" max-vertical-offset="1003">
-              <caret line="24" column="31" selection-start-line="24" selection-start-column="31" selection-end-line="24" selection-end-column="31" />
+            <state vertical-scroll-proportion="0.7216981" vertical-offset="204" max-vertical-offset="1003">
+              <caret line="30" column="36" selection-start-line="30" selection-start-column="36" selection-end-line="31" selection-end-column="38" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -527,7 +522,13 @@
       <option name="project" value="LOCAL" />
       <updated>1432408569990</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="33 fps">
+      <created>1432409190952</created>
+      <option name="number" value="00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1432409190952</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -579,7 +580,8 @@
     <MESSAGE value="Setup + got basic client/server to work&#10;" />
     <MESSAGE value="removed some stuff&#10;&#10;" />
     <MESSAGE value="Now takes a defult IP - to test on mutiple computers&#10;&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Now takes a defult IP - to test on mutiple computers&#10;&#10;" />
+    <MESSAGE value="33 fps" />
+    <option name="LAST_COMMIT_MESSAGE" value="33 fps" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -668,8 +670,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ServerStuff/Sender.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4811321" vertical-offset="204" max-vertical-offset="1003">
-          <caret line="24" column="31" selection-start-line="24" selection-start-column="31" selection-end-line="24" selection-end-column="31" />
+        <state vertical-scroll-proportion="0.7216981" vertical-offset="204" max-vertical-offset="1003">
+          <caret line="30" column="36" selection-start-line="30" selection-start-column="36" selection-end-line="31" selection-end-column="38" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
