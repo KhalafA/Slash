@@ -1,4 +1,4 @@
-package ClientStuff;
+package Client;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -68,7 +68,7 @@ public class Receiver implements Runnable {
 
 
             } catch (IOException exp) {
-                close();
+                //close
             }
         }
     }
@@ -89,41 +89,5 @@ public class Receiver implements Runnable {
     public void writeRequest(OutputStream os, String request) throws IOException {
         os.write((request + "\n").getBytes());
         os.flush();
-    }
-
-    public void close(){
-        isInterrupted = true;
-
-        try {
-            socket.close();
-        } catch (IOException e) {
-            //Do nothing
-        }
-
-        try {
-            if (os != null) {
-                os.flush();
-                os.close();
-            }
-            if (is != null) {
-                is.close();
-            }
-        } catch (IOException e) {
-            //Do nothing
-        }
-
-        try {
-            if (baos != null) {
-                baos.flush();
-                baos.close();
-            }
-            if (bais != null) {
-                bais.close();
-            }
-        } catch (IOException e) {
-            //Do nothing
-        }
-
-        System.exit(0);
     }
 }

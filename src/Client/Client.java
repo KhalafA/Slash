@@ -1,9 +1,8 @@
+package Client;
 
-import ClientStuff.CapturePane;
 import java.awt.EventQueue;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.io.IOException;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -33,7 +32,8 @@ public class Client {
                   frame.addWindowListener(new WindowAdapter() {
                     @Override
                     public void windowClosing(WindowEvent e) {
-                        capturePane.close();
+                        //close connection
+
                     }
                 });
                 frame.setVisible(true);

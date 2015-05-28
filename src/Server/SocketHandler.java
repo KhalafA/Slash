@@ -1,6 +1,4 @@
-package ServerStuff;
-
-import com.sun.org.apache.xpath.internal.SourceTree;
+package Server;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -39,9 +37,8 @@ public class SocketHandler implements Runnable{
                     senderThread.start();
                 }
             }
-            close();
         } catch (IOException exp) {
-            close();
+            //close
         }
     }
 
@@ -49,42 +46,10 @@ public class SocketHandler implements Runnable{
         StringBuilder sb = new StringBuilder(128);
         int in = -1;
 
-        try{
-            while ((in = is.read()) != '\n') {
-                sb.append((char) in);
-            }
-        }catch (Error e){
-            //Hack, find better way to do this
-            close();
+        while ((in = is.read()) != '\n') {
+            sb.append((char) in);
         }
 
         return sb.toString();
-    }
-
-    //TODO: Do not close when client stops the stream
-    //TODO: Keep sending to other clients.
-    public void close() {
-        System.out.println("Closing");
-        isInterrupted = true;
-
-        try {
-            socket.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            if (os != null) {
-                os.flush();
-                os.close();
-            }
-            if (is != null) {
-                is.close();
-            }
-        } catch (IOException e) {
-            //Do nothing
-        }
-
-        System.exit(0);
     }
 }

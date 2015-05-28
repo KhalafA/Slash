@@ -1,4 +1,5 @@
-import ServerStuff.SocketHandler;
+package Server;
+
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.ServerSocket;
@@ -7,12 +8,11 @@ import java.net.UnknownHostException;
 
 public class Server {
 
-    public static String getLocalHostIP() throws UnknownHostException {
-        InetAddress localhost = InetAddress.getLocalHost();
-        return localhost.getHostAddress();
+    public Server(){
+        startConnection();
     }
 
-    public static void main(String args[]) {
+    private void startConnection() {
         try {
             ServerSocket welcomeSocket = new ServerSocket(6789);
             System.out.println("Connect on ip: " + getLocalHostIP() + ", Port: " + 6789);
@@ -27,5 +27,10 @@ public class Server {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+    }
+
+    public static String getLocalHostIP() throws UnknownHostException {
+        InetAddress localhost = InetAddress.getLocalHost();
+        return localhost.getHostAddress();
     }
 }

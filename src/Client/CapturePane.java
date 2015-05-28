@@ -1,6 +1,4 @@
-package ClientStuff;
-
-import javafx.scene.paint.Stop;
+package Client;
 
 import javax.swing.*;
 import java.awt.*;
@@ -20,7 +18,7 @@ public class CapturePane extends JPanel {
 
     public CapturePane() {
         setLayout(new BorderLayout());
-        screenPane = new ClientStuff.ScreenPane();
+        screenPane = new ScreenPane();
         grabButton = new JButton("Grab");
         stopButton = new JButton("Stop");
 
@@ -57,22 +55,9 @@ public class CapturePane extends JPanel {
         stopButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                close();
+                //Stop Capturing
             }
         });
     }
 
-    public void close(){
-        grabButton.setEnabled(true);
-        stopButton.setEnabled(false);
-
-        try {
-            receiver.close();
-            receiverThread.interrupt();
-            receiverThread.join();
-
-        } catch (InterruptedException e1) {
-            e1.printStackTrace();
-        }
-    }
 }
