@@ -2,19 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b9ff94a7-10b9-4ec1-8c45-9fa5dbadc642" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ClientPane.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/FieldPane.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Server.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ServerPane.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/StartPane.java" />
-      <change type="DELETED" beforePath="C:\Users\Khalaf\Desktop\Projects\Slash\src\Server\Server.java" afterPath="" />
-      <change type="MOVED" beforePath="C:\Users\Khalaf\Desktop\Projects\Slash\src\Client\CapturePane.java" afterPath="$PROJECT_DIR$/src/CapturePane.java" />
-      <change type="MOVED" beforePath="C:\Users\Khalaf\Desktop\Projects\Slash\src\Client\Client.java" afterPath="$PROJECT_DIR$/src/Client.java" />
-      <change type="MOVED" beforePath="C:\Users\Khalaf\Desktop\Projects\Slash\src\Client\Receiver.java" afterPath="$PROJECT_DIR$/src/Receiver.java" />
-      <change type="MOVED" beforePath="C:\Users\Khalaf\Desktop\Projects\Slash\src\Client\ScreenPane.java" afterPath="$PROJECT_DIR$/src/ScreenPane.java" />
-      <change type="MOVED" beforePath="C:\Users\Khalaf\Desktop\Projects\Slash\src\Server\Sender.java" afterPath="$PROJECT_DIR$/src/Sender.java" />
-      <change type="MOVED" beforePath="C:\Users\Khalaf\Desktop\Projects\Slash\src\Server\SocketHandler.java" afterPath="$PROJECT_DIR$/src/SocketHandler.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Application.java" afterPath="$PROJECT_DIR$/src/Application.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Server.java" afterPath="$PROJECT_DIR$/src/Server.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Slash.iws" />
@@ -43,16 +32,16 @@
       <file leaf-file-name="Server.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Server.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="349" max-vertical-offset="1241">
-              <caret line="45" column="42" selection-start-line="45" selection-start-column="42" selection-end-line="45" selection-end-column="42" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="417" max-vertical-offset="1241">
+              <caret line="45" column="41" selection-start-line="45" selection-start-column="41" selection-end-line="45" selection-end-column="41" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1217#1218#0" expanded="true" />
-                <element signature="e#1269#1270#0" expanded="true" />
-                <element signature="e#1572#1573#0" expanded="true" />
-                <element signature="e#1599#1600#0" expanded="true" />
-                <element signature="e#1631#1632#0" expanded="true" />
-                <element signature="e#1661#1662#0" expanded="true" />
+                <element signature="e#1265#1266#0" expanded="true" />
+                <element signature="e#1568#1569#0" expanded="true" />
+                <element signature="e#1595#1596#0" expanded="true" />
+                <element signature="e#1627#1628#0" expanded="true" />
+                <element signature="e#1657#1658#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -61,16 +50,18 @@
       <file leaf-file-name="Application.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Application.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.55737704" vertical-offset="663" max-vertical-offset="1428">
-              <caret line="61" column="63" selection-start-line="61" selection-start-column="63" selection-end-line="61" selection-end-column="63" />
+            <state vertical-scroll-proportion="0.8733234" vertical-offset="808" max-vertical-offset="1547">
+              <caret line="82" column="38" selection-start-line="82" selection-start-column="38" selection-end-line="82" selection-end-column="38" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#393#394#0" expanded="true" />
-                <element signature="e#426#427#0" expanded="true" />
-                <element signature="e#790#1467#0" expanded="true" />
-                <element signature="e#1466#1467#0" expanded="true" />
-                <element signature="e#1983#1984#0" expanded="true" />
-                <element signature="e#2045#2046#0" expanded="true" />
+                <element signature="e#428#429#0" expanded="true" />
+                <element signature="e#461#462#0" expanded="true" />
+                <element signature="e#825#1502#0" expanded="true" />
+                <element signature="e#1501#1502#0" expanded="true" />
+                <element signature="e#2076#2077#0" expanded="true" />
+                <element signature="e#2138#2139#0" expanded="true" />
+                <element signature="e#2177#2178#0" expanded="true" />
+                <element signature="e#2224#2225#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -216,10 +207,10 @@
         <option value="$PROJECT_DIR$/src/ServerPane.java" />
         <option value="$PROJECT_DIR$/src/Receiver.java" />
         <option value="$PROJECT_DIR$/src/StartPane.java" />
-        <option value="$PROJECT_DIR$/src/Server.java" />
         <option value="$PROJECT_DIR$/src/ClientPane.java" />
         <option value="$PROJECT_DIR$/src/CapturePane.java" />
         <option value="$PROJECT_DIR$/src/Client.java" />
+        <option value="$PROJECT_DIR$/src/Server.java" />
         <option value="$PROJECT_DIR$/src/Application.java" />
       </list>
     </option>
@@ -610,7 +601,13 @@
       <option name="project" value="LOCAL" />
       <updated>1432816346373</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Now with Defult gui (shows info, allows to connect to any port/ip)">
+      <created>1432832846408</created>
+      <option name="number" value="00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1432832846408</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -666,7 +663,8 @@
     <MESSAGE value="repush - no changes" />
     <MESSAGE value="Disconnect, partly." />
     <MESSAGE value="Temporaly removed disconnect, and added application class.&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Temporaly removed disconnect, and added application class.&#10;" />
+    <MESSAGE value="Now with Defult gui (shows info, allows to connect to any port/ip)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Now with Defult gui (shows info, allows to connect to any port/ip)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -686,11 +684,11 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1217#1218#0" expanded="true" />
-            <element signature="e#1269#1270#0" expanded="true" />
-            <element signature="e#1572#1573#0" expanded="true" />
-            <element signature="e#1599#1600#0" expanded="true" />
-            <element signature="e#1631#1632#0" expanded="true" />
-            <element signature="e#1661#1662#0" expanded="true" />
+            <element signature="e#1265#1266#0" expanded="true" />
+            <element signature="e#1568#1569#0" expanded="true" />
+            <element signature="e#1595#1596#0" expanded="true" />
+            <element signature="e#1627#1628#0" expanded="true" />
+            <element signature="e#1657#1658#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -897,32 +895,34 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Server.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="349" max-vertical-offset="1241">
-          <caret line="45" column="42" selection-start-line="45" selection-start-column="42" selection-end-line="45" selection-end-column="42" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="417" max-vertical-offset="1241">
+          <caret line="45" column="41" selection-start-line="45" selection-start-column="41" selection-end-line="45" selection-end-column="41" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1217#1218#0" expanded="true" />
-            <element signature="e#1269#1270#0" expanded="true" />
-            <element signature="e#1572#1573#0" expanded="true" />
-            <element signature="e#1599#1600#0" expanded="true" />
-            <element signature="e#1631#1632#0" expanded="true" />
-            <element signature="e#1661#1662#0" expanded="true" />
+            <element signature="e#1265#1266#0" expanded="true" />
+            <element signature="e#1568#1569#0" expanded="true" />
+            <element signature="e#1595#1596#0" expanded="true" />
+            <element signature="e#1627#1628#0" expanded="true" />
+            <element signature="e#1657#1658#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Application.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.55737704" vertical-offset="663" max-vertical-offset="1428">
-          <caret line="61" column="63" selection-start-line="61" selection-start-column="63" selection-end-line="61" selection-end-column="63" />
+        <state vertical-scroll-proportion="0.8733234" vertical-offset="808" max-vertical-offset="1547">
+          <caret line="82" column="38" selection-start-line="82" selection-start-column="38" selection-end-line="82" selection-end-column="38" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#393#394#0" expanded="true" />
-            <element signature="e#426#427#0" expanded="true" />
-            <element signature="e#790#1467#0" expanded="true" />
-            <element signature="e#1466#1467#0" expanded="true" />
-            <element signature="e#1983#1984#0" expanded="true" />
-            <element signature="e#2045#2046#0" expanded="true" />
+            <element signature="e#428#429#0" expanded="true" />
+            <element signature="e#461#462#0" expanded="true" />
+            <element signature="e#825#1502#0" expanded="true" />
+            <element signature="e#1501#1502#0" expanded="true" />
+            <element signature="e#2076#2077#0" expanded="true" />
+            <element signature="e#2138#2139#0" expanded="true" />
+            <element signature="e#2177#2178#0" expanded="true" />
+            <element signature="e#2224#2225#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -43,7 +43,7 @@ public class Server implements Runnable{
     }
 
     private void notifyNewConnection(){
-        System.out.println("new Connection");
+        application.incomingConnection();
     }
 
     public String getLocalHostIP(){

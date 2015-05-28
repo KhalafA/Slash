@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowEvent;
 import java.math.BigInteger;
 import java.security.SecureRandom;
 
@@ -59,8 +60,10 @@ public class Application {
         System.out.println(ipField);
         System.out.println(portField);
 
-        client = new Client(ipField, Integer.parseInt(portField));
 
+        client = new Client(ipField, Integer.parseInt(portField));
+        frame.setVisible(false);
+        frame.dispose();
 
         setServerStatus(false);
 
@@ -74,5 +77,9 @@ public class Application {
 
     private String getRandomString(){
         return new BigInteger(50, random).toString(32);
+    }
+
+    public void incomingConnection(){
+        frame.setState(Frame.ICONIFIED);
     }
 }
