@@ -1,5 +1,3 @@
-package Client;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -16,7 +14,7 @@ public class CapturePane extends JPanel {
     private Receiver receiver;
     private Thread receiverThread;
 
-    public CapturePane() {
+    public CapturePane(String ip, int port) {
         setLayout(new BorderLayout());
         screenPane = new ScreenPane();
         grabButton = new JButton("Grab");
@@ -25,7 +23,7 @@ public class CapturePane extends JPanel {
         btnPannel = new JPanel();
 
         try {
-            socket = new Socket("192.168.87.105", 6789);
+            socket = new Socket(ip, port);
         } catch (IOException ex) {
             System.out.println("Could not connect");
             System.exit(0);

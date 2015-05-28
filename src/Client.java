@@ -1,5 +1,3 @@
-package Client;
-
 import java.awt.EventQueue;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -8,12 +6,16 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
 public class Client {
+    private final CapturePane capturePane;
+    private int port;
+    private int ip;
 
-    public static void main(String[] args) {
-        new Client();
-    }
+    private final JFrame frame;
 
-    public Client() {
+    public Client(String ip, int port) {
+        capturePane = new CapturePane(ip, port);
+        frame = new JFrame("Live Connection");
+
         EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
@@ -22,9 +24,6 @@ public class Client {
                 } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
                 }
 
-                final CapturePane capturePane = new CapturePane();
-
-                JFrame frame = new JFrame("Live Connection");
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.add(capturePane);
                 frame.pack();
@@ -39,5 +38,9 @@ public class Client {
                 frame.setVisible(true);
             }
         });
+    }
+
+    public JFrame getFrame(){
+        return frame;
     }
 }
