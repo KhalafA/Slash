@@ -1,3 +1,5 @@
+import sun.misc.IOUtils;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -33,6 +35,9 @@ public class SocketHandler implements Runnable{
                     sender = new Sender(os);
                     senderThread = new Thread(sender);
                     senderThread.start();
+                }else{
+                    System.out.println(request);
+                    isInterrupted = true;
                 }
             }
         } catch (IOException exp) {
@@ -41,7 +46,7 @@ public class SocketHandler implements Runnable{
     }
 
     public String readRequest(InputStream is) throws IOException {
-        StringBuilder sb = new StringBuilder(128);
+        StringBuilder sb = new StringBuilder(560);
         int in = -1;
 
         while ((in = is.read()) != '\n') {

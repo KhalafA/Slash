@@ -13,10 +13,12 @@ public class Receiver implements Runnable {
     private ByteArrayInputStream bais;
 
     private Socket socket;
+    private String request;
 
-    public Receiver(Socket socket, ScreenPane screenPane) {
+    public Receiver(Socket socket, ScreenPane screenPane, String request) {
         this.socket = socket;
         this.screenPane = screenPane;
+        this.request = request;
 
         isInterrupted = false;
     }
@@ -28,7 +30,7 @@ public class Receiver implements Runnable {
                 is = socket.getInputStream();
                 os = socket.getOutputStream();
 
-                writeRequest(os, "grab");
+                writeRequest(os, request);
 
                 while (!isInterrupted){
                     System.out.println("Reading image...");
@@ -87,5 +89,34 @@ public class Receiver implements Runnable {
     public void writeRequest(OutputStream os, String request) throws IOException {
         os.write((request + "\n").getBytes());
         os.flush();
+    }
+
+    public void interrupt(){
+        try {
+            writeRequest(os, "stop");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        isInterrupted = true;
+
+        if(is != null){
+            try {
+                is.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            is = null;
+        }
+
+        if(os != null){
+            try {
+                os.flush();
+                os.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            os = null;
+        }
     }
 }

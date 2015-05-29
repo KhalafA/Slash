@@ -8,7 +8,11 @@ import java.net.Socket;
 public class CapturePane extends JPanel {
     private Socket socket;
     private ScreenPane screenPane;
-    private JButton grabButton, stopButton;
+
+    private JButton startCaptureButton;
+    private JButton stopCaptureButton;
+    private JButton requestControlButton;
+
     private JPanel btnPannel;
 
     private Receiver receiver;
@@ -17,8 +21,9 @@ public class CapturePane extends JPanel {
     public CapturePane(String ip, int port) {
         setLayout(new BorderLayout());
         screenPane = new ScreenPane();
-        grabButton = new JButton("Grab");
-        stopButton = new JButton("Stop");
+        startCaptureButton = new JButton("Capture");
+        requestControlButton = new JButton("Control");
+        stopCaptureButton = new JButton("Stop Capturing");
 
         btnPannel = new JPanel();
 
@@ -30,32 +35,50 @@ public class CapturePane extends JPanel {
         }
         add(screenPane);
 
-        btnPannel.add(grabButton, BorderLayout.NORTH);
-        btnPannel.add(stopButton, BorderLayout.SOUTH);
+        btnPannel.add(startCaptureButton);
+        btnPannel.add(requestControlButton);
+        btnPannel.add(stopCaptureButton);
 
-        stopButton.setEnabled(false);
+        stopCaptureButton.setEnabled(false);
 
         add(btnPannel, BorderLayout.SOUTH);
 
-        grabButton.addActionListener(new ActionListener() {
+        startCaptureButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                grabButton.setEnabled(false);
-                stopButton.setEnabled(true);
+                startCaptureButton.setEnabled(false);
+                stopCaptureButton.setEnabled(true);
 
-                receiver = new Receiver(socket, screenPane);
+                receiver = new Receiver(socket, screenPane, "grab");
                 receiverThread = new Thread(receiver);
                 receiverThread.start();
+
+                System.out.println("------------------");
+                System.out.println("Started");
             }
         });
 
-        stopButton.addActionListener(new ActionListener() {
+
+        stopCaptureButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //Stop Capturing
+                receiver.interrupt();
+
+                startCaptureButton.setEnabled(true);
+                stopCaptureButton.setEnabled(false);
+
+                System.out.println("------------------");
+                System.out.println("Closed");
             }
         });
+
+
+    }
+
+    public void writeRequest(OutputStream os, String request) throws IOException {
+        os.write((request + "\n").getBytes());
+        os.flush();
     }
 
 }
