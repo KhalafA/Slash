@@ -23,8 +23,8 @@ public class Application {
 
 
     public Application(){
-        String pass = getRandomString();
-        String name = getRandomString();
+        String pass = "pass";
+        String name = "name";
 
         server = new Server(this, pass, name);
         serverThread = new Thread(server);
