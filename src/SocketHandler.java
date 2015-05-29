@@ -1,8 +1,4 @@
-import sun.misc.IOUtils;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.Socket;
 
 public class SocketHandler implements Runnable{
@@ -13,37 +9,96 @@ public class SocketHandler implements Runnable{
     private InputStream is;
     private OutputStream os;
 
-    Sender sender;
-    Thread senderThread;
+    private Sender sender;
+    private Thread senderThread;
 
-    public SocketHandler(Socket socket) {
+    private String pass;
+    private String name;
+
+    boolean verified;
+
+    public SocketHandler(Socket socket, String name, String pass) {
         this.socket = socket;
+        this.name = name;
+        this.pass = pass;
+
         isInterrupted = false;
+        verified = false;
     }
 
     @Override
     public void run() {
-        try {
-            System.out.println("Processing client requests");
-            is = socket.getInputStream();
-            os = socket.getOutputStream();
+        Object obj;
+        if(!verified){
+            System.out.println("data not verified");
+            try {
+                System.out.println("!");
+                ObjectInputStream objectInputStream = new ObjectInputStream(socket.getInputStream());
+                ObjectOutputStream objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
 
-            while (!isInterrupted){
-                request = readRequest(is);
-
-                if ("grab".equalsIgnoreCase(request)) {
-                    sender = new Sender(os);
-                    senderThread = new Thread(sender);
-                    senderThread.start();
-                }else{
-                    System.out.println(request);
-                    isInterrupted = true;
+                while (!verified){
+                    if((obj = objectInputStream.readObject()) != null){
+                        if(obj instanceof Verification){
+                            System.out.println("recived verification");
+                            if(((Verification) obj).getName().equals(name) && ((Verification) obj).getPass().equals(pass)){
+                                objectOutputStream.writeObject(new Verified(true));
+                                System.out.println("verfied");
+                                verified = true;
+                                break;
+                            }else {
+                                System.out.println("no verified");
+                                System.out.println("Pass exptected: " + pass + " Recived: " + ((Verification) obj).getPass());
+                                System.out.println("name exptected: " + name + " Recived: " + ((Verification) obj).getName());
+                            }
+                        }
+                    }
                 }
+
+                run();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
             }
-        } catch (IOException exp) {
-            //close
+
+        }else {
+            try {
+                System.out.println("Processing client requests");
+                is = socket.getInputStream();
+                os = socket.getOutputStream();
+
+                while (!isInterrupted) {
+                    request = readRequest(is);
+
+                    if ("grab".equalsIgnoreCase(request)) {
+                        sender = new Sender(os);
+                        senderThread = new Thread(sender);
+                        senderThread.start();
+
+                    } else if ("stop".equalsIgnoreCase(request)) {
+                        System.out.println("recived stop!");
+                        if (sender != null) {
+                            sender.interrupt();
+                        }
+                    }
+                }
+
+                Thread.sleep(100);
+            } catch (IOException exp) {
+                //close
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
+
+
+    private void verificationHandler(){
+
+    }
+
+
 
     public String readRequest(InputStream is) throws IOException {
         StringBuilder sb = new StringBuilder(560);

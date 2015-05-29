@@ -31,7 +31,7 @@ public class ClientPane extends JPanel {
         startBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                application.setupConnection(fieldPane.getIpField().getText(), fieldPane.getPortField().getText());
+                application.setupConnection(fieldPane.getIpField().getText(), fieldPane.getPortField().getText(), fieldPane.getPassField().getText(), fieldPane.getNameField().getText());
             }
         });
     }

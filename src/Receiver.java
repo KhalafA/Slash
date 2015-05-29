@@ -9,18 +9,19 @@ public class Receiver implements Runnable {
     private InputStream is;
     private OutputStream os;
 
-    private ByteArrayOutputStream baos;
-    private ByteArrayInputStream bais;
+
 
     private Socket socket;
     private String request;
 
-    public Receiver(Socket socket, ScreenPane screenPane, String request) {
+    private boolean requestChanged;
+
+    public Receiver(Socket socket, ScreenPane screenPane) {
         this.socket = socket;
         this.screenPane = screenPane;
-        this.request = request;
 
         isInterrupted = false;
+        requestChanged = true;
     }
 
     @Override
@@ -30,47 +31,76 @@ public class Receiver implements Runnable {
                 is = socket.getInputStream();
                 os = socket.getOutputStream();
 
-                writeRequest(os, request);
-
                 while (!isInterrupted){
-                    System.out.println("Reading image...");
-                    String size = readResponse(is);
 
-                    int expectedByteCount = 0;
-
-                    try{
-                        expectedByteCount = Integer.parseInt(size);
-                    }catch (NumberFormatException e){
-                        break;
-                    }
-
-                    System.out.println("Expecting " + expectedByteCount);
-                    baos = new ByteArrayOutputStream(expectedByteCount);
-                    byte[] buffer = new byte[1024];
-                    int bytesRead = 0;
-                    int bytesIn = 0;
-                    while (bytesRead < expectedByteCount) {
-                        bytesIn = is.read(buffer);
-                        bytesRead += bytesIn;
-                        baos.write(buffer, 0, bytesIn);
-                    }
-
-                    System.out.println("Read " + bytesRead);
-                    baos.close();
-
-                    bais = new ByteArrayInputStream(baos.toByteArray());
-
-                    BufferedImage image = ImageIO.read(bais);
-                    System.out.println("Got image...");
-                    screenPane.setImage(image);
-                    bais.close();
+                    sendRequest(os, request);
+                    readImage(is);
                 }
 
-
+                Thread.sleep(100);
             } catch (IOException exp) {
                 //close
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         }
+    }
+
+    private void readImage(InputStream is) {
+        try {
+            String size = readResponse(is);
+            int expectedByteCount = getExptectedByteCount(size);
+
+            ByteArrayOutputStream baos = new ByteArrayOutputStream(expectedByteCount);
+            byte[] buffer = new byte[1024];
+            int bytesRead = 0;
+            int bytesIn = 0;
+            while (bytesRead < expectedByteCount) {
+                bytesIn = is.read(buffer);
+                bytesRead += bytesIn;
+                baos.write(buffer, 0, bytesIn);
+            }
+
+            baos.close();
+
+            ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
+
+            BufferedImage image = ImageIO.read(bais);
+
+            screenPane.setImage(image);
+            bais.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void sendRequest(OutputStream os, String request) {
+        if(requestChanged){
+            try {
+                writeRequest(os, request);
+                requestChanged = false;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private int getExptectedByteCount(String size) {
+        int expectedByteCount = -1;
+
+        try{
+            expectedByteCount = Integer.parseInt(size);
+        }catch (NumberFormatException e){
+
+        }
+
+        return expectedByteCount;
+    }
+
+    public void setRequest(String r){
+        request = r;
+        requestChanged = true;
     }
 
     private String readResponse(InputStream is) throws IOException {
@@ -89,34 +119,5 @@ public class Receiver implements Runnable {
     public void writeRequest(OutputStream os, String request) throws IOException {
         os.write((request + "\n").getBytes());
         os.flush();
-    }
-
-    public void interrupt(){
-        try {
-            writeRequest(os, "stop");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        isInterrupted = true;
-
-        if(is != null){
-            try {
-                is.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            is = null;
-        }
-
-        if(os != null){
-            try {
-                os.flush();
-                os.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            os = null;
-        }
     }
 }

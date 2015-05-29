@@ -18,26 +18,34 @@ public class CapturePane extends JPanel {
     private Receiver receiver;
     private Thread receiverThread;
 
-    public CapturePane(String ip, int port) {
+    public CapturePane(String ip, int port, String pass, String name) {
         setLayout(new BorderLayout());
         screenPane = new ScreenPane();
         startCaptureButton = new JButton("Capture");
-        requestControlButton = new JButton("Control");
         stopCaptureButton = new JButton("Stop Capturing");
 
         btnPannel = new JPanel();
+        add(screenPane);
+
+        btnPannel.add(startCaptureButton);
+        btnPannel.add(stopCaptureButton);
+
 
         try {
             socket = new Socket(ip, port);
+
+            System.out.println("Starting Verfication class");
+            Verify verify = new Verify(socket, pass, name, this);
+            new Thread(verify).start();
+
+            startCaptureButton.setEnabled(false);
+            stopCaptureButton.setEnabled(false);
+
         } catch (IOException ex) {
             System.out.println("Could not connect");
             System.exit(0);
         }
-        add(screenPane);
 
-        btnPannel.add(startCaptureButton);
-        btnPannel.add(requestControlButton);
-        btnPannel.add(stopCaptureButton);
 
         stopCaptureButton.setEnabled(false);
 
@@ -47,38 +55,45 @@ public class CapturePane extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                startCaptureButton.setEnabled(false);
-                stopCaptureButton.setEnabled(true);
+                toogleButtons();
 
-                receiver = new Receiver(socket, screenPane, "grab");
-                receiverThread = new Thread(receiver);
-                receiverThread.start();
-
-                System.out.println("------------------");
-                System.out.println("Started");
+                if(receiver == null){
+                    receiver = new Receiver(socket, screenPane);
+                    receiver.setRequest("grab");
+                    receiverThread = new Thread(receiver);
+                    receiverThread.start();
+                }else {
+                    receiver.setRequest("grab");
+                }
             }
         });
-
 
         stopCaptureButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                receiver.interrupt();
+                receiver.setRequest("stop");
 
+                toogleButtons();
+
+
+            }
+        });
+    }
+
+    private void toogleButtons(){
+        boolean enabled = startCaptureButton.isEnabled();
+
+        startCaptureButton.setEnabled(!enabled);
+        stopCaptureButton.setEnabled(enabled);
+    }
+
+    public void verified(){
+        EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
                 startCaptureButton.setEnabled(true);
-                stopCaptureButton.setEnabled(false);
-
-                System.out.println("------------------");
-                System.out.println("Closed");
             }
         });
 
-
     }
-
-    public void writeRequest(OutputStream os, String request) throws IOException {
-        os.write((request + "\n").getBytes());
-        os.flush();
-    }
-
 }

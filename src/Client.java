@@ -12,8 +12,8 @@ public class Client {
 
     private final JFrame frame;
 
-    public Client(String ip, int port) {
-        capturePane = new CapturePane(ip, port);
+    public Client(String ip, int port, String pass, String name) {
+        capturePane = new CapturePane(ip, port, pass, name);
         frame = new JFrame("Live Connection");
 
         EventQueue.invokeLater(new Runnable() {

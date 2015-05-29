@@ -12,12 +12,20 @@ public class Server implements Runnable{
 
     private Application application;
 
-    public Server(Application application){
+    private String name;
+    private String pass;
+
+    private SocketHandler socketHandler;
+
+    public Server(Application application, String pass, String name){
         this.application = application;
+        this.pass = pass;
+        this.name = name;
 
         localHostIp = getLocalHostIP();
         isReady = false;
     }
+
 
     @Override
     public void run() {
@@ -34,7 +42,9 @@ public class Server implements Runnable{
 
                 notifyNewConnection();
 
-                new Thread(new SocketHandler(skt)).start();
+                socketHandler = new SocketHandler(skt, name, pass);
+
+                new Thread(socketHandler).start();
             }
         }catch (IOException ex) {
             System.out.println("Failed set up ServerSocket");

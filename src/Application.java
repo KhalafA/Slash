@@ -23,11 +23,14 @@ public class Application {
 
 
     public Application(){
-        server = new Server(this);
+        String pass = getRandomString();
+        String name = getRandomString();
+
+        server = new Server(this, pass, name);
         serverThread = new Thread(server);
         serverThread.start();
 
-        startPane = new StartPane(server.getLocalHostIP(), server.getPort(), getRandomString(), getRandomString(), this);
+        startPane = new StartPane(server.getLocalHostIP(), server.getPort(),name,pass, this);
 
         setServerStatus(true);
 
@@ -54,14 +57,10 @@ public class Application {
     }
 
     //Client Connecting to a server
-    public void setupConnection(String ipField, String portField){
+    public void setupConnection(String ipField, String portField, String passField, String nameField){
         serverThread.interrupt();
 
-        System.out.println(ipField);
-        System.out.println(portField);
-
-
-        client = new Client(ipField, Integer.parseInt(portField));
+        client = new Client(ipField, Integer.parseInt(portField), passField, nameField);
         frame.setVisible(false);
         frame.dispose();
 
