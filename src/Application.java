@@ -1,7 +1,10 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.WindowEvent;
+import java.io.IOException;
 import java.math.BigInteger;
+import java.net.Socket;
+import java.net.SocketException;
+import java.net.UnknownHostException;
 import java.security.SecureRandom;
 
 public class Application {
@@ -9,30 +12,26 @@ public class Application {
 
     private Server server;
     private Thread serverThread;
-    private final StartPane startPane;
 
     private Client client;
+    private Thread clientThread;
+
+    private boolean serverStatus;
 
     private final JFrame frame;
+    private final StartPane startPane;
 
-
-    public static void main(String[] args) {
-        new Application();
-    }
-
-
+    private int liveConnections = 0;
 
     public Application(){
-        String pass = "pass";
-        String name = "name";
+        String pass = getRandomString();
+        String name = getRandomString();
 
-        server = new Server(this, pass, name);
-        serverThread = new Thread(server);
-        serverThread.start();
+        serverStatus = false;
+        startServer(name, pass, 0);
 
-        startPane = new StartPane(server.getLocalHostIP(), server.getPort(),name,pass, this);
-
-        setServerStatus(true);
+        startPane = new StartPane(server.getLocalHostIP(), server.getPort() + "",name,pass, this);
+        startPane.setServerStatus(serverStatus);
 
         frame = new JFrame("Slash");
 
@@ -56,22 +55,79 @@ public class Application {
         });
     }
 
+
+    public void restartServer(String name, String pass, String port){
+        serverStatus = false;
+        startPane.setServerStatus(serverStatus);
+
+        try {
+            server.stop();
+            serverThread.join();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        int portNumber = Integer.parseInt(port);
+
+        if(isPortAvailable(portNumber)){
+            startServer(name, pass, portNumber);
+        }else {
+            startServer(name, pass, 0);
+        }
+    }
+
+    private boolean isPortAvailable(int port){
+        boolean result = true;
+
+        try {
+            (new Socket("localhost", port)).close();
+
+            result = false;
+        }
+        catch(SocketException e) {
+            // Could not connect.
+        } catch (UnknownHostException e) {
+            //
+        } catch (IOException e) {
+            //
+        }catch (IllegalArgumentException e){
+            //
+        }
+
+        return result;
+    }
+
+    private void startServer(String name, String pass, int port){
+        server = new Server(name, pass, port, this);
+        serverThread = new Thread(server);
+        serverThread.start();
+    }
+
+    public void serverReadyForConnections(){
+        //System.out.println("Server is ready!");
+        serverStatus = true;
+        if(startPane != null){
+            startPane.setServerStatus(serverStatus);
+        }
+    }
+
+
     //Client Connecting to a server
-    public void setupConnection(String ipField, String portField, String passField, String nameField){
-        serverThread.interrupt();
+    public void setupConnection(String ipField, String portField, String passField, String nameField) {
+        try {
+            server.stop();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         client = new Client(ipField, Integer.parseInt(portField), passField, nameField);
         frame.setVisible(false);
         frame.dispose();
 
-        setServerStatus(false);
+        startPane.setServerStatus(false);
 
-    }
-
-    private void setServerStatus(boolean status){
-        if (server.getReady()){
-            startPane.setServerStatus(status);
-        }
     }
 
     private String getRandomString(){
@@ -79,6 +135,12 @@ public class Application {
     }
 
     public void incomingConnection(){
+        liveConnections++;
+        System.out.println(liveConnections);
         frame.setState(Frame.ICONIFIED);
+    }
+
+    public static void main(String[] args) {
+        new Application();
     }
 }

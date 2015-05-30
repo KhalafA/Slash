@@ -1,16 +1,31 @@
 import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.LinkedList;
 
 public class StartPane extends JPanel{
     private ServerPane serverPane;
     private ClientPane clientPane;
+    private final Application application;
+    private Timer timer;
 
-    public StartPane(String ip, int port, String name, String pass, Application application){
-        serverPane = new ServerPane(ip, port + "", name, pass);
-        clientPane = new ClientPane(application);
+    private String name;
+    private String pass;
+    private String port;
+
+    public StartPane(String ip, String port, String name, String pass, Application application){
+        this.application = application;
+        this.name = name;
+        this.pass = pass;
+        this.port = port;
+
+        serverPane = new ServerPane(ip, port, name, pass);
+        clientPane = new ClientPane();
 
         setPreferredSize(new Dimension(450,250));
         GridLayout gridLayout = new GridLayout(0,2);
@@ -25,6 +40,59 @@ public class StartPane extends JPanel{
         serverPane.setServerStatus(status);
     }
 
+    protected void changeInFormFields(){
+        if(timer != null){
+            if(timer.isRunning()){
+                timer.restart();
+            }else {
+                setServerStatus(false);
+                timer.start();
+            }
+        }else {
+            setServerStatus(false);
+            timer = new Timer(5000, new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent arg0) {
+                    application.restartServer(name, pass, port);
+                    stopTimer();
+                }
+            });
+            timer.start();
+        }
+    }
+
+    private void stopTimer(){
+        timer.stop();
+    }
+
+    private void updateName(String value){
+        name = value;
+    }
+
+    private void updatePort(String value){
+        port = value;
+    }
+
+    private void updatePass(String value){
+        pass = value;
+    }
+
+    protected void callUpdateMethod(String label, String value){
+        Method method = null;
+        try {
+            method = getClass().getDeclaredMethod("update"+label, String.class);
+            method.invoke(this, value);
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+
+        changeInFormFields();
+    }
+
     /*
         ServerPane Class
             Has:
@@ -37,13 +105,13 @@ public class StartPane extends JPanel{
 
         private boolean serverStatus;
 
-        public ServerPane(String ipString, String portString, String nameString, String passString){
+        private ServerPane(String ipString, String portString, String nameString, String passString){
             titleSetup();
 
             serverStatus = false;
             textField = new JLabel("Setting up...");
 
-            fieldPane = new FieldPane();
+            fieldPane = new FieldPane(true);
             formSetup(nameString, ipString, portString, passString);
             fieldPane.setup();
 
@@ -51,14 +119,13 @@ public class StartPane extends JPanel{
             add(textField);
         }
 
-        public void setServerStatus(boolean status){
+        private void setServerStatus(boolean status){
             serverStatus = status;
+            String statusText = "";
 
-            if(serverStatus){
-                textField.setText("Ready for Connections!");
-            }else {
-                textField.setText("Setting up...");
-            }
+            statusText = serverStatus ? "Ready for Connections!" : "Setting up...";
+
+            textField.setText(statusText);
         }
 
         private void titleSetup(){
@@ -81,19 +148,16 @@ public class StartPane extends JPanel{
     /*
        ClientPane Class
            Has:
-               FlieldPane
+               FlieldPane, that is not a server
+
     */
     private class ClientPane extends JPanel{
-        private Application application;
-
         private String title;
         private JButton startBtn;
 
         private FieldPane fieldPane;
 
-        public ClientPane(final Application application){
-            this.application = application;
-
+        private ClientPane(){
             title = "Control Remote Computer";
 
             setBorder(
@@ -117,7 +181,7 @@ public class StartPane extends JPanel{
         }
 
         private void buildFieldPane(){
-            fieldPane = new FieldPane();
+            fieldPane = new FieldPane(false);
             formSetup("Name", "IP", "Port", "Pass");
             fieldPane.setup();
         }
@@ -128,25 +192,26 @@ public class StartPane extends JPanel{
             fieldPane.addFormField("Port", portString);
             fieldPane.addFormField("Pass", passString);
         }
-
-        private void addFormField(String label, String value){
-            fieldPane.addFormField(label, value);
-        }
     }
 
     /*
-        FieldPane Class
+        FieldPane Class:
     */
     private class FieldPane extends JComponent{
         private LinkedList<FormField> list;
         private String postFix;
         private FormField fieldNString;
 
-        public FieldPane(){
+        private boolean isAServerPane;
+
+        private FieldPane(boolean isAServerPane){
+            this.isAServerPane = isAServerPane;
+
             list = new LinkedList<>();
             setPostFix(": ");
         }
 
+        //setup the group layout. Automaticaly builds layout from all elements in the list
         private void setup(){
             setPreferredSize(new Dimension(200,200));
 
@@ -180,13 +245,15 @@ public class StartPane extends JPanel{
             layout.setVerticalGroup(vGroup);
         }
 
+        //Add new FormField
         private void addFormField(String label, String value) {
-            fieldNString = new FormField(label, value, postFix);
+            fieldNString = new FormField(label, value, postFix, isAServerPane);
             list.add(fieldNString);
         }
 
+        //Add new disabled FormField
         private void addFormField(String label, String value, boolean enabled) {
-            fieldNString = new FormField(label, value, postFix);
+            fieldNString = new FormField(label, value, postFix, isAServerPane);
             fieldNString.getTextField().setEnabled(enabled);
             list.add(fieldNString);
         }
@@ -195,7 +262,8 @@ public class StartPane extends JPanel{
             postFix = s;
         }
 
-        public String getField(String name) {
+        //getter for text from FormFields found in list
+        private String getField(String name) {
             boolean found = false;
             String result = "";
             int counter = 0;
@@ -213,25 +281,97 @@ public class StartPane extends JPanel{
         }
     }
 
+    /*
+        One Set of Form stuff
+            Label, Field, and text
+            Application is update on text change.
+     */
     private class FormField {
         private JLabel label;
         private JTextField textField;
 
         private String textString;
-        private String postFix;
         private String fieldValue;
 
-        public FormField(String textString, String fieldValue, String postFix) {
+        private boolean changed;
+
+        private String startFieldValue;
+        private String endFrieldValue;
+
+        private FormField(String textString, String fieldValue, String postFix, boolean isAServerPane) {
             this.textString = textString;
             this.fieldValue = fieldValue;
-            this.postFix = postFix;
 
-            build();
-        }
+            changed = false;
 
-        private void build(){
             label = new JLabel(textString + postFix);
             textField = new JTextField(fieldValue);
+
+            if(isAServerPane){
+                eventListenerSetup();
+            }
+        }
+
+        private void eventListenerSetup(){
+            textField.getDocument().addDocumentListener(new DocumentListener() {
+                Timer fieldTimer;
+
+                @Override
+                public void insertUpdate(DocumentEvent e) {
+                    updateInOneField();
+
+                }
+
+                @Override
+                public void removeUpdate(DocumentEvent e) {
+                    updateInOneField();
+                }
+
+                @Override
+                public void changedUpdate(DocumentEvent e) {
+                    updateInOneField();
+                }
+
+                //Send application update 1 sec after users last edit
+                private void updateInOneField() {
+                    if (!changed) {
+                        startFieldValue = fieldValue;
+                        changed = true;
+                    }
+
+                    if (fieldTimer != null) {
+                        if (fieldTimer.isRunning()) {
+                            fieldTimer.restart();
+                        } else {
+                            fieldTimer.start();
+                        }
+                    } else {
+                        fieldTimer = new Timer(1000, new ActionListener() {
+                            @Override
+                            public void actionPerformed(ActionEvent arg0) {
+                                endFrieldValue = getFieldValue();
+                                changedHappend();
+                                setFieldValue(endFrieldValue);
+                                changed = false;
+                                stopTimer();
+                            }
+                        });
+
+                        fieldTimer.start();
+                    }
+                }
+
+                private void stopTimer() {
+                    fieldTimer.stop();
+                }
+
+                private void changedHappend() {
+                    if (!startFieldValue.equals(endFrieldValue)) {
+                        //System.out.println("change in: " + textString + " from: " + startFieldValue + " To: " + endFrieldValue);
+                        callUpdateMethod(textString, endFrieldValue);
+                    }
+                }
+            });
         }
 
         public JLabel getLabel() {
@@ -248,6 +388,10 @@ public class StartPane extends JPanel{
 
         public String getFieldValue() {
             return textField.getText();
+        }
+
+        private void setFieldValue(String value){
+            fieldValue = value;
         }
     }
 }
