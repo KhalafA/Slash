@@ -17,17 +17,22 @@ public class StartPane extends JPanel{
     private String name;
     private String pass;
     private String port;
+    private String ip;
 
-    public StartPane(String ip, String port, String name, String pass, Application application){
+    private JFrame frame;
+
+    public StartPane(String ip, String port, String name, String pass, Application application, JFrame frame){
         this.application = application;
         this.name = name;
         this.pass = pass;
         this.port = port;
+        this.ip = ip;
+        this.frame = frame;
 
         serverPane = new ServerPane(ip, port, name, pass);
         clientPane = new ClientPane();
 
-        setPreferredSize(new Dimension(450,250));
+        setPreferredSize(new Dimension(450,200));
         GridLayout gridLayout = new GridLayout(0,2);
 
         setLayout(gridLayout);
@@ -104,18 +109,21 @@ public class StartPane extends JPanel{
         private FieldPane fieldPane;
 
         private boolean serverStatus;
+        private JButton screenShootButton;
 
         private ServerPane(String ipString, String portString, String nameString, String passString){
             titleSetup();
 
             serverStatus = false;
             textField = new JLabel("Setting up...");
+            screenShootButton = new JButton("Select Screenshot Area");
 
             fieldPane = new FieldPane(true);
             formSetup(nameString, ipString, portString, passString);
             fieldPane.setup();
 
             add(fieldPane);
+            add(screenShootButton);
             add(textField);
         }
 
@@ -168,7 +176,6 @@ public class StartPane extends JPanel{
             startBtn = new JButton("Connect to Partner");
             buildFieldPane();
 
-
             add(fieldPane);
             add(startBtn);
 
@@ -209,11 +216,12 @@ public class StartPane extends JPanel{
 
             list = new LinkedList<>();
             setPostFix(": ");
+
         }
 
         //setup the group layout. Automaticaly builds layout from all elements in the list
         private void setup(){
-            setPreferredSize(new Dimension(200,200));
+            setPreferredSize(new Dimension(200,120));
 
             GroupLayout layout = new GroupLayout(this);
             setLayout(layout);

@@ -11,14 +11,13 @@ public class CapturePane extends JPanel {
 
     private JButton startCaptureButton;
     private JButton stopCaptureButton;
-    private JButton requestControlButton;
 
     private JPanel btnPannel;
 
     private Receiver receiver;
     private Thread receiverThread;
 
-    public CapturePane(String ip, int port, String pass, String name) {
+    public CapturePane(String ip, int port, String pass, String name) throws IOException {
         setLayout(new BorderLayout());
         screenPane = new ScreenPane();
         startCaptureButton = new JButton("Capture");
@@ -30,21 +29,13 @@ public class CapturePane extends JPanel {
         btnPannel.add(startCaptureButton);
         btnPannel.add(stopCaptureButton);
 
+        socket = new Socket(ip, port);
 
-        try {
-            socket = new Socket(ip, port);
+        Verify verify = new Verify(socket, pass, name, this);
+        new Thread(verify).start();
 
-            System.out.println("Starting Verfication class");
-            Verify verify = new Verify(socket, pass, name, this);
-            new Thread(verify).start();
-
-            startCaptureButton.setEnabled(false);
-            stopCaptureButton.setEnabled(false);
-
-        } catch (IOException ex) {
-            System.out.println("Could not connect");
-            System.exit(0);
-        }
+        startCaptureButton.setEnabled(false);
+        stopCaptureButton.setEnabled(false);
 
 
         stopCaptureButton.setEnabled(false);

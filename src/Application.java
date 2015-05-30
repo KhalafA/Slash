@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 import java.math.BigInteger;
+import java.net.ConnectException;
 import java.net.Socket;
 import java.net.SocketException;
 import java.net.UnknownHostException;
@@ -13,8 +14,7 @@ public class Application {
     private Server server;
     private Thread serverThread;
 
-    private Client client;
-    private Thread clientThread;
+
 
     private boolean serverStatus;
 
@@ -30,10 +30,12 @@ public class Application {
         serverStatus = false;
         startServer(name, pass, 0);
 
-        startPane = new StartPane(server.getLocalHostIP(), server.getPort() + "",name,pass, this);
+        frame = new JFrame("Slash");
+
+        startPane = new StartPane(server.getLocalHostIP(), server.getPort() + "",name,pass, this, frame);
         startPane.setServerStatus(serverStatus);
 
-        frame = new JFrame("Slash");
+
 
         EventQueue.invokeLater(new Runnable() {
             @Override
@@ -44,11 +46,11 @@ public class Application {
                     ex.printStackTrace();
                 }
 
-                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
                 frame.add(startPane);
-                frame.pack();
                 frame.setLocationRelativeTo(null);
-                frame.setResizable(false);
+                frame.setResizable(true);
+                frame.pack();
                 frame.setVisible(true);
 
             }
@@ -63,9 +65,9 @@ public class Application {
         try {
             server.stop();
             serverThread.join();
-        } catch (IOException e) {
-            e.printStackTrace();
         } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
@@ -117,17 +119,19 @@ public class Application {
     //Client Connecting to a server
     public void setupConnection(String ipField, String portField, String passField, String nameField) {
         try {
-            server.stop();
-        } catch (IOException e) {
-            e.printStackTrace();
+            //server.stop();
+            serverStatus = true;
+            startPane.setServerStatus(serverStatus);
+
+
+            Client client = new Client(ipField, Integer.parseInt(portField), passField, nameField);
+            frame.setVisible(false);
+            frame.dispose();
+        }catch (ConnectException e){
+            errorMsg("Could not locate server");
+        } catch (IOException ex){
+            errorMsg("Could not close Server");
         }
-
-        client = new Client(ipField, Integer.parseInt(portField), passField, nameField);
-        frame.setVisible(false);
-        frame.dispose();
-
-        startPane.setServerStatus(false);
-
     }
 
     private String getRandomString(){
@@ -138,6 +142,11 @@ public class Application {
         liveConnections++;
         System.out.println(liveConnections);
         frame.setState(Frame.ICONIFIED);
+    }
+
+    public void errorMsg(String s){
+        JOptionPane.showMessageDialog(new JFrame(), s, "Dialog",
+                JOptionPane.ERROR_MESSAGE);
     }
 
     public static void main(String[] args) {
