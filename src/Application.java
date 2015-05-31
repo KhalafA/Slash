@@ -14,6 +14,8 @@ public class Application {
     private Server server;
     private Thread serverThread;
 
+    private Client client;
+
     private boolean serverStatus;
 
     private final JFrame frame;
@@ -140,7 +142,7 @@ public class Application {
             startPane.setServerStatus(serverStatus);
 
 
-            Client client = new Client(ipField, Integer.parseInt(portField), passField, nameField);
+            client = new Client(ipField, Integer.parseInt(portField), passField, nameField);
             frame.setVisible(false);
             frame.dispose();
         }catch (ConnectException e){

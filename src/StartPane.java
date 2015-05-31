@@ -173,6 +173,7 @@ public class StartPane extends JPanel{
                             captureFrame.setUndecorated(true);
                             captureFrame.pack();
 
+
                             captureFrame.setVisible(true);
                         }
                     });
@@ -187,6 +188,7 @@ public class StartPane extends JPanel{
 
             statusText = serverStatus ? "Ready for Connections!" : "Setting up...";
             color = serverStatus ? Color.GREEN : Color.RED;
+
 
             textField.setText(statusText);
             textField.setForeground(color);

@@ -68,4 +68,12 @@ public class Sender implements Runnable{
     public void interrupt(){
         isInterrupted = true;
     }
+
+    public void pause() {
+        isInterrupted = true;
+    }
+
+    public void resume() {
+        isInterrupted = false;
+    }
 }

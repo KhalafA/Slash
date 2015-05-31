@@ -45,7 +45,7 @@ public class Server implements Runnable{
                 port = serverSocket.getLocalPort();
 
                 System.out.println("--------------------------------------------------");
-                System.out.println("Server was successfully setup");
+                System.out.println("Success, Server is ready for action");
                 System.out.println("Connect on ip: " + localHostIp + ", Port: " + port + ", Name: " + name + ", Pass: " + pass);
 
 

@@ -8,9 +8,10 @@ public class Client {
 
 
     public Client(String ip, int port, String pass, String name) throws IOException {
+        final JFrame viewFrame = new JFrame("Live Connection");
 
-        final CapturePane capturePane = new CapturePane(ip, port, pass, name);
-        final JFrame frame = new JFrame("Live Connection");
+        final CapturePane capturePane = new CapturePane(ip, port, pass, name, viewFrame);
+
 
         EventQueue.invokeLater(new Runnable() {
             @Override
@@ -20,18 +21,18 @@ public class Client {
                 } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
                 }
 
-                frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-                frame.add(capturePane);
-                frame.pack();
-                frame.setLocationRelativeTo(null);
-                frame.addWindowListener(new WindowAdapter() {
+                viewFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+                viewFrame.add(capturePane);
+                viewFrame.pack();
+                viewFrame.setLocationRelativeTo(null);
+                viewFrame.addWindowListener(new WindowAdapter() {
                     @Override
                     public void windowClosing(WindowEvent e) {
                         //close connection
                     }
                 });
 
-                frame.setVisible(true);
+                viewFrame.setVisible(true);
             }
         });
     }

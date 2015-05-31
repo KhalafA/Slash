@@ -9,16 +9,15 @@ public class Receiver implements Runnable {
     private InputStream is;
     private OutputStream os;
 
-
-
     private Socket socket;
     private String request;
 
     private boolean requestChanged;
 
-    public Receiver(Socket socket, ScreenPane screenPane) {
+    public Receiver(Socket socket, ScreenPane screenPane, String request) {
         this.socket = socket;
         this.screenPane = screenPane;
+        this.request = request;
 
         isInterrupted = false;
         requestChanged = true;
@@ -34,7 +33,9 @@ public class Receiver implements Runnable {
                 while (!isInterrupted){
 
                     sendRequest(os, request);
-                    readImage(is);
+                    if(!request.equals("stop")){
+                        readImage(is);
+                    }
                 }
 
                 Thread.sleep(100);
@@ -46,8 +47,8 @@ public class Receiver implements Runnable {
         }
     }
 
-    private void readImage(InputStream is) {
-        try {
+    private void readImage(InputStream is) throws IOException {
+
             String size = readResponse(is);
             int expectedByteCount = getExptectedByteCount(size);
 
@@ -70,9 +71,6 @@ public class Receiver implements Runnable {
             screenPane.setImage(image);
             bais.close();
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     private void sendRequest(OutputStream os, String request) {
@@ -84,6 +82,10 @@ public class Receiver implements Runnable {
                 e.printStackTrace();
             }
         }
+    }
+
+    public boolean getRequestStatus(){
+        return requestChanged;
     }
 
     private int getExptectedByteCount(String size) {

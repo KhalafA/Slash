@@ -34,25 +34,17 @@ public class SocketHandler implements Runnable{
     public void run() {
         Object obj;
         if(!verified){
-            System.out.println("data not verified");
             try {
-                System.out.println("!");
                 ObjectInputStream objectInputStream = new ObjectInputStream(socket.getInputStream());
                 ObjectOutputStream objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
 
                 while (!verified){
                     if((obj = objectInputStream.readObject()) != null){
                         if(obj instanceof Verification){
-                            System.out.println("recived verification");
                             if(((Verification) obj).getName().equals(name) && ((Verification) obj).getPass().equals(pass)){
                                 objectOutputStream.writeObject(new Verified(true));
-                                System.out.println("verfied");
                                 verified = true;
                                 break;
-                            }else {
-                                System.out.println("no verified");
-                                System.out.println("Pass exptected: " + pass + " Recived: " + ((Verification) obj).getPass());
-                                System.out.println("name exptected: " + name + " Recived: " + ((Verification) obj).getName());
                             }
                         }
                     }
@@ -68,7 +60,6 @@ public class SocketHandler implements Runnable{
 
         }else {
             try {
-                System.out.println("Processing client requests");
                 is = socket.getInputStream();
                 os = socket.getOutputStream();
 
@@ -76,15 +67,15 @@ public class SocketHandler implements Runnable{
                     request = readRequest(is);
 
                     if ("grab".equalsIgnoreCase(request)) {
-                        sender = new Sender(os, captureView);
-                        senderThread = new Thread(sender);
-                        senderThread.start();
+
+                            System.out.println("start " + isInterrupted);
+                            sender = new Sender(os, captureView);
+                            senderThread = new Thread(sender);
+                            senderThread.start();
+                            System.out.println("start " + isInterrupted);
 
                     } else if ("stop".equalsIgnoreCase(request)) {
-                        System.out.println("recived stop!");
-                        if (sender != null) {
-                            sender.interrupt();
-                        }
+                        sender.pause();
                     }
                 }
 
@@ -96,13 +87,6 @@ public class SocketHandler implements Runnable{
             }
         }
     }
-
-
-    private void verificationHandler(){
-
-    }
-
-
 
     public String readRequest(InputStream is) throws IOException {
         StringBuilder sb = new StringBuilder(560);

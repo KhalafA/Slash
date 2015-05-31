@@ -17,7 +17,11 @@ public class CapturePane extends JPanel {
     private Receiver receiver;
     private Thread receiverThread;
 
-    public CapturePane(String ip, int port, String pass, String name) throws IOException {
+    private JFrame viewFrame;
+
+    public CapturePane(String ip, int port, String pass, String name, JFrame viewFrame) throws IOException {
+        this.viewFrame = viewFrame;
+
         setLayout(new BorderLayout());
         screenPane = new ScreenPane();
         startCaptureButton = new JButton("Capture");
@@ -45,28 +49,33 @@ public class CapturePane extends JPanel {
         startCaptureButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 toogleButtons();
 
-                if(receiver == null){
-                    receiver = new Receiver(socket, screenPane);
-                    receiver.setRequest("grab");
-                    receiverThread = new Thread(receiver);
-                    receiverThread.start();
-                }else {
-                    receiver.setRequest("grab");
-                }
+                receiver = new Receiver(socket, screenPane, "grab");
+                receiverThread = new Thread(receiver);
+                receiverThread.start();
+
+                updateTitle("Live view");
             }
         });
 
         stopCaptureButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                receiver.setRequest("stop");
-
                 toogleButtons();
 
+                receiver.setRequest("stop");
 
+                updateTitle("Paused... ");
+            }
+        });
+    }
+
+    private void updateTitle(final String s){
+        EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                viewFrame.setTitle(s);
             }
         });
     }
