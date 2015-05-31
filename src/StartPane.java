@@ -32,13 +32,14 @@ public class StartPane extends JPanel{
         serverPane = new ServerPane(ip, port, name, pass);
         clientPane = new ClientPane();
 
-        setPreferredSize(new Dimension(450,200));
+        setPreferredSize(new Dimension(450,220));
         GridLayout gridLayout = new GridLayout(0,2);
 
         setLayout(gridLayout);
 
         add(serverPane);
         add(clientPane);
+
     }
 
     public void setServerStatus(boolean status){
@@ -111,33 +112,51 @@ public class StartPane extends JPanel{
         private boolean serverStatus;
         private JButton screenShootButton;
 
-        private ServerPane(String ipString, String portString, String nameString, String passString){
-            titleSetup();
+        private String ipString;
+        private String portString;
+        private String nameString;
+        private String passString;
 
+        private ServerPane(String ipString, String portString, String nameString, String passString){
+            this.ipString = ipString;
+            this.portString = portString;
+            this.nameString = nameString;
+            this.passString = passString;
+
+            windowSetup();
+        }
+
+        private void windowSetup(){
+            titleSetup("Allow Remote Control");
             serverStatus = false;
-            textField = new JLabel("Setting up...");
-            screenShootButton = new JButton("Select Screenshot Area");
 
             fieldPane = new FieldPane(true);
             formSetup(nameString, ipString, portString, passString);
             fieldPane.setup();
+
+            screenShootButton = new JButton("Select Screenshot Area");
+            textField = new JLabel("Setting up...");
 
             add(fieldPane);
             add(screenShootButton);
             add(textField);
         }
 
+
         private void setServerStatus(boolean status){
             serverStatus = status;
             String statusText = "";
+            Color color;
 
             statusText = serverStatus ? "Ready for Connections!" : "Setting up...";
+            color = serverStatus ? Color.GREEN : Color.RED;
 
             textField.setText(statusText);
+            textField.setForeground(color);
         }
 
-        private void titleSetup(){
-            title = "Allow Remote Control";
+        private void titleSetup(String s){
+            title = s;
 
             setBorder(
                     BorderFactory.createCompoundBorder(
@@ -216,12 +235,17 @@ public class StartPane extends JPanel{
 
             list = new LinkedList<>();
             setPostFix(": ");
-
         }
 
         //setup the group layout. Automaticaly builds layout from all elements in the list
         private void setup(){
-            setPreferredSize(new Dimension(200,120));
+            int width = 200;
+            int height = list.size()*35;
+
+            if(!isAServerPane){
+                height+=20;
+            }
+            setPreferredSize(new Dimension(width,height));
 
             GroupLayout layout = new GroupLayout(this);
             setLayout(layout);

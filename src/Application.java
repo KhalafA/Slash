@@ -14,8 +14,6 @@ public class Application {
     private Server server;
     private Thread serverThread;
 
-
-
     private boolean serverStatus;
 
     private final JFrame frame;
@@ -23,6 +21,8 @@ public class Application {
 
     private int liveConnections = 0;
 
+
+    //TODO: Let User select which parts he wants clients to see
     public Application(){
         String pass = getRandomString();
         String name = getRandomString();
@@ -71,12 +71,21 @@ public class Application {
             e.printStackTrace();
         }
 
-        int portNumber = Integer.parseInt(port);
+        int portNumber = tryParse(port);
 
-        if(isPortAvailable(portNumber)){
+        if(isPortAvailable(portNumber) && portNumber > 0){
             startServer(name, pass, portNumber);
         }else {
             startServer(name, pass, 0);
+        }
+    }
+
+    public Integer tryParse(String text) {
+        try {
+            return Integer.parseInt(text);
+        } catch (NumberFormatException e) {
+            errorMsg("Port has to be a number");
+            return -1;
         }
     }
 
