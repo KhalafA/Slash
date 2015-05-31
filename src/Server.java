@@ -23,11 +23,14 @@ public class Server implements Runnable{
     private List<Socket> sockets;
     private ServerSocket serverSocket;
 
-    public Server(String name, String pass, int port,  Application application){
+    private CaptureView captureView;
+
+    public Server(String name, String pass, int port, Application application, CaptureView captureView){
         this.application = application;
         this.name = name;
         this.pass = pass;
         this. port = port;
+        this.captureView = captureView;
 
         localHostIp = getLocalHostIP();
         sockets = new LinkedList<>();
@@ -58,7 +61,7 @@ public class Server implements Runnable{
 
                     notifyNewConnection();
 
-                    socketHandler = new SocketHandler(socket, name, pass);
+                    socketHandler = new SocketHandler(socket, name, pass, captureView);
 
                     new Thread(socketHandler).start();
                 }

@@ -8,9 +8,17 @@ import java.io.OutputStream;
 public class Sender implements Runnable{
     private boolean isInterrupted;
     private OutputStream outputStream;
+    private CaptureView captureView;
 
-    public Sender(OutputStream outputStream){
+    private int startX;
+    private int startY;
+    private int endY;
+    private int endX;
+
+    public Sender(OutputStream outputStream, CaptureView captureView){
         this.outputStream = outputStream;
+        this.captureView = captureView;
+
         isInterrupted = false;
     }
 
@@ -33,7 +41,19 @@ public class Sender implements Runnable{
     }
 
     public void grabScreen(OutputStream os) throws AWTException, IOException {
-        Rectangle screenRect = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
+        Rectangle screenRect;
+
+        if(captureView.getFullScreenStatus()){
+            screenRect = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
+        }else {
+            startX = captureView.getStartX();
+            startY = captureView.getStartY();
+            endX = captureView.getEndX();
+            endY = captureView.getEndY();
+
+            screenRect = new Rectangle(startX, startY, endX - startX, endY - startY);
+        }
+
         BufferedImage capture = new Robot().createScreenCapture(screenRect);
 
         ByteArrayOutputStream baos = new ByteArrayOutputStream();

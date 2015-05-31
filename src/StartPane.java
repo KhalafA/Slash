@@ -1,11 +1,22 @@
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import sun.tools.jar.Main;
+
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.*;
+import javax.swing.event.AncestorEvent;
+import javax.swing.event.AncestorListener;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.net.URL;
 import java.util.LinkedList;
 
 public class StartPane extends JPanel{
@@ -140,8 +151,34 @@ public class StartPane extends JPanel{
             add(fieldPane);
             add(screenShootButton);
             add(textField);
-        }
 
+            screenShootButton.addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    EventQueue.invokeLater(new Runnable() {
+                        @Override
+                        public void run() {
+
+                            try {
+                                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+                            } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
+                                ex.printStackTrace();
+                            }
+
+                            JFrame captureFrame = new JFrame();
+                            final TransparentBackground bg = new TransparentBackground(captureFrame, application);
+                            captureFrame.add(bg);
+                            captureFrame.setExtendedState(captureFrame.MAXIMIZED_BOTH);
+                            captureFrame.setUndecorated(true);
+                            captureFrame.pack();
+
+                            captureFrame.setVisible(true);
+                        }
+                    });
+                }
+            });
+        }
 
         private void setServerStatus(boolean status){
             serverStatus = status;

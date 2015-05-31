@@ -17,10 +17,14 @@ public class SocketHandler implements Runnable{
 
     boolean verified;
 
-    public SocketHandler(Socket socket, String name, String pass) {
+    private CaptureView captureView;
+
+    public SocketHandler(Socket socket, String name, String pass, CaptureView captureView) {
         this.socket = socket;
         this.name = name;
         this.pass = pass;
+        this.captureView = captureView;
+
 
         isInterrupted = false;
         verified = false;
@@ -72,7 +76,7 @@ public class SocketHandler implements Runnable{
                     request = readRequest(is);
 
                     if ("grab".equalsIgnoreCase(request)) {
-                        sender = new Sender(os);
+                        sender = new Sender(os, captureView);
                         senderThread = new Thread(sender);
                         senderThread.start();
 

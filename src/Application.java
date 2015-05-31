@@ -20,7 +20,7 @@ public class Application {
     private final StartPane startPane;
 
     private int liveConnections = 0;
-
+    private final static CaptureView captureView = new CaptureView();
 
     //TODO: Let User select which parts he wants clients to see
     public Application(){
@@ -57,6 +57,13 @@ public class Application {
         });
     }
 
+    public void setCaptureView(int x, int y, int xx, int yy){
+        captureView.setStats(x,y,xx,yy);
+    }
+
+    public void minimizeWindow(){
+        frame.setState(frame.ICONIFIED);
+    }
 
     public void restartServer(String name, String pass, String port){
         serverStatus = false;
@@ -111,7 +118,7 @@ public class Application {
     }
 
     private void startServer(String name, String pass, int port){
-        server = new Server(name, pass, port, this);
+        server = new Server(name, pass, port, this, captureView);
         serverThread = new Thread(server);
         serverThread.start();
     }
@@ -150,7 +157,8 @@ public class Application {
     public void incomingConnection(){
         liveConnections++;
         System.out.println(liveConnections);
-        frame.setState(Frame.ICONIFIED);
+
+        minimizeWindow();
     }
 
     public void errorMsg(String s){
