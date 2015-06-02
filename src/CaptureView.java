@@ -1,10 +1,8 @@
-import java.awt.*;
-
 public class CaptureView{
-    private int startX;
-    private int startY;
-    private int endY;
-    private int endX;
+    private int squareX;
+    private int squareY;
+    private int squareWidth;
+    private int squareHeight;
     private boolean fullScreen;
 
     public CaptureView() {
@@ -19,50 +17,50 @@ public class CaptureView{
         return fullScreen;
     }
 
-    public int getStartX() {
-        return startX;
+    public int getSquareX() {
+        return squareX;
     }
 
-    public void setStartX(int startX) {
+    public void setSquareX(int squareX) {
         stopFullScreen();
-        this.startX = startX;
+        this.squareX = squareX;
     }
 
-    public int getStartY() {
-        return startY;
+    public int getSquareY() {
+        return squareY;
     }
 
-    public void setStartY(int startY) {
+    public void setSquareY(int squareY) {
         stopFullScreen();
-        this.startY = startY;
+        this.squareY = squareY;
     }
 
-    public int getEndY() {
-        return endY;
+    public int getSquareWidth() {
+        return squareWidth;
     }
 
-    public void setEndY(int endY) {
+    public void setSquareWidth(int squareWidth) {
         stopFullScreen();
-        this.endY = endY;
+        this.squareWidth = squareWidth;
     }
 
-    public int getEndX() {
-        return endX;
+    public int getSquareHeight() {
+        return squareHeight;
     }
 
-    public void setEndX(int endX) {
+    public void setSquareHeight(int squareHeight) {
         stopFullScreen();
-        this.endX = endX;
+        this.squareHeight = squareHeight;
     }
 
     public void setStats(int x, int y, int xx, int yy) {
-        setStartX(x);
-        setStartY(y);
-        setEndX(xx);
-        setEndY(yy);
+        setSquareX(x);
+        setSquareY(y);
+        setSquareHeight(xx);
+        setSquareWidth(yy);
     }
 
     public String toString(){
-        return "Capturing: x: " + startX + ", y: " + startY + ", Width: " + endX + ", Height: "+ endY;
+        return "Capturing: x: " + squareX + ", y: " + squareY + ", Width: " + squareHeight + ", Height: "+ squareWidth;
     }
 }

@@ -11,10 +11,13 @@ public class TransparentBackground extends JComponent{
     private JFrame frame;
     private JPanel imagePanel;
 
+    private Application application;
+
     private int startX, startY, endX, endY;
 
-    public TransparentBackground(final JFrame frame, final Application application) {
+    public TransparentBackground(final JFrame frame, Application application) {
         this.frame = frame;
+        this.application = application;
 
         updateBackground();
 
@@ -23,7 +26,7 @@ public class TransparentBackground extends JComponent{
         imagePanel.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                System.out.println("Cicked: " + e.getLocationOnScreen());
+
             }
 
             @Override
@@ -37,9 +40,7 @@ public class TransparentBackground extends JComponent{
                 endX = e.getX();
                 endY = e.getY();
 
-                application.setCaptureView(startX, startY, endX, endY);
-                System.out.println("Capturing: x: " + startX + ", y: " + startY + ", Width: " + endX + ", Height: "+ endY + "££££");
-                frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
+                calcCaptureSquare();
             }
 
             @Override
@@ -54,6 +55,36 @@ public class TransparentBackground extends JComponent{
         });
 
         frame.add(imagePanel);
+    }
+
+    private void calcCaptureSquare(){
+        int squareX = 0;
+        int squareY = 0;
+
+        int squareWidth = 0;
+        int squareHeight = 0;
+
+        if(startX > endX){
+            squareX = endX;
+            squareWidth = startX-endX;
+        }else {
+            squareX = startX;
+            squareWidth = endX-startX;
+        }
+
+        if(startY > endY){
+            squareY = endY;
+            squareHeight = startY - endY;
+        }else {
+            squareY = startY;
+            squareHeight = endY - startY;
+        }
+
+
+
+        application.setCaptureView(squareX, squareY, squareWidth, squareHeight);
+        System.out.println("Capturing: x: " + squareX + ", y: " + squareY + ", Width: " + squareWidth + ", Height: "+ squareHeight);
+        frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
     }
 
     public void updateBackground( ) {

@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b9ff94a7-10b9-4ec1-8c45-9fa5dbadc642" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Application.java" afterPath="$PROJECT_DIR$/src/Application.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ApplicationFrame.java" afterPath="$PROJECT_DIR$/src/ApplicationFrame.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CaptureView.java" afterPath="$PROJECT_DIR$/src/CaptureView.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Sender.java" afterPath="$PROJECT_DIR$/src/Sender.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Server.java" afterPath="$PROJECT_DIR$/src/Server.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ServerHasConnectionsPane.java" afterPath="$PROJECT_DIR$/src/ServerHasConnectionsPane.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocketHandler.java" afterPath="$PROJECT_DIR$/src/SocketHandler.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/TransparentBackground.java" afterPath="$PROJECT_DIR$/src/TransparentBackground.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Slash.iws" />
@@ -36,7 +33,7 @@
       <file leaf-file-name="Application.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Application.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1840" max-vertical-offset="3502">
+            <state vertical-scroll-proportion="0.0" vertical-offset="2758" max-vertical-offset="3502">
               <caret line="120" column="46" selection-start-line="120" selection-start-column="46" selection-end-line="120" selection-end-column="46" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -70,8 +67,8 @@
       <file leaf-file-name="CaptureView.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/CaptureView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="191" max-vertical-offset="1020">
-              <caret line="52" column="35" selection-start-line="52" selection-start-column="35" selection-end-line="52" selection-end-column="35" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="986">
+              <caret line="4" column="28" selection-start-line="4" selection-start-column="28" selection-end-line="4" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -128,26 +125,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StartPane.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/StartPane.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="39.275864" vertical-offset="1683" max-vertical-offset="7293">
-              <caret line="32" column="38" selection-start-line="32" selection-start-column="38" selection-end-line="32" selection-end-column="47" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#6375#6376#0" expanded="true" />
-                <element signature="e#6432#6433#0" expanded="true" />
-                <element signature="e#7178#7485#0" expanded="true" />
-                <element signature="e#7484#7485#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ServerHasConnectionsPane.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ServerHasConnectionsPane.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ServerHasConnectionsPane.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.77366865" vertical-offset="837" max-vertical-offset="1564">
+            <state vertical-scroll-proportion="0.0" vertical-offset="837" max-vertical-offset="1564">
               <caret line="80" column="31" selection-start-line="80" selection-start-column="30" selection-end-line="80" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -165,7 +146,7 @@
       <file leaf-file-name="SocketHandler.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SocketHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1335" max-vertical-offset="2448">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1692" max-vertical-offset="2448">
               <caret line="90" column="31" selection-start-line="90" selection-start-column="31" selection-end-line="90" selection-end-column="31" />
               <folding>
                 <element signature="e#2894#2895#0" expanded="true" />
@@ -175,11 +156,21 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="TransparentBackground.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/TransparentBackground.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.10059172" vertical-offset="1054" max-vertical-offset="2057">
+              <caret line="72" column="9" selection-start-line="72" selection-start-column="9" selection-end-line="72" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="Sender.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Sender.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="4" max-vertical-offset="1292">
-              <caret line="73" column="5" selection-start-line="73" selection-start-column="5" selection-end-line="73" selection-end-column="5" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="510" max-vertical-offset="1292">
+              <caret line="53" column="82" selection-start-line="53" selection-start-column="82" selection-end-line="53" selection-end-column="82" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -224,9 +215,7 @@
         <option value="$PROJECT_DIR$/src/FieldPane.java" />
         <option value="$PROJECT_DIR$/src/ScreenPane.java" />
         <option value="$PROJECT_DIR$/src/CaptureActionListener.java" />
-        <option value="$PROJECT_DIR$/src/CaptureView.java" />
         <option value="$PROJECT_DIR$/src/GUI/TransparentBackground.java" />
-        <option value="$PROJECT_DIR$/src/TransparentBackground.java" />
         <option value="$PROJECT_DIR$/src/Verification.java" />
         <option value="$PROJECT_DIR$/src/Verify.java" />
         <option value="$PROJECT_DIR$/src/StartPane.java" />
@@ -234,12 +223,14 @@
         <option value="$PROJECT_DIR$/src/Client.java" />
         <option value="$PROJECT_DIR$/src/Receiver.java" />
         <option value="$PROJECT_DIR$/src/CapturePane.java" />
-        <option value="$PROJECT_DIR$/src/Sender.java" />
         <option value="$PROJECT_DIR$/src/Server.java" />
         <option value="$PROJECT_DIR$/src/SocketHandler.java" />
         <option value="$PROJECT_DIR$/src/Application.java" />
         <option value="$PROJECT_DIR$/src/ApplicationFrame.java" />
         <option value="$PROJECT_DIR$/src/ServerHasConnectionsPane.java" />
+        <option value="$PROJECT_DIR$/src/CaptureView.java" />
+        <option value="$PROJECT_DIR$/src/Sender.java" />
+        <option value="$PROJECT_DIR$/src/TransparentBackground.java" />
       </list>
     </option>
   </component>
@@ -737,7 +728,13 @@
       <option name="project" value="LOCAL" />
       <updated>1433281109187</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Server is now removes disconnected clients from the list.">
+      <created>1433282613533</created>
+      <option name="number" value="00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1433282613533</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -834,7 +831,8 @@
     <MESSAGE value="Client is sent back to start frame, when kicked" />
     <MESSAGE value="bugfix, client can now reconnect after kick." />
     <MESSAGE value="capturePane actions now changes the window title." />
-    <option name="LAST_COMMIT_MESSAGE" value="capturePane actions now changes the window title." />
+    <MESSAGE value="Server is now removes disconnected clients from the list." />
+    <option name="LAST_COMMIT_MESSAGE" value="Server is now removes disconnected clients from the list." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1184,14 +1182,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/TransparentBackground.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1496">
-          <caret line="15" column="75" selection-start-line="15" selection-start-column="75" selection-end-line="15" selection-end-column="75" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Verified.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
@@ -1238,14 +1228,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CaptureView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1020">
-          <caret line="52" column="35" selection-start-line="52" selection-start-column="35" selection-end-line="52" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/CapturePane.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="956" max-vertical-offset="1632">
@@ -1283,19 +1265,41 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sender.java">
+    <entry file="file://$PROJECT_DIR$/src/ApplicationFrame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="565" max-vertical-offset="1292">
-          <caret line="73" column="5" selection-start-line="73" selection-start-column="5" selection-end-line="73" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="765" max-vertical-offset="1717">
+          <caret line="80" column="29" selection-start-line="80" selection-start-column="29" selection-end-line="80" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#2172#2173#0" expanded="true" />
+            <element signature="e#2212#2213#0" expanded="true" />
+            <element signature="e#2276#2277#0" expanded="true" />
+            <element signature="e#2336#2337#0" expanded="true" />
+            <element signature="e#2377#2378#0" expanded="true" />
+            <element signature="e#2404#2405#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ServerHasConnectionsPane.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="837" max-vertical-offset="1564">
+          <caret line="80" column="31" selection-start-line="80" selection-start-column="30" selection-end-line="80" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1092#1422#0" expanded="true" />
+            <element signature="e#1421#1422#0" expanded="true" />
+            <element signature="e#1468#1469#0" expanded="true" />
+            <element signature="e#1509#1510#0" expanded="true" />
+            <element signature="e#1558#1559#0" expanded="true" />
+            <element signature="e#1623#1624#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SocketHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1335" max-vertical-offset="2448">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1692" max-vertical-offset="2448">
           <caret line="90" column="31" selection-start-line="90" selection-start-column="31" selection-end-line="90" selection-end-column="31" />
           <folding>
             <element signature="e#2894#2895#0" expanded="true" />
@@ -1326,35 +1330,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ApplicationFrame.java">
+    <entry file="file://$PROJECT_DIR$/src/CaptureView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="765" max-vertical-offset="1717">
-          <caret line="80" column="29" selection-start-line="80" selection-start-column="29" selection-end-line="80" selection-end-column="29" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="986">
+          <caret line="4" column="28" selection-start-line="4" selection-start-column="28" selection-end-line="4" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Sender.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="510" max-vertical-offset="1292">
+          <caret line="53" column="82" selection-start-line="53" selection-start-column="82" selection-end-line="53" selection-end-column="82" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2172#2173#0" expanded="true" />
-            <element signature="e#2212#2213#0" expanded="true" />
-            <element signature="e#2276#2277#0" expanded="true" />
-            <element signature="e#2336#2337#0" expanded="true" />
-            <element signature="e#2377#2378#0" expanded="true" />
-            <element signature="e#2404#2405#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ServerHasConnectionsPane.java">
+    <entry file="file://$PROJECT_DIR$/src/TransparentBackground.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.77366865" vertical-offset="837" max-vertical-offset="1564">
-          <caret line="80" column="31" selection-start-line="80" selection-start-column="30" selection-end-line="80" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1092#1422#0" expanded="true" />
-            <element signature="e#1421#1422#0" expanded="true" />
-            <element signature="e#1468#1469#0" expanded="true" />
-            <element signature="e#1509#1510#0" expanded="true" />
-            <element signature="e#1558#1559#0" expanded="true" />
-            <element signature="e#1623#1624#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.10059172" vertical-offset="1054" max-vertical-offset="2057">
+          <caret line="72" column="9" selection-start-line="72" selection-start-column="9" selection-end-line="72" selection-end-column="9" />
+          <folding />
         </state>
       </provider>
     </entry>

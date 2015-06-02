@@ -10,10 +10,10 @@ public class Sender implements Runnable{
     private OutputStream outputStream;
     private CaptureView captureView;
 
-    private int startX;
-    private int startY;
-    private int endY;
-    private int endX;
+    private int squareX;
+    private int squareY;
+    private int squareWidth;
+    private int squareHeight;
 
     public Sender(OutputStream outputStream, CaptureView captureView){
         this.outputStream = outputStream;
@@ -46,12 +46,12 @@ public class Sender implements Runnable{
         if(captureView.getFullScreenStatus()){
             screenRect = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
         }else {
-            startX = captureView.getStartX();
-            startY = captureView.getStartY();
-            endX = captureView.getEndX();
-            endY = captureView.getEndY();
+            squareX = captureView.getSquareX();
+            squareY = captureView.getSquareY();
+            squareHeight = captureView.getSquareHeight();
+            squareWidth = captureView.getSquareWidth();
 
-            screenRect = new Rectangle(startX, startY, endX - startX, endY - startY);
+            screenRect = new Rectangle(squareX, squareY, squareHeight, squareWidth);
         }
 
         BufferedImage capture = new Robot().createScreenCapture(screenRect);
