@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.WindowEvent;
@@ -23,36 +24,40 @@ public class TransparentBackground extends JComponent{
 
         imagePanel = new ImagePanel(background);
 
-        imagePanel.addMouseListener(new MouseListener() {
+        imagePanel.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-
+            public void mouseDragged(MouseEvent e) {
+                super.mouseDragged(e);
             }
 
             @Override
             public void mousePressed(MouseEvent e) {
+                super.mousePressed(e);
                 startX = e.getX();
                 startY = e.getY();
             }
 
             @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseExited(e);
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+            }
+
+            @Override
             public void mouseReleased(MouseEvent e) {
+                super.mouseReleased(e);
+
                 endX = e.getX();
                 endY = e.getY();
 
                 calcCaptureSquare();
             }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-
-            }
         });
+
 
         frame.add(imagePanel);
     }
