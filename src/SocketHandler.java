@@ -18,13 +18,14 @@ public class SocketHandler implements Runnable{
     boolean verified;
 
     private CaptureView captureView;
+    private Server server;
 
-    public SocketHandler(Socket socket, String name, String pass, CaptureView captureView) {
+    public SocketHandler(Socket socket, String name, String pass, CaptureView captureView, Server server) {
         this.socket = socket;
         this.name = name;
         this.pass = pass;
         this.captureView = captureView;
-
+        this.server = server;
 
         isInterrupted = false;
         verified = false;
@@ -43,6 +44,7 @@ public class SocketHandler implements Runnable{
                         if(obj instanceof Verification){
                             if(((Verification) obj).getName().equals(name) && ((Verification) obj).getPass().equals(pass)){
                                 objectOutputStream.writeObject(new Verified(true));
+                                server.clientInformation((Verification) obj);
                                 verified = true;
                                 break;
                             }
@@ -67,13 +69,9 @@ public class SocketHandler implements Runnable{
                     request = readRequest(is);
 
                     if ("grab".equalsIgnoreCase(request)) {
-
-                            System.out.println("start " + isInterrupted);
                             sender = new Sender(os, captureView);
                             senderThread = new Thread(sender);
                             senderThread.start();
-                            System.out.println("start " + isInterrupted);
-
                     } else if ("stop".equalsIgnoreCase(request)) {
                         sender.pause();
                     }

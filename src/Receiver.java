@@ -68,9 +68,8 @@ public class Receiver implements Runnable {
 
             BufferedImage image = ImageIO.read(bais);
 
-            screenPane.setImage(image);
             bais.close();
-
+            screenPane.setImage(image);
     }
 
     private void sendRequest(OutputStream os, String request) {

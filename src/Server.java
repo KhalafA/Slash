@@ -1,5 +1,3 @@
-import com.sun.org.apache.xpath.internal.SourceTree;
-
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.ServerSocket;
@@ -58,10 +56,7 @@ public class Server implements Runnable{
                     Socket socket = serverSocket.accept();
 
                     sockets.add(socket);
-
-                    notifyNewConnection();
-
-                    socketHandler = new SocketHandler(socket, name, pass, captureView);
+                    socketHandler = new SocketHandler(socket, name, pass, captureView, this);
 
                     new Thread(socketHandler).start();
                 }
@@ -81,8 +76,8 @@ public class Server implements Runnable{
     }
 
 
-    private void notifyNewConnection(){
-        application.incomingConnection();
+    public void clientInformation(Verification v){
+        application.incomingConnection(v);
     }
 
     public String getLocalHostIP(){

@@ -1,22 +1,11 @@
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-import sun.tools.jar.Main;
-
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
 import javax.swing.*;
-import javax.swing.event.AncestorEvent;
-import javax.swing.event.AncestorListener;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.net.URL;
 import java.util.LinkedList;
 
 public class StartPane extends JPanel{
@@ -30,15 +19,13 @@ public class StartPane extends JPanel{
     private String port;
     private String ip;
 
-    private JFrame frame;
 
-    public StartPane(String ip, String port, String name, String pass, Application application, JFrame frame){
+    public StartPane(String ip, String port, String name, String pass, Application application){
         this.application = application;
         this.name = name;
         this.pass = pass;
         this.port = port;
         this.ip = ip;
-        this.frame = frame;
 
         serverPane = new ServerPane(ip, port, name, pass);
         clientPane = new ClientPane();
@@ -188,7 +175,6 @@ public class StartPane extends JPanel{
 
             statusText = serverStatus ? "Ready for Connections!" : "Setting up...";
             color = serverStatus ? Color.GREEN : Color.RED;
-
 
             textField.setText(statusText);
             textField.setForeground(color);

@@ -28,7 +28,7 @@ public class Sender implements Runnable{
             try {
                 grabScreen(outputStream);
 
-                Thread.sleep(100);
+                Thread.sleep(1000);
 
             } catch (AWTException e) {
                 e.printStackTrace();

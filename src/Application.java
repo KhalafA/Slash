@@ -1,5 +1,4 @@
 import javax.swing.*;
-import java.awt.*;
 import java.io.IOException;
 import java.math.BigInteger;
 import java.net.ConnectException;
@@ -14,15 +13,14 @@ public class Application {
     private Server server;
     private Thread serverThread;
 
-    private Client client;
-
     private boolean serverStatus;
 
-    private final JFrame frame;
     private final StartPane startPane;
 
     private int liveConnections = 0;
     private final static CaptureView captureView = new CaptureView();
+
+    private ApplicationFrame applicationFrame;
 
     //TODO: Let User select which parts he wants clients to see
     public Application(){
@@ -32,39 +30,37 @@ public class Application {
         serverStatus = false;
         startServer(name, pass, 0);
 
-        frame = new JFrame("Slash");
-
-        startPane = new StartPane(server.getLocalHostIP(), server.getPort() + "",name,pass, this, frame);
+        startPane = new StartPane(server.getLocalHostIP(), server.getPort() + "",name,pass, this);
         startPane.setServerStatus(serverStatus);
 
-
-
-        EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-                } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
-                    ex.printStackTrace();
-                }
-
-                frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-                frame.add(startPane);
-                frame.setLocationRelativeTo(null);
-                frame.setResizable(true);
-                frame.pack();
-                frame.setVisible(true);
-
-            }
-        });
+        applicationFrame = new ApplicationFrame(startPane);
     }
 
-    public void setCaptureView(int x, int y, int xx, int yy){
-        captureView.setStats(x,y,xx,yy);
+    /*
+       ------------------------ Server -------------------------------------
+     */
+
+    private void startServer(String name, String pass, int port){
+        server = new Server(name, pass, port, this, captureView);
+        serverThread = new Thread(server);
+        serverThread.start();
     }
 
-    public void minimizeWindow(){
-        frame.setState(frame.ICONIFIED);
+    //Someone has connected to server
+    public void incomingConnection(Verification v){
+        liveConnections++;
+
+        System.out.println(liveConnections);
+
+        minimizeWindow();
+    }
+
+
+    public void serverReadyForConnections(){
+        serverStatus = true;
+        if(startPane != null){
+            startPane.setServerStatus(serverStatus);
+        }
     }
 
     public void restartServer(String name, String pass, String port){
@@ -89,15 +85,6 @@ public class Application {
         }
     }
 
-    public Integer tryParse(String text) {
-        try {
-            return Integer.parseInt(text);
-        } catch (NumberFormatException e) {
-            errorMsg("Port has to be a number");
-            return -1;
-        }
-    }
-
     private boolean isPortAvailable(int port){
         boolean result = true;
 
@@ -109,42 +96,29 @@ public class Application {
         catch(SocketException e) {
             // Could not connect.
         } catch (UnknownHostException e) {
-            //
         } catch (IOException e) {
-            //
         }catch (IllegalArgumentException e){
-            //
         }
 
         return result;
     }
 
-    private void startServer(String name, String pass, int port){
-        server = new Server(name, pass, port, this, captureView);
-        serverThread = new Thread(server);
-        serverThread.start();
-    }
 
-    public void serverReadyForConnections(){
-        //System.out.println("Server is ready!");
-        serverStatus = true;
-        if(startPane != null){
-            startPane.setServerStatus(serverStatus);
-        }
-    }
-
+    /*
+       ------------------------ Client -------------------------------------
+     */
 
     //Client Connecting to a server
     public void setupConnection(String ipField, String portField, String passField, String nameField) {
         try {
-            //server.stop();
+            server.stop();
             serverStatus = true;
             startPane.setServerStatus(serverStatus);
 
+            new Client(ipField, Integer.parseInt(portField), passField, nameField);
 
-            client = new Client(ipField, Integer.parseInt(portField), passField, nameField);
-            frame.setVisible(false);
-            frame.dispose();
+            //TODO: Setup userInfo in the frame.
+
         }catch (ConnectException e){
             errorMsg("Could not locate server");
         } catch (IOException ex){
@@ -152,22 +126,44 @@ public class Application {
         }
     }
 
+    /*
+       ------------------------ Util --------------------------------------
+     */
     private String getRandomString(){
         return new BigInteger(50, random).toString(32);
     }
 
-    public void incomingConnection(){
-        liveConnections++;
-        System.out.println(liveConnections);
-
-        minimizeWindow();
+    public Integer tryParse(String text) {
+        try {
+            return Integer.parseInt(text);
+        } catch (NumberFormatException e) {
+            errorMsg("Port has to be a number");
+            return -1;
+        }
     }
 
+    /*
+        ------------------------ Gui Manipulation --------------------------
+    */
+    public void minimizeWindow(){
+        applicationFrame.minimize();
+    }
+
+    public void setCaptureView(int x, int y, int xx, int yy){
+        captureView.setStats(x,y,xx,yy);
+    }
+
+    /*
+        ------------------------ Error ------------------------------------
+    */
     public void errorMsg(String s){
         JOptionPane.showMessageDialog(new JFrame(), s, "Dialog",
                 JOptionPane.ERROR_MESSAGE);
     }
 
+    /*
+        ------------------------ Main -------------------------------------
+    */
     public static void main(String[] args) {
         new Application();
     }
