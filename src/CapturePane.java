@@ -18,7 +18,10 @@ public class CapturePane extends JPanel {
     private Receiver receiver;
     private Thread receiverThread;
 
-    public CapturePane(String ip, int port, String pass, String name, String clientName) throws IOException {
+    private Application application;
+
+    public CapturePane(String ip, int port, String pass, String name, String clientName, final Application application) throws IOException {
+        this.application = application;
 
         setLayout(new BorderLayout());
         screenPane = new ScreenPane();
@@ -50,7 +53,7 @@ public class CapturePane extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 toogleButtons();
 
-                receiver = new Receiver(socket, screenPane, "grab");
+                receiver = new Receiver(socket, screenPane, "grab", application);
                 receiverThread = new Thread(receiver);
                 receiverThread.start();
 

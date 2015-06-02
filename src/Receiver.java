@@ -14,13 +14,19 @@ public class Receiver implements Runnable {
 
     private boolean requestChanged;
 
-    public Receiver(Socket socket, ScreenPane screenPane, String request) {
+    private Application application;
+
+    private boolean disconnected;
+
+    public Receiver(Socket socket, ScreenPane screenPane, String request, Application application) {
         this.socket = socket;
         this.screenPane = screenPane;
         this.request = request;
+        this.application = application;
 
         isInterrupted = false;
         requestChanged = true;
+        disconnected = false;
     }
 
     @Override
@@ -33,7 +39,7 @@ public class Receiver implements Runnable {
                 while (!isInterrupted){
 
                     sendRequest(os, request);
-                    if(!request.equals("stop")){
+                    if(!request.equals("stop") && !disconnected){
                         readImage(is);
                     }
                 }
@@ -51,25 +57,26 @@ public class Receiver implements Runnable {
 
             String size = readResponse(is);
             int expectedByteCount = getExptectedByteCount(size);
+            if(!disconnected) {
+                ByteArrayOutputStream baos = new ByteArrayOutputStream(expectedByteCount);
+                byte[] buffer = new byte[1024];
+                int bytesRead = 0;
+                int bytesIn = 0;
+                while (bytesRead < expectedByteCount) {
+                    bytesIn = is.read(buffer);
+                    bytesRead += bytesIn;
+                    baos.write(buffer, 0, bytesIn);
+                }
 
-            ByteArrayOutputStream baos = new ByteArrayOutputStream(expectedByteCount);
-            byte[] buffer = new byte[1024];
-            int bytesRead = 0;
-            int bytesIn = 0;
-            while (bytesRead < expectedByteCount) {
-                bytesIn = is.read(buffer);
-                bytesRead += bytesIn;
-                baos.write(buffer, 0, bytesIn);
+                baos.close();
+
+                ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
+
+                BufferedImage image = ImageIO.read(bais);
+
+                bais.close();
+                screenPane.setImage(image);
             }
-
-            baos.close();
-
-            ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
-
-            BufferedImage image = ImageIO.read(bais);
-
-            bais.close();
-            screenPane.setImage(image);
     }
 
     private void sendRequest(OutputStream os, String request) {
@@ -105,16 +112,38 @@ public class Receiver implements Runnable {
     }
 
     private String readResponse(InputStream is) throws IOException {
-
         StringBuilder sb = new StringBuilder(128);
         int in = -1;
 
-        while ((in = is.read()) != '\n') {
-            sb.append((char) in);
+        boolean done = false;
+
+        while (!done) {
+            if((in = is.read()) != -1){
+                if(in == '\n'){
+                    done = true;
+                }else {
+                    sb.append((char) in);
+                }
+            }else {
+                System.out.println("Connection closed");
+                done = true;
+                disconnected = true;
+                application.iGotKicked();
+                closeConnection();
+            }
         }
 
         return sb.toString();
 
+    }
+
+    private void closeConnection(){
+        try {
+            socket.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Thread.currentThread().interrupt();
     }
 
     public void writeRequest(OutputStream os, String request) throws IOException {

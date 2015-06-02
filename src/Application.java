@@ -129,11 +129,17 @@ public class Application {
             startPane.setServerStatus(serverStatus);
 
             applicationFrame.setupClient(ipField, Integer.parseInt(portField), passField, nameField, clientName);
+
         }catch (ConnectException e){
             errorMsg("Could not locate server");
         } catch (IOException ex){
             errorMsg("Could not close Server");
         }
+    }
+
+    //client got kicked from server
+    public void iGotKicked() {
+        applicationFrame.clientDisconnected();
     }
 
     /*

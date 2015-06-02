@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.io.IOException;
 
 public class ApplicationFrame extends JFrame{
+    private Application application;
     private JPanel infoPane;
     private ServerHasConnectionsPane connectionPane;
 
@@ -11,6 +12,7 @@ public class ApplicationFrame extends JFrame{
     public ApplicationFrame(JPanel infoPane, Application application){
         super("Slash");
         this.infoPane = infoPane;
+        this.application = application;
 
         connectionPane = new ServerHasConnectionsPane(application);
         setup();
@@ -52,10 +54,18 @@ public class ApplicationFrame extends JFrame{
 
         setTitle("Live Connections");
 
-        capturePane = new CapturePane(ip, port, pass, name, clientName);
+        capturePane = new CapturePane(ip, port, pass, name, clientName, application);
 
         remove(tabbedPane);
         add(capturePane);
+
+        revalidate();
+        repaint();
+    }
+
+    public void clientDisconnected(){
+        remove(capturePane);
+        add(tabbedPane);
 
         revalidate();
         repaint();
