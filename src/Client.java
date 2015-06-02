@@ -7,10 +7,10 @@ import javax.swing.*;
 public class Client {
 
 
-    public Client(String ip, int port, String pass, String name) throws IOException {
+    public Client(String ip, int port, String pass, String name, String clientName) throws IOException {
         final JFrame viewFrame = new JFrame("Live Connection");
 
-        final CapturePane capturePane = new CapturePane(ip, port, pass, name, viewFrame);
+        final CapturePane capturePane = new CapturePane(ip, port, pass, name, clientName);
 
 
         EventQueue.invokeLater(new Runnable() {
@@ -25,13 +25,6 @@ public class Client {
                 viewFrame.add(capturePane);
                 viewFrame.pack();
                 viewFrame.setLocationRelativeTo(null);
-                viewFrame.addWindowListener(new WindowAdapter() {
-                    @Override
-                    public void windowClosing(WindowEvent e) {
-                        //close connection
-                    }
-                });
-
                 viewFrame.setVisible(true);
             }
         });

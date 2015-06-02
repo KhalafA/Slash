@@ -97,6 +97,10 @@ public class StartPane extends JPanel{
         changeInFormFields();
     }
 
+    protected void tryConnection(String ip, String port, String pass, String name){
+        application.setupConnection(ip, port, pass, name, serverPane.getNameString());
+    }
+
     /*
         ServerPane Class
             Has:
@@ -195,6 +199,10 @@ public class StartPane extends JPanel{
             fieldPane.addFormField("Port", portString);
             fieldPane.addFormField("Pass", passString);
         }
+
+        public String getNameString() {
+            return fieldPane.getField("Name");
+        }
     }
 
     /*
@@ -226,7 +234,8 @@ public class StartPane extends JPanel{
             startBtn.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    application.setupConnection(fieldPane.getField("IP"), fieldPane.getField("Port"), fieldPane.getField("Pass"), fieldPane.getField("Name"));
+                    tryConnection(fieldPane.getField("IP"), fieldPane.getField("Port"), fieldPane.getField("Pass"), fieldPane.getField("Name")
+                    );
                 }
             });
         }

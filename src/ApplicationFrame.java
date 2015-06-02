@@ -1,11 +1,18 @@
 import javax.swing.*;
+import java.io.IOException;
 
 public class ApplicationFrame extends JFrame{
-    private JPanel panel;
+    private JPanel infoPane;
+    private ServerHasConnectionsPane connectionPane;
 
-    public ApplicationFrame(JPanel panel){
+    private JTabbedPane tabbedPane;
+    private CapturePane capturePane;
+
+    public ApplicationFrame(JPanel infoPane){
         super("Slash");
-        this.panel = panel;
+        this.infoPane = infoPane;
+
+        connectionPane = new ServerHasConnectionsPane();
 
         setup();
     }
@@ -18,14 +25,48 @@ public class ApplicationFrame extends JFrame{
         }
 
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        add(panel);
+
+        tabbedPane = new JTabbedPane();
+
+        tabbedPane.addTab("Info", infoPane);
+        tabbedPane.addTab("Clients", connectionPane);
+
+        add(tabbedPane);
         setLocationRelativeTo(null);
         setResizable(true);
         pack();
         setVisible(true);
     }
 
+    public void newConnection(String clientName, int ID){
+        connectionPane.newClient(clientName, ID);
+
+        if(tabbedPane.getSelectedIndex() == 0){
+            tabbedPane.setSelectedIndex(1);
+        }
+    }
+
+
+
+    public void setupClient(String ip, int port, String pass, String name, String clientName) throws IOException {
+        //TODO: Set the capturePane to main
+
+        setTitle("Live Connections");
+
+        capturePane = new CapturePane(ip, port, pass, name, clientName);
+
+        remove(tabbedPane);
+        add(capturePane);
+
+        revalidate();
+        repaint();
+    }
+
     public void minimize() {
         setState(this.ICONIFIED);
+    }
+
+    public void updateTableStatus(int id, boolean capturing) {
+        connectionPane.updateTableRow(id, capturing);
     }
 }

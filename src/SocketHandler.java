@@ -20,12 +20,16 @@ public class SocketHandler implements Runnable{
     private CaptureView captureView;
     private Server server;
 
-    public SocketHandler(Socket socket, String name, String pass, CaptureView captureView, Server server) {
+    private int ID;
+
+    public SocketHandler(Socket socket, String name, String pass, CaptureView captureView, Server server, int ID) {
         this.socket = socket;
         this.name = name;
         this.pass = pass;
         this.captureView = captureView;
         this.server = server;
+
+        this.ID = ID;
 
         isInterrupted = false;
         verified = false;
@@ -42,9 +46,9 @@ public class SocketHandler implements Runnable{
                 while (!verified){
                     if((obj = objectInputStream.readObject()) != null){
                         if(obj instanceof Verification){
-                            if(((Verification) obj).getName().equals(name) && ((Verification) obj).getPass().equals(pass)){
+                            if(((Verification) obj).getServerName().equals(name) && ((Verification) obj).getServerPass().equals(pass)){
                                 objectOutputStream.writeObject(new Verified(true));
-                                server.clientInformation((Verification) obj);
+                                server.clientInformation((Verification) obj, ID);
                                 verified = true;
                                 break;
                             }
@@ -72,8 +76,12 @@ public class SocketHandler implements Runnable{
                             sender = new Sender(os, captureView);
                             senderThread = new Thread(sender);
                             senderThread.start();
+
+                            server.updateClientStatus(ID, true);
                     } else if ("stop".equalsIgnoreCase(request)) {
                         sender.pause();
+
+                        server.updateClientStatus(ID, false);
                     }
                 }
 
@@ -84,6 +92,10 @@ public class SocketHandler implements Runnable{
                 e.printStackTrace();
             }
         }
+    }
+
+    public Socket getSocket(){
+        return socket;
     }
 
     public String readRequest(InputStream is) throws IOException {

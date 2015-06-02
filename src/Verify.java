@@ -7,6 +7,9 @@ public class Verify implements Runnable{
     private Socket socket;
     private String pass;
     private String name;
+
+    private String clientName;
+
     private CapturePane capturePane;
 
     private boolean isInterrupted;
@@ -14,10 +17,11 @@ public class Verify implements Runnable{
     private ObjectOutputStream objectOutputStream;
     private ObjectInputStream objectInputStream;
 
-    public Verify(Socket socket, String pass, String name, CapturePane capturePane) {
+    public Verify(Socket socket, String pass, String name, CapturePane capturePane, String clientName) {
         this.socket = socket;
         this.pass = pass;
         this.name = name;
+        this.clientName = clientName;
         this.capturePane = capturePane;
 
         isInterrupted = false;
@@ -33,7 +37,7 @@ public class Verify implements Runnable{
                 objectInputStream = new ObjectInputStream(socket.getInputStream());
 
                 System.out.println("Sending Verfication msg");
-                objectOutputStream.writeObject(new Verification(name, pass));
+                objectOutputStream.writeObject(new Verification(name, pass, clientName));
 
                 while (!isInterrupted) {
 

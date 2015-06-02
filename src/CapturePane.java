@@ -10,39 +10,38 @@ public class CapturePane extends JPanel {
     private ScreenPane screenPane;
 
     private JButton startCaptureButton;
-    private JButton stopCaptureButton;
+    private JButton pauseCapturing;
+    private JButton stopCapturing;
 
     private JPanel btnPannel;
 
     private Receiver receiver;
     private Thread receiverThread;
 
-    private JFrame viewFrame;
-
-    public CapturePane(String ip, int port, String pass, String name, JFrame viewFrame) throws IOException {
-        this.viewFrame = viewFrame;
+    public CapturePane(String ip, int port, String pass, String name, String clientName) throws IOException {
 
         setLayout(new BorderLayout());
         screenPane = new ScreenPane();
         startCaptureButton = new JButton("Capture");
-        stopCaptureButton = new JButton("Stop Capturing");
+        pauseCapturing = new JButton("Pause");
+        stopCapturing = new JButton("Disconnect");
 
         btnPannel = new JPanel();
         add(screenPane);
 
         btnPannel.add(startCaptureButton);
-        btnPannel.add(stopCaptureButton);
+        btnPannel.add(pauseCapturing);
 
         socket = new Socket(ip, port);
 
-        Verify verify = new Verify(socket, pass, name, this);
+        Verify verify = new Verify(socket, pass, name, this, clientName);
         new Thread(verify).start();
 
         startCaptureButton.setEnabled(false);
-        stopCaptureButton.setEnabled(false);
+        pauseCapturing.setEnabled(false);
 
 
-        stopCaptureButton.setEnabled(false);
+        pauseCapturing.setEnabled(false);
 
         add(btnPannel, BorderLayout.SOUTH);
 
@@ -55,27 +54,18 @@ public class CapturePane extends JPanel {
                 receiverThread = new Thread(receiver);
                 receiverThread.start();
 
-                updateTitle("Live view");
+                //updateTitle("Live view");
             }
         });
 
-        stopCaptureButton.addActionListener(new ActionListener() {
+        pauseCapturing.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 toogleButtons();
 
                 receiver.setRequest("stop");
 
-                updateTitle("Paused... ");
-            }
-        });
-    }
-
-    private void updateTitle(final String s){
-        EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                viewFrame.setTitle(s);
+                //updateTitle("Paused... ");
             }
         });
     }
@@ -84,7 +74,7 @@ public class CapturePane extends JPanel {
         boolean enabled = startCaptureButton.isEnabled();
 
         startCaptureButton.setEnabled(!enabled);
-        stopCaptureButton.setEnabled(enabled);
+        pauseCapturing.setEnabled(enabled);
     }
 
     public void verified(){

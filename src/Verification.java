@@ -1,20 +1,27 @@
 import java.io.Serializable;
 
 public class Verification implements Serializable{
-    private String name;
-    private String pass;
+    private String serverName;
+    private String serverPass;
 
-    public Verification(String name, String pass){
-        this.name = name;
-        this.pass = pass;
+    private String clientName;
+
+    public Verification(String serverName, String serverPass, String clientName){
+        this.serverName = serverName;
+        this.serverPass = serverPass;
+        this.clientName = clientName;
     }
 
-    public String getName() {
-        return name;
+    public String getServerName() {
+        return serverName;
     }
 
-    public String getPass() {
-        return pass;
+    public String getServerPass() {
+        return serverPass;
+    }
+
+    public String getClientName() {
+        return clientName;
     }
 }
 

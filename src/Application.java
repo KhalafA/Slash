@@ -6,6 +6,7 @@ import java.net.Socket;
 import java.net.SocketException;
 import java.net.UnknownHostException;
 import java.security.SecureRandom;
+import java.util.HashMap;
 
 public class Application {
     private SecureRandom random = new SecureRandom();
@@ -20,12 +21,16 @@ public class Application {
     private int liveConnections = 0;
     private final static CaptureView captureView = new CaptureView();
 
+    private HashMap<Integer, Socket> connections;
+
     private ApplicationFrame applicationFrame;
 
     //TODO: Let User select which parts he wants clients to see
     public Application(){
         String pass = getRandomString();
         String name = getRandomString();
+
+        connections = new HashMap<>();
 
         serverStatus = false;
         startServer(name, pass, 0);
@@ -47,12 +52,10 @@ public class Application {
     }
 
     //Someone has connected to server
-    public void incomingConnection(Verification v){
-        liveConnections++;
+    public void incomingConnection(Verification v, int ID){
+        applicationFrame.newConnection(v.getClientName(), ID);
 
-        System.out.println(liveConnections);
-
-        minimizeWindow();
+        //minimizeWindow();
     }
 
 
@@ -109,16 +112,13 @@ public class Application {
      */
 
     //Client Connecting to a server
-    public void setupConnection(String ipField, String portField, String passField, String nameField) {
+    public void setupConnection(String ipField, String portField, String passField, String nameField, String clientName) {
         try {
             server.stop();
             serverStatus = true;
             startPane.setServerStatus(serverStatus);
 
-            new Client(ipField, Integer.parseInt(portField), passField, nameField);
-
-            //TODO: Setup userInfo in the frame.
-
+            applicationFrame.setupClient(ipField, Integer.parseInt(portField), passField, nameField, clientName);
         }catch (ConnectException e){
             errorMsg("Could not locate server");
         } catch (IOException ex){
@@ -151,6 +151,10 @@ public class Application {
 
     public void setCaptureView(int x, int y, int xx, int yy){
         captureView.setStats(x,y,xx,yy);
+    }
+
+    public void setClientStatus(int id, boolean capturing) {
+        applicationFrame.updateTableStatus(id, capturing);
     }
 
     /*

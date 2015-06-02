@@ -3,6 +3,7 @@ import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -18,10 +19,12 @@ public class Server implements Runnable{
     private Application application;
     private SocketHandler socketHandler;
 
-    private List<Socket> sockets;
+    private HashMap<Integer, SocketHandler> socketHandlers;
     private ServerSocket serverSocket;
 
     private CaptureView captureView;
+
+    private int counter;
 
     public Server(String name, String pass, int port, Application application, CaptureView captureView){
         this.application = application;
@@ -31,8 +34,10 @@ public class Server implements Runnable{
         this.captureView = captureView;
 
         localHostIp = getLocalHostIP();
-        sockets = new LinkedList<>();
+        socketHandlers = new HashMap<>();
         running = true;
+
+        counter = 0;
     }
 
     @Override
@@ -55,9 +60,9 @@ public class Server implements Runnable{
 
                     Socket socket = serverSocket.accept();
 
-                    sockets.add(socket);
-                    socketHandler = new SocketHandler(socket, name, pass, captureView, this);
-
+                    socketHandler = new SocketHandler(socket, name, pass, captureView, this, counter);
+                    socketHandlers.put(counter, socketHandler);
+                    counter++;
                     new Thread(socketHandler).start();
                 }
             }catch (IOException ex) {
@@ -68,16 +73,16 @@ public class Server implements Runnable{
 
     public void stop() throws IOException {
         running = false;
-        for (Socket socket : sockets){
-            socket.close();
+        for (SocketHandler value : socketHandlers.values()){
+            value.getSocket().close();
         }
 
         serverSocket.close();
     }
 
 
-    public void clientInformation(Verification v){
-        application.incomingConnection(v);
+    public void clientInformation(Verification v, int ID){
+        application.incomingConnection(v, ID);
     }
 
     public String getLocalHostIP(){
@@ -93,4 +98,9 @@ public class Server implements Runnable{
     public int getPort(){
         return port;
     }
+
+    public void updateClientStatus(int id, boolean capturing) {
+        application.setClientStatus(id, capturing);
+    }
+
 }
