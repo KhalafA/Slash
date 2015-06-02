@@ -72,6 +72,8 @@ public class SocketHandler implements Runnable{
                 while (!isInterrupted) {
                     request = readRequest(is);
 
+                    System.out.println("raeding!");
+
                     if ("grab".equalsIgnoreCase(request)) {
                             sender = new Sender(os, captureView);
                             senderThread = new Thread(sender);
@@ -85,11 +87,8 @@ public class SocketHandler implements Runnable{
                     }
                 }
 
-                Thread.sleep(100);
             } catch (IOException exp) {
-                //close
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+                disconnected();
             }
         }
     }
@@ -98,19 +97,43 @@ public class SocketHandler implements Runnable{
         return socket;
     }
 
-    public void closeConnection() throws IOException {
-        socket.close();
-        Thread.currentThread().interrupt();
-    }
 
     public String readRequest(InputStream is) throws IOException {
-        StringBuilder sb = new StringBuilder(560);
+        StringBuilder sb = new StringBuilder(128);
         int in = -1;
 
-        while ((in = is.read()) != '\n') {
-            sb.append((char) in);
+        boolean done = false;
+
+        while (!done) {
+            if((in = is.read()) != -1){
+                if(in == '\n'){
+                    done = true;
+                }else {
+                    sb.append((char) in);
+                }
+            }else {
+                System.out.println("no connection");
+                done = true;
+                disconnected();
+            }
         }
 
         return sb.toString();
+    }
+
+    private void disconnected(){
+        System.out.println("Connection closed");
+        isInterrupted = true;
+        server.clientDisconnected(ID);
+        closeConnection();
+    }
+
+    public void closeConnection(){
+        try {
+            socket.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Thread.currentThread().interrupt();
     }
 }

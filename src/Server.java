@@ -74,7 +74,6 @@ public class Server implements Runnable{
     public void kick(int id) throws IOException {
         SocketHandler kickClient = socketHandlers.get(id);
 
-
         kickClient.closeConnection();
         socketHandlers.remove(id);
     }
@@ -111,4 +110,8 @@ public class Server implements Runnable{
         application.setClientStatus(id, capturing);
     }
 
+    public void clientDisconnected(int id) {
+        socketHandlers.remove(id);
+        application.clientDisconnected(id);
+    }
 }

@@ -41,10 +41,16 @@ public class ServerHasConnectionsPane extends JPanel {
 
                 if(row != -1){
                     application.kick(tableModel.getValueAt(row, 0));
-                    tableModel.removeRow(row);
+                    removeRow(row);
                 }
             }
         });
+    }
+
+
+
+    public void removeRow(int row){
+        tableModel.removeRow(row);
     }
 
     public void newClient(String name, int ID){
@@ -55,24 +61,26 @@ public class ServerHasConnectionsPane extends JPanel {
         String name = "";
         String status = capturing ? "Capturing" : "Paused";
 
+        int row = findRowWithID(id);
+        table.getModel().setValueAt(status, row,2 );
+    }
 
-
+    private int findRowWithID(int id){
+        int foundRow = -1;
 
         for(int row = 0;row < tableModel.getRowCount();row++) {
-
             if(tableModel.getValueAt(row, 0).toString().equals(id+"")){
-
-                table.getModel().setValueAt(status, row,2 );
-
+                foundRow = row;
                 break;
             }
         }
+
+        return foundRow;
     }
 
-    private void updateRowInfo(int row, int id, String name, String status){
-        tableModel.removeRow(row);
-        tableModel.addRow(new Object[]{id,name,status});
+    public void removeClient(int id) {
+        int row = findRowWithID(id);
+
+        removeRow(row);
     }
-
-
 }

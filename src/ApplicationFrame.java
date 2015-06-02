@@ -64,7 +64,7 @@ public class ApplicationFrame extends JFrame{
         repaint();
     }
 
-    public void clientDisconnected(){
+    public void clientKicked(){
         setResizable(false);
 
         remove(capturePane);
@@ -73,6 +73,12 @@ public class ApplicationFrame extends JFrame{
         revalidate();
         repaint();
         pack();
+    }
+
+    public void clientDisconnected(int id){
+        setResizable(false);
+        
+        connectionPane.removeClient(id);
     }
 
     public void minimize() {

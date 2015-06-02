@@ -116,6 +116,10 @@ public class Application {
         }
     }
 
+    //client Disconnected from server
+    public void clientDisconnected(int id) {
+        applicationFrame.clientDisconnected(id);
+    }
 
     /*
        ------------------------ Client -------------------------------------
@@ -141,7 +145,7 @@ public class Application {
 
     //client got kicked from server
     public void iGotKicked() {
-        applicationFrame.clientDisconnected();
+        applicationFrame.clientKicked();
         errorMsg("You got kicked");
     }
 
@@ -194,6 +198,5 @@ public class Application {
     public static void main(String[] args) {
         new Application();
     }
-
 
 }
