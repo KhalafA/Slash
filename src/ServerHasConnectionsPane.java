@@ -9,7 +9,11 @@ public class ServerHasConnectionsPane extends JPanel {
     private JButton kick;
     private DefaultTableModel tableModel;
 
-    public ServerHasConnectionsPane(){
+    private Application application;
+
+    public ServerHasConnectionsPane(final Application application){
+        this.application = application;
+
         setLayout(new BorderLayout());
         setPreferredSize(new Dimension(450,220));
 
@@ -33,7 +37,12 @@ public class ServerHasConnectionsPane extends JPanel {
         kick.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                int row = table.getSelectedRow();
 
+                if(row != -1){
+                    application.kick(tableModel.getValueAt(row, 0));
+                    tableModel.removeRow(row);
+                }
             }
         });
 
@@ -48,12 +57,15 @@ public class ServerHasConnectionsPane extends JPanel {
         String name = "";
         String status = capturing ? "Capturing" : "Paused";
 
+
+
+
         for(int row = 0;row < tableModel.getRowCount();row++) {
 
             if(tableModel.getValueAt(row, 0).toString().equals(id+"")){
 
-                name = tableModel.getValueAt(row, 1).toString();
-                updateRowInfo(row, id, name, status);
+                table.getModel().setValueAt(status, row,2 );
+
                 break;
             }
         }

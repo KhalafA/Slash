@@ -8,12 +8,11 @@ public class ApplicationFrame extends JFrame{
     private JTabbedPane tabbedPane;
     private CapturePane capturePane;
 
-    public ApplicationFrame(JPanel infoPane){
+    public ApplicationFrame(JPanel infoPane, Application application){
         super("Slash");
         this.infoPane = infoPane;
 
-        connectionPane = new ServerHasConnectionsPane();
-
+        connectionPane = new ServerHasConnectionsPane(application);
         setup();
     }
 

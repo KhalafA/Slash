@@ -71,6 +71,15 @@ public class Server implements Runnable{
         }
     }
 
+    public void kick(int id) throws IOException {
+        SocketHandler kickClient = socketHandlers.get(id);
+
+
+        kickClient.closeConnection();
+        socketHandlers.remove(id);
+    }
+
+
     public void stop() throws IOException {
         running = false;
         for (SocketHandler value : socketHandlers.values()){
@@ -79,7 +88,6 @@ public class Server implements Runnable{
 
         serverSocket.close();
     }
-
 
     public void clientInformation(Verification v, int ID){
         application.incomingConnection(v, ID);

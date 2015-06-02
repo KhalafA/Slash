@@ -38,7 +38,7 @@ public class Application {
         startPane = new StartPane(server.getLocalHostIP(), server.getPort() + "",name,pass, this);
         startPane.setServerStatus(serverStatus);
 
-        applicationFrame = new ApplicationFrame(startPane);
+        applicationFrame = new ApplicationFrame(startPane, this);
     }
 
     /*
@@ -104,6 +104,16 @@ public class Application {
         }
 
         return result;
+    }
+
+    public void kick(Object valueAt) {
+        int id = (int) valueAt;
+
+        try {
+            server.kick(id);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 

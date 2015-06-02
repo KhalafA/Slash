@@ -98,6 +98,11 @@ public class SocketHandler implements Runnable{
         return socket;
     }
 
+    public void closeConnection() throws IOException {
+        socket.close();
+        Thread.currentThread().interrupt();
+    }
+
     public String readRequest(InputStream is) throws IOException {
         StringBuilder sb = new StringBuilder(560);
         int in = -1;
