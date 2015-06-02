@@ -51,7 +51,7 @@ public class ApplicationFrame extends JFrame{
 
 
     public void setupClient(String ip, int port, String pass, String name, String clientName) throws IOException {
-        setSize(450,350);
+        setSize(450, 350);
         setTitle("Live Connections");
         setResizable(true);
 
@@ -81,5 +81,9 @@ public class ApplicationFrame extends JFrame{
 
     public void updateTableStatus(int id, boolean capturing) {
         connectionPane.updateTableRow(id, capturing);
+    }
+
+    public void updateTitle(String s) {
+        setTitle(s);
     }
 }

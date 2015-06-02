@@ -45,8 +45,6 @@ public class ServerHasConnectionsPane extends JPanel {
                 }
             }
         });
-
-        //table = new JTable(columnNames);
     }
 
     public void newClient(String name, int ID){

@@ -57,7 +57,7 @@ public class CapturePane extends JPanel {
                 receiverThread = new Thread(receiver);
                 receiverThread.start();
 
-                //updateTitle("Live view");
+                updateTitle("Live view");
             }
         });
 
@@ -68,7 +68,7 @@ public class CapturePane extends JPanel {
 
                 receiver.setRequest("stop");
 
-                //updateTitle("Paused... ");
+                updateTitle("Paused... ");
             }
         });
     }
@@ -87,6 +87,14 @@ public class CapturePane extends JPanel {
                 startCaptureButton.setEnabled(true);
             }
         });
+    }
 
+    private void updateTitle(final String s){
+        EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                application.updateTitle(s);
+            }
+        });
     }
 }

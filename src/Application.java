@@ -176,6 +176,10 @@ public class Application {
         applicationFrame.updateTableStatus(id, capturing);
     }
 
+    public void updateTitle(String s) {
+        applicationFrame.updateTitle(s);
+    }
+
     /*
         ------------------------ Error ------------------------------------
     */
@@ -190,4 +194,6 @@ public class Application {
     public static void main(String[] args) {
         new Application();
     }
+
+
 }
