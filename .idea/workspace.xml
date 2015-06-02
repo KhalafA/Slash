@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b9ff94a7-10b9-4ec1-8c45-9fa5dbadc642" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/SelectionCanvas.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/TransparentBackground.java" afterPath="$PROJECT_DIR$/src/TransparentBackground.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SelectionCanvas.java" afterPath="$PROJECT_DIR$/src/SelectionCanvas.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Slash.iws" />
@@ -149,10 +148,12 @@
       <file leaf-file-name="SelectionCanvas.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/SelectionCanvas.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.17603551" vertical-offset="0" max-vertical-offset="676">
-              <caret line="7" column="103" selection-start-line="7" selection-start-column="103" selection-end-line="7" selection-end-column="103" />
+            <state vertical-scroll-proportion="0.37721893" vertical-offset="0" max-vertical-offset="676">
+              <caret line="15" column="5" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#163#164#0" expanded="true" />
+                <element signature="e#210#211#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -222,8 +223,8 @@
         <option value="$PROJECT_DIR$/src/ServerHasConnectionsPane.java" />
         <option value="$PROJECT_DIR$/src/CaptureView.java" />
         <option value="$PROJECT_DIR$/src/Sender.java" />
-        <option value="$PROJECT_DIR$/src/SelectionCanvas.java" />
         <option value="$PROJECT_DIR$/src/TransparentBackground.java" />
+        <option value="$PROJECT_DIR$/src/SelectionCanvas.java" />
       </list>
     </option>
   </component>
@@ -739,7 +740,13 @@
       <option name="project" value="LOCAL" />
       <updated>1433284233538</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Selection is now shown when server selects view.">
+      <created>1433286950812</created>
+      <option name="number" value="00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1433286950812</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -814,7 +821,6 @@
       <TodoPanelSettings />
     </option>
     <option name="SHOW_FILE_HISTORY_DETAILS" value="false" />
-    <MESSAGE value="Setup + got basic client/server to work&#10;" />
     <MESSAGE value="removed some stuff&#10;&#10;" />
     <MESSAGE value="Now takes a defult IP - to test on mutiple computers&#10;&#10;" />
     <MESSAGE value="33 fps" />
@@ -839,7 +845,8 @@
     <MESSAGE value="Server is now removes disconnected clients from the list." />
     <MESSAGE value="Better capture square calculation." />
     <MESSAGE value="Using MouseAdapter to get selected area" />
-    <option name="LAST_COMMIT_MESSAGE" value="Using MouseAdapter to get selected area" />
+    <MESSAGE value="Selection is now shown when server selects view." />
+    <option name="LAST_COMMIT_MESSAGE" value="Selection is now shown when server selects view." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1381,10 +1388,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SelectionCanvas.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.17603551" vertical-offset="0" max-vertical-offset="676">
-          <caret line="7" column="103" selection-start-line="7" selection-start-column="103" selection-end-line="7" selection-end-column="103" />
+        <state vertical-scroll-proportion="0.37721893" vertical-offset="0" max-vertical-offset="676">
+          <caret line="15" column="5" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#163#164#0" expanded="true" />
+            <element signature="e#210#211#0" expanded="true" />
           </folding>
         </state>
       </provider>
