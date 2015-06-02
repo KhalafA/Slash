@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.io.IOException;
 
 public class ApplicationFrame extends JFrame{
@@ -34,7 +35,7 @@ public class ApplicationFrame extends JFrame{
 
         add(tabbedPane);
         setLocationRelativeTo(null);
-        setResizable(true);
+        setResizable(false);
         pack();
         setVisible(true);
     }
@@ -50,9 +51,9 @@ public class ApplicationFrame extends JFrame{
 
 
     public void setupClient(String ip, int port, String pass, String name, String clientName) throws IOException {
-        //TODO: Set the capturePane to main
-
+        setSize(450,350);
         setTitle("Live Connections");
+        setResizable(true);
 
         capturePane = new CapturePane(ip, port, pass, name, clientName, application);
 
@@ -64,11 +65,14 @@ public class ApplicationFrame extends JFrame{
     }
 
     public void clientDisconnected(){
+        setResizable(false);
+
         remove(capturePane);
         add(tabbedPane);
 
         revalidate();
         repaint();
+        pack();
     }
 
     public void minimize() {

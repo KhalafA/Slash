@@ -128,7 +128,9 @@ public class Application {
             serverStatus = true;
             startPane.setServerStatus(serverStatus);
 
-            applicationFrame.setupClient(ipField, Integer.parseInt(portField), passField, nameField, clientName);
+            int portNumber = tryParse(portField);
+
+            applicationFrame.setupClient(ipField, portNumber, passField, nameField, clientName);
 
         }catch (ConnectException e){
             errorMsg("Could not locate server");
@@ -140,6 +142,7 @@ public class Application {
     //client got kicked from server
     public void iGotKicked() {
         applicationFrame.clientDisconnected();
+        errorMsg("You got kicked");
     }
 
     /*

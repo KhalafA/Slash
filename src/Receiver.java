@@ -39,16 +39,17 @@ public class Receiver implements Runnable {
                 while (!isInterrupted){
 
                     sendRequest(os, request);
+
                     if(!request.equals("stop") && !disconnected){
                         readImage(is);
+                    }else{
+                        isInterrupted = true;
+                        break;
                     }
-                }
+                 }
 
-                Thread.sleep(100);
             } catch (IOException exp) {
-                //close
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+                disconnected();
             }
         }
     }
@@ -81,12 +82,10 @@ public class Receiver implements Runnable {
 
     private void sendRequest(OutputStream os, String request) {
         if(requestChanged){
-            try {
-                writeRequest(os, request);
-                requestChanged = false;
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+
+            writeRequest(os, request);
+            requestChanged = false;
+
         }
     }
 
@@ -125,16 +124,20 @@ public class Receiver implements Runnable {
                     sb.append((char) in);
                 }
             }else {
-                System.out.println("Connection closed");
                 done = true;
-                disconnected = true;
-                application.iGotKicked();
-                closeConnection();
+                disconnected();
             }
         }
 
         return sb.toString();
+    }
 
+    private void disconnected(){
+        System.out.println("Connection closed");
+        disconnected = true;
+        isInterrupted = true;
+        application.iGotKicked();
+        closeConnection();
     }
 
     private void closeConnection(){
@@ -146,8 +149,12 @@ public class Receiver implements Runnable {
         Thread.currentThread().interrupt();
     }
 
-    public void writeRequest(OutputStream os, String request) throws IOException {
-        os.write((request + "\n").getBytes());
-        os.flush();
+    public void writeRequest(OutputStream os, String request) {
+        try {
+            os.write((request + "\n").getBytes());
+            os.flush();
+        } catch (IOException e) {
+           disconnected();
+        }
     }
 }
