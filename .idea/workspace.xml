@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b9ff94a7-10b9-4ec1-8c45-9fa5dbadc642" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/SelectionCanvas.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/TransparentBackground.java" afterPath="$PROJECT_DIR$/src/TransparentBackground.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -52,16 +53,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Receiver.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Receiver.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1912" max-vertical-offset="2720">
-              <caret line="134" column="0" selection-start-line="134" selection-start-column="0" selection-end-line="149" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="CaptureView.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/CaptureView.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -106,23 +97,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CapturePane.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/CapturePane.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="599" max-vertical-offset="1632">
-              <caret line="95" column="36" selection-start-line="95" selection-start-column="36" selection-end-line="95" selection-end-column="36" />
-              <folding>
-                <element signature="e#1439#1818#0" expanded="true" />
-                <element signature="e#1817#1818#0" expanded="true" />
-                <element signature="e#1863#2111#0" expanded="true" />
-                <element signature="e#2110#2111#0" expanded="true" />
-                <element signature="e#2607#2745#0" expanded="true" />
-                <element signature="e#2744#2745#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="ServerHasConnectionsPane.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ServerHasConnectionsPane.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -154,18 +128,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TransparentBackground.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TransparentBackground.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/TransparentBackground.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.72337276" vertical-offset="225" max-vertical-offset="2125">
-              <caret line="49" column="21" selection-start-line="49" selection-start-column="21" selection-end-line="49" selection-end-column="21" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1122" max-vertical-offset="2924">
+              <caret line="88" column="30" selection-start-line="88" selection-start-column="30" selection-end-line="88" selection-end-column="30" />
               <folding>
-                <element signature="e#838#839#0" expanded="true" />
-                <element signature="e#891#892#0" expanded="true" />
-                <element signature="e#1165#1166#0" expanded="true" />
-                <element signature="e#1217#1218#0" expanded="true" />
-                <element signature="e#1293#1294#0" expanded="true" />
-                <element signature="e#1346#1347#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#1751#2024#0" expanded="true" />
+                <element signature="e#2023#2024#0" expanded="true" />
+                <element signature="e#2729#2730#0" expanded="true" />
+                <element signature="e#2769#2770#0" expanded="true" />
+                <element signature="e#2815#2816#0" expanded="true" />
+                <element signature="e#2855#2856#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SelectionCanvas.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/SelectionCanvas.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.17603551" vertical-offset="0" max-vertical-offset="676">
+              <caret line="7" column="103" selection-start-line="7" selection-start-column="103" selection-end-line="7" selection-end-column="103" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -235,6 +222,7 @@
         <option value="$PROJECT_DIR$/src/ServerHasConnectionsPane.java" />
         <option value="$PROJECT_DIR$/src/CaptureView.java" />
         <option value="$PROJECT_DIR$/src/Sender.java" />
+        <option value="$PROJECT_DIR$/src/SelectionCanvas.java" />
         <option value="$PROJECT_DIR$/src/TransparentBackground.java" />
       </list>
     </option>
@@ -745,7 +733,13 @@
       <option name="project" value="LOCAL" />
       <updated>1433283954689</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Using MouseAdapter to get selected area">
+      <created>1433284233538</created>
+      <option name="number" value="00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1433284233538</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -844,7 +838,8 @@
     <MESSAGE value="capturePane actions now changes the window title." />
     <MESSAGE value="Server is now removes disconnected clients from the list." />
     <MESSAGE value="Better capture square calculation." />
-    <option name="LAST_COMMIT_MESSAGE" value="Better capture square calculation." />
+    <MESSAGE value="Using MouseAdapter to get selected area" />
+    <option name="LAST_COMMIT_MESSAGE" value="Using MouseAdapter to get selected area" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1320,6 +1315,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Sender.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="510" max-vertical-offset="1292">
+          <caret line="53" column="82" selection-start-line="53" selection-start-column="82" selection-end-line="53" selection-end-column="82" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_05/src.zip!/java/awt/Image.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.77071" vertical-offset="4832" max-vertical-offset="5508">
+          <caret line="45" column="22" selection-start-line="45" selection-start-column="22" selection-end-line="45" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Application.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1840" max-vertical-offset="3502">
@@ -1350,27 +1363,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sender.java">
+    <entry file="file://$PROJECT_DIR$/src/TransparentBackground.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="510" max-vertical-offset="1292">
-          <caret line="53" column="82" selection-start-line="53" selection-start-column="82" selection-end-line="53" selection-end-column="82" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1122" max-vertical-offset="2924">
+          <caret line="88" column="30" selection-start-line="88" selection-start-column="30" selection-end-line="88" selection-end-column="30" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1751#2024#0" expanded="true" />
+            <element signature="e#2023#2024#0" expanded="true" />
+            <element signature="e#2729#2730#0" expanded="true" />
+            <element signature="e#2769#2770#0" expanded="true" />
+            <element signature="e#2815#2816#0" expanded="true" />
+            <element signature="e#2855#2856#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/TransparentBackground.java">
+    <entry file="file://$PROJECT_DIR$/src/SelectionCanvas.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.72337276" vertical-offset="225" max-vertical-offset="2125">
-          <caret line="49" column="21" selection-start-line="49" selection-start-column="21" selection-end-line="49" selection-end-column="21" />
+        <state vertical-scroll-proportion="0.17603551" vertical-offset="0" max-vertical-offset="676">
+          <caret line="7" column="103" selection-start-line="7" selection-start-column="103" selection-end-line="7" selection-end-column="103" />
           <folding>
-            <element signature="e#838#839#0" expanded="true" />
-            <element signature="e#891#892#0" expanded="true" />
-            <element signature="e#1165#1166#0" expanded="true" />
-            <element signature="e#1217#1218#0" expanded="true" />
-            <element signature="e#1293#1294#0" expanded="true" />
-            <element signature="e#1346#1347#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -1,9 +1,7 @@
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.WindowEvent;
+import java.awt.event.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.RescaleOp;
 
@@ -12,81 +10,123 @@ public class TransparentBackground extends JComponent{
     private JFrame frame;
     private JPanel imagePanel;
 
+    private JLayeredPane lpane = new JLayeredPane();
+
     private Application application;
 
     private int startX, startY, endX, endY;
+    private int currentX, currentY;
+
+    private int squareX, squareY, squareWidth, squareHeight;
+
+    private SelectionCanvas canvas;
 
     public TransparentBackground(final JFrame frame, Application application) {
         this.frame = frame;
         this.application = application;
 
+        canvas = new SelectionCanvas();
+
         updateBackground();
 
         imagePanel = new ImagePanel(background);
 
-        imagePanel.addMouseListener(new MouseAdapter() {
+        imagePanel.addMouseListener(new MouseListener() {
             @Override
-            public void mouseDragged(MouseEvent e) {
-                super.mouseDragged(e);
+            public void mouseClicked(MouseEvent e) {
+
             }
 
             @Override
             public void mousePressed(MouseEvent e) {
-                super.mousePressed(e);
                 startX = e.getX();
                 startY = e.getY();
-            }
 
-            @Override
-            public void mouseExited(MouseEvent e) {
-                super.mouseExited(e);
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                super.mouseEntered(e);
+                System.out.println("Pressed");
             }
 
             @Override
             public void mouseReleased(MouseEvent e) {
-                super.mouseReleased(e);
-
                 endX = e.getX();
                 endY = e.getY();
 
-                calcCaptureSquare();
+                System.out.println("Released");
+
+                calcCaptureSquare(startX, startY, endX, endY);
+                updateCaptureView();
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
             }
         });
 
 
-        frame.add(imagePanel);
+        imagePanel.addMouseMotionListener(new MouseMotionAdapter() {
+            @Override
+            public void mouseDragged(MouseEvent e) {
+                super.mouseDragged(e);
+
+
+                setCurrentX(e.getX());
+                setCurrentY(e.getY());
+
+                drawRect();
+            }
+        });
+
+        frame.add(lpane);
+        lpane.setBounds(0,0,background.getWidth(this), background.getHeight(this));
+        imagePanel.setBounds(0,0,background.getWidth(this), background.getHeight(this));
+        imagePanel.setOpaque(true);
+        canvas.setBounds(0,0,background.getWidth(this),background.getHeight(this));
+        canvas.setOpaque(false);
+
+        lpane.add(imagePanel, new Integer(0), 0);
+        lpane.add(canvas, new Integer(1), 0);
     }
 
-    private void calcCaptureSquare(){
-        int squareX = 0;
-        int squareY = 0;
+    private void drawRect() {
+        calcCaptureSquare(startX, startY, currentX, currentY);
 
-        int squareWidth = 0;
-        int squareHeight = 0;
+        canvas.updateSquare(squareX, squareY, squareWidth, squareHeight);
+        canvas.repaint();
+    }
 
-        if(startX > endX){
-            squareX = endX;
-            squareWidth = startX-endX;
+
+    private void setCurrentX(int currentX) {
+        this.currentX = currentX;
+    }
+
+    private void setCurrentY(int currentY) {
+        this.currentY = currentY;
+    }
+
+    private void calcCaptureSquare(int startXPos, int startYPos, int endXPos, int endYPos){
+        if(startXPos > endXPos){
+            squareX = endXPos;
+            squareWidth = startXPos-endXPos;
         }else {
-            squareX = startX;
-            squareWidth = endX-startX;
+            squareX = startXPos;
+            squareWidth = endXPos-startXPos;
         }
 
-        if(startY > endY){
-            squareY = endY;
-            squareHeight = startY - endY;
+        if(startYPos > endYPos){
+            squareY = endYPos;
+            squareHeight = startYPos - endYPos;
         }else {
-            squareY = startY;
-            squareHeight = endY - startY;
+            squareY = startYPos;
+            squareHeight = endYPos - startYPos;
         }
+    }
 
-
-
+    private void updateCaptureView(){
         application.setCaptureView(squareX, squareY, squareWidth, squareHeight);
         System.out.println("Capturing: x: " + squareX + ", y: " + squareY + ", Width: " + squareWidth + ", Height: "+ squareHeight);
         frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
