@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b9ff94a7-10b9-4ec1-8c45-9fa5dbadc642" name="Default" comment="">
+    <list default="true" id="b9ff94a7-10b9-4ec1-8c45-9fa5dbadc642" name="Default" comment="Now uses a class for all constants">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Standard/Application.java" afterPath="$PROJECT_DIR$/src/Standard/Application.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUI/ApplicationFrame.java" afterPath="$PROJECT_DIR$/src/GUI/ApplicationFrame.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUI/View/CapturePane.java" afterPath="$PROJECT_DIR$/src/GUI/View/CapturePane.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Standard/Constants.java" afterPath="$PROJECT_DIR$/src/Standard/Constants.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUI/View/ServerHasConnectionsPane.java" afterPath="$PROJECT_DIR$/src/GUI/View/ServerHasConnectionsPane.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUI/View/StartPane.java" afterPath="$PROJECT_DIR$/src/GUI/View/StartPane.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Standard/Server.java" afterPath="$PROJECT_DIR$/src/Standard/Server.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Slash.iml" afterPath="$PROJECT_DIR$/Slash.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUI/View/TransparentBackground.java" afterPath="$PROJECT_DIR$/src/GUI/View/TransparentBackground.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Auth/Verification.java" afterPath="$PROJECT_DIR$/src/Auth/Verification.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Slash.iws" />
@@ -34,10 +32,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Constants.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Constants.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Standard/Constants.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4718935" vertical-offset="157" max-vertical-offset="1921">
+            <state vertical-scroll-proportion="0.0" vertical-offset="476" max-vertical-offset="1921">
               <caret line="28" column="69" selection-start-line="28" selection-start-column="69" selection-end-line="28" selection-end-column="69" />
               <folding />
             </state>
@@ -47,9 +45,13 @@
       <file leaf-file-name="Application.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Standard/Application.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3281">
-              <caret line="9" column="28" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="28" />
-              <folding />
+            <state vertical-scroll-proportion="-0.5862069" vertical-offset="0" max-vertical-offset="3315">
+              <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#5340#5341#0" expanded="true" />
+                <element signature="e#5373#5374#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -57,7 +59,7 @@
       <file leaf-file-name="ServerHasConnectionsPane.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GUI/View/ServerHasConnectionsPane.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="1513">
+            <state vertical-scroll-proportion="0.0" vertical-offset="799" max-vertical-offset="1564">
               <caret line="47" column="79" selection-start-line="47" selection-start-column="79" selection-end-line="47" selection-end-column="79" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -69,8 +71,67 @@
       <file leaf-file-name="SocketHandler.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Standard/SocketHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="591" max-vertical-offset="2499">
+            <state vertical-scroll-proportion="0.0" vertical-offset="140" max-vertical-offset="2499">
               <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Server.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Standard/Server.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="412" max-vertical-offset="1921">
+              <caret line="46" column="23" selection-start-line="46" selection-start-column="23" selection-end-line="46" selection-end-column="23" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Verification.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Auth/Verification.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="561" max-vertical-offset="1258">
+              <caret line="47" column="75" selection-start-line="47" selection-start-column="75" selection-end-line="47" selection-end-column="75" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CaptureLogic.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/GUI/Logic/CaptureLogic.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="378" max-vertical-offset="1054">
+              <caret line="23" column="5" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
+              <folding>
+                <element signature="e#426#427#0" expanded="true" />
+                <element signature="e#456#457#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CapturePane.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/GUI/View/CapturePane.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="497" max-vertical-offset="1479">
+              <caret line="22" column="27" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TransparentBackground.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/GUI/View/TransparentBackground.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.02514793" vertical-offset="2091" max-vertical-offset="2788">
+              <caret line="129" column="80" selection-start-line="129" selection-start-column="80" selection-end-line="129" selection-end-column="80" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -122,21 +183,21 @@
         <option value="$PROJECT_DIR$/src/GUI/View/SelectionCanvas.java" />
         <option value="$PROJECT_DIR$/src/Server.java" />
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/src/Auth/Verification.java" />
         <option value="$PROJECT_DIR$/src/Auth/AuthenticatedMsg.java" />
-        <option value="$PROJECT_DIR$/src/Standard/Server.java" />
         <option value="$PROJECT_DIR$/src/GUI/View/ScreenPane.java" />
         <option value="$PROJECT_DIR$/src/Standard/ApplicationConstants.java" />
         <option value="$PROJECT_DIR$/src/Standard/SocketHandler.java" />
         <option value="$PROJECT_DIR$/src/Standard/Sender.java" />
         <option value="$PROJECT_DIR$/src/Standard/Receiver.java" />
         <option value="$PROJECT_DIR$/src/GUI/ApplicationFrame.java" />
-        <option value="$PROJECT_DIR$/src/GUI/View/TransparentBackground.java" />
         <option value="$PROJECT_DIR$/src/GUI/View/StartPane.java" />
         <option value="$PROJECT_DIR$/src/GUI/View/CapturePane.java" />
         <option value="$PROJECT_DIR$/src/GUI/View/ServerHasConnectionsPane.java" />
-        <option value="$PROJECT_DIR$/src/Standard/Application.java" />
         <option value="$PROJECT_DIR$/src/Standard/Constants.java" />
+        <option value="$PROJECT_DIR$/src/Standard/Application.java" />
+        <option value="$PROJECT_DIR$/src/Standard/Server.java" />
+        <option value="$PROJECT_DIR$/src/Auth/Verification.java" />
+        <option value="$PROJECT_DIR$/src/GUI/View/TransparentBackground.java" />
       </list>
     </option>
   </component>
@@ -287,8 +348,8 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -302,7 +363,7 @@
     <property name="dynamic.classpath" value="false" />
     <property name="OverrideImplement.combined" value="true" />
     <property name="OverrideImplement.overriding.sorted" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../slf4j-jdk14-1.7.12.jar!/" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="223" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="223" />
@@ -320,6 +381,12 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="898" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
     <property name="FullScreen" value="false" />
+    <property name="options.lastSelected" value="reference.settingsdialog.IDE.editor.colors" />
+    <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
@@ -790,12 +857,18 @@
       <option name="project" value="LOCAL" />
       <updated>1433351698859</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="Now uses a class for all constants">
+      <created>1433353589875</created>
+      <option name="number" value="00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1433353589876</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -807,11 +880,10 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32972974" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2347826" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2347826" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20208333" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32934782" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -821,6 +893,7 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32934782" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -865,7 +938,6 @@
       <TodoPanelSettings />
     </option>
     <option name="SHOW_FILE_HISTORY_DETAILS" value="false" />
-    <MESSAGE value="Refactoring" />
     <MESSAGE value="Implemented Verification. form fields can not be changed." />
     <MESSAGE value="Refactoring - Easy to add new Fields." />
     <MESSAGE value="Refactoring - user can no specify name, pass, and port." />
@@ -890,7 +962,8 @@
     <MESSAGE value="Removed print outs." />
     <MESSAGE value="Removed preferred Size" />
     <MESSAGE value="Uses Constants class" />
-    <option name="LAST_COMMIT_MESSAGE" value="Uses Constants class" />
+    <MESSAGE value="Now uses a class for all constants" />
+    <option name="LAST_COMMIT_MESSAGE" value="Now uses a class for all constants" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -953,7 +1026,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2703">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#5340#5341#0" expanded="true" />
+            <element signature="e#5373#5374#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1051,7 +1128,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="374">
           <caret line="6" column="42" selection-start-line="6" selection-start-column="42" selection-end-line="6" selection-end-column="42" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1059,7 +1135,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="34" max-vertical-offset="255">
           <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding />
+          <folding>
+            <element signature="e#276#277#0" expanded="true" />
+            <element signature="e#312#313#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1111,7 +1190,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.7094017" vertical-offset="416" max-vertical-offset="884">
           <caret line="67" column="25" selection-start-line="67" selection-start-column="25" selection-end-line="67" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1148,7 +1226,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.63461536" vertical-offset="14412" max-vertical-offset="21658">
           <caret line="922" column="0" selection-start-line="922" selection-start-column="0" selection-end-line="922" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1191,16 +1268,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Auth/Verification.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="1309">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Auth/AuthenticatedMsg.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.22633137" vertical-offset="0" max-vertical-offset="676">
@@ -1216,17 +1283,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.17603551" vertical-offset="0" max-vertical-offset="676">
           <caret line="7" column="30" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Standard/Server.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.20710059" vertical-offset="1313" max-vertical-offset="1989">
-          <caret line="69" column="77" selection-start-line="69" selection-start-column="77" selection-end-line="69" selection-end-column="77" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1256,16 +1312,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI/View/TransparentBackground.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.248879" vertical-offset="1913" max-vertical-offset="2805">
-          <caret line="47" column="34" selection-start-line="47" selection-start-column="34" selection-end-line="47" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/GUI/View/StartPane.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.32399103" vertical-offset="918" max-vertical-offset="7276">
@@ -1288,28 +1334,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.28587443" vertical-offset="0" max-vertical-offset="892">
           <caret line="17" column="5" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI/View/CapturePane.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.22869955" vertical-offset="0" max-vertical-offset="1479">
-          <caret line="22" column="27" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI/Logic/CaptureLogic.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.32399103" vertical-offset="0" max-vertical-offset="1054">
-          <caret line="23" column="5" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
-          <folding>
-            <element signature="e#426#427#0" expanded="true" />
-            <element signature="e#456#457#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1320,14 +1344,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Standard/Application.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3281">
-          <caret line="9" column="28" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1343,11 +1359,147 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Standard/Constants.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4718935" vertical-offset="157" max-vertical-offset="1921">
+        <state vertical-scroll-proportion="0.0" vertical-offset="922" max-vertical-offset="1921">
           <caret line="28" column="69" selection-start-line="28" selection-start-column="69" selection-end-line="28" selection-end-column="69" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Standard/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.5862069" vertical-offset="0" max-vertical-offset="3315">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#5340#5341#0" expanded="true" />
+            <element signature="e#5373#5374#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Standard/Server.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="412" max-vertical-offset="1921">
+          <caret line="46" column="23" selection-start-line="46" selection-start-column="23" selection-end-line="46" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Auth/Verification.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="561" max-vertical-offset="1258">
+          <caret line="47" column="75" selection-start-line="47" selection-start-column="75" selection-end-line="47" selection-end-column="75" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUI/Logic/CaptureLogic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="378" max-vertical-offset="1054">
+          <caret line="23" column="5" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
+          <folding>
+            <element signature="e#426#427#0" expanded="true" />
+            <element signature="e#456#457#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUI/View/CapturePane.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="497" max-vertical-offset="1479">
+          <caret line="22" column="27" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUI/View/TransparentBackground.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.02514793" vertical-offset="2091" max-vertical-offset="2788">
+          <caret line="129" column="80" selection-start-line="129" selection-start-column="80" selection-end-line="129" selection-end-column="80" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>Slash</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>slf4j-api-1.7.12</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
   </component>
 </project>

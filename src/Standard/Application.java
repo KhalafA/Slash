@@ -5,6 +5,7 @@ import GUI.ApplicationFrame;
 import GUI.Logic.CaptureLogic;
 import GUI.View.StartPane;
 
+
 import javax.swing.*;
 import java.io.IOException;
 import java.math.BigInteger;
@@ -12,7 +13,6 @@ import java.net.Socket;
 import java.security.SecureRandom;
 
 public class Application {
-
     private Server server;
     private Thread serverThread;
     private boolean isServerReadyForConnections;
@@ -25,6 +25,7 @@ public class Application {
     private CaptureLogic captureLogic = new CaptureLogic();
 
     public Application(){
+
         String pass = getRandomString();
         String name = getRandomString();
 
@@ -89,7 +90,6 @@ public class Application {
 
         try {
             (new Socket("localhost", port)).close();
-
             result = false;
         }
         catch(Exception e) {

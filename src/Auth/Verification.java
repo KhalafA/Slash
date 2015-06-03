@@ -39,8 +39,6 @@ public class Verification implements Runnable{
             try {
                 objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
                 objectInputStream = new ObjectInputStream(socket.getInputStream());
-
-                System.out.println("Sending Verfication msg");
                 objectOutputStream.writeObject(new AuthenticationMsg(name, pass, clientName));
 
                 while (!isInterrupted) {
@@ -48,7 +46,6 @@ public class Verification implements Runnable{
                     if((obj = objectInputStream.readObject()) != null){
                         if(obj instanceof AuthenticatedMsg){
                             if(((AuthenticatedMsg) obj).isAuthenticated()){
-                                System.out.println("Info verified");
                                 capturePane.verified();
                                 isInterrupted = true;
                             }

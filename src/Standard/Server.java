@@ -2,6 +2,9 @@ package Standard;
 
 import Auth.AuthenticationMsg;
 import GUI.Logic.CaptureLogic;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.ServerSocket;
@@ -13,7 +16,6 @@ import java.util.HashMap;
 public class Server implements Runnable{
     private String name;
     private String pass;
-    private String localHostIp;
     private int port;
 
     private boolean running;
@@ -35,7 +37,6 @@ public class Server implements Runnable{
         this. port = port;
         this.captureLogic = captureLogic;
 
-        localHostIp = getLocalHostIP();
         socketHandlers = new HashMap<>();
         running = true;
 
@@ -48,11 +49,6 @@ public class Server implements Runnable{
             try {
                 serverSocket = new ServerSocket(port);
                 port = serverSocket.getLocalPort();
-
-                System.out.println("--------------------------------------------------");
-                System.out.println("Success, server is ready for action");
-                System.out.println("Connect on ip: " + localHostIp + ", Port: " + port + ", Name: " + name + ", Pass: " + pass);
-
 
                 application.serverReadyForConnections();
 

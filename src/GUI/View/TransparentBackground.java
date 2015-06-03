@@ -128,7 +128,6 @@ public class TransparentBackground extends JComponent{
 
     private void updateCaptureView(){
         application.setCaptureView(squareX, squareY, squareWidth, squareHeight);
-        System.out.println("Capturing: x: " + squareX + ", y: " + squareY + ", Width: " + squareWidth + ", Height: "+ squareHeight);
         frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
     }
 
