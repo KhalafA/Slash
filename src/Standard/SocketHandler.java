@@ -80,8 +80,6 @@ public class SocketHandler implements Runnable{
                 while (!isInterrupted) {
                     request = readRequest(is);
 
-                    System.out.println("raeding!");
-
                     if ("grab".equalsIgnoreCase(request)) {
                             sender = new Sender(os, captureLogic);
                             senderThread = new Thread(sender);
@@ -120,7 +118,6 @@ public class SocketHandler implements Runnable{
                     sb.append((char) in);
                 }
             }else {
-                System.out.println("no connection");
                 done = true;
                 disconnected();
             }
@@ -130,7 +127,6 @@ public class SocketHandler implements Runnable{
     }
 
     private void disconnected(){
-        System.out.println("Connection closed");
         isInterrupted = true;
         server.clientDisconnected(ID);
         closeConnection();
