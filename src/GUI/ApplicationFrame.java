@@ -70,7 +70,7 @@ public class ApplicationFrame extends JFrame{
         repaint();
     }
 
-    public void clientKicked(){
+    public void ClientDisconnected(){
         setResizable(false);
 
         remove(capturePane);
@@ -98,4 +98,5 @@ public class ApplicationFrame extends JFrame{
     public void updateTitle(String s) {
         setTitle(s);
     }
+
 }

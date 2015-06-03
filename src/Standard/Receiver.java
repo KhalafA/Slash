@@ -1,7 +1,6 @@
 package Standard;
 
 import GUI.View.ScreenPane;
-import Standard.Application;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -107,6 +106,7 @@ public class Receiver implements Runnable {
     }
 
     public void setRequest(String r){
+        System.out.println("Setting request to " + r);
         request = r;
         requestChanged = true;
     }
@@ -133,10 +133,10 @@ public class Receiver implements Runnable {
         return sb.toString();
     }
 
-    private void disconnected(){
+    public void disconnected(){
         disconnected = true;
         isInterrupted = true;
-        application.iGotKicked();
+        application.ClientDisconnected();
         closeConnection();
     }
 
@@ -157,4 +157,6 @@ public class Receiver implements Runnable {
            disconnected();
         }
     }
+
+
 }

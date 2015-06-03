@@ -17,8 +17,8 @@ public class CapturePane extends JPanel {
     private ScreenPane screenPane;
 
     private JButton startCaptureButton;
-    private JButton pauseCapturing;
-    private JButton stopCapturing;
+    private JButton pauseCapturingButton;
+    private JButton stopCapturingButton;
 
     private JPanel btnPanel;
 
@@ -33,14 +33,15 @@ public class CapturePane extends JPanel {
         setLayout(new BorderLayout());
         screenPane = new ScreenPane();
         startCaptureButton = new JButton(Constants.startRequest);
-        pauseCapturing = new JButton(Constants.pauseRequest);
-        stopCapturing = new JButton(Constants.stopRequest);
+        pauseCapturingButton = new JButton(Constants.pauseRequest);
+        stopCapturingButton = new JButton(Constants.stopRequest);
 
         btnPanel = new JPanel();
         add(screenPane);
 
         btnPanel.add(startCaptureButton);
-        btnPanel.add(pauseCapturing);
+        btnPanel.add(pauseCapturingButton);
+        btnPanel.add(stopCapturingButton);
 
         socket = new Socket(ip, port);
 
@@ -48,10 +49,10 @@ public class CapturePane extends JPanel {
         new Thread(verification).start();
 
         startCaptureButton.setEnabled(false);
-        pauseCapturing.setEnabled(false);
+        pauseCapturingButton.setEnabled(false);
 
 
-        pauseCapturing.setEnabled(false);
+        pauseCapturingButton.setEnabled(false);
 
         add(btnPanel, BorderLayout.SOUTH);
 
@@ -68,7 +69,7 @@ public class CapturePane extends JPanel {
             }
         });
 
-        pauseCapturing.addActionListener(new ActionListener() {
+        pauseCapturingButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 toogleButtons();
@@ -78,13 +79,24 @@ public class CapturePane extends JPanel {
                 updateTitle(Constants.captureViewTitle + Constants.PAUSED);
             }
         });
+
+        stopCapturingButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Trying to dc");
+                receiver.setRequest(Constants.stopRequest);
+                receiver.disconnected();
+            }
+        });
+
+
     }
 
     private void toogleButtons(){
         boolean enabled = startCaptureButton.isEnabled();
 
         startCaptureButton.setEnabled(!enabled);
-        pauseCapturing.setEnabled(enabled);
+        pauseCapturingButton.setEnabled(enabled);
     }
 
     public void verified(){
