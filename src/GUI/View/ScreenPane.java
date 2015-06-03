@@ -13,11 +13,6 @@ public class ScreenPane extends JPanel {
         add(new JScrollPane(background));
     }
 
-    @Override
-    public Dimension getPreferredSize() {
-        return new Dimension(200, 200);
-    }
-
     public void setImage(BufferedImage img) {
         if (img != null) {
             ImageIcon icon = null;
