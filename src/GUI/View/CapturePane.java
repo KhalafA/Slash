@@ -83,13 +83,22 @@ public class CapturePane extends JPanel {
         stopCapturingButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Trying to dc");
-                receiver.setRequest(Constants.stopRequest);
-                receiver.disconnected();
+                if(receiver != null){
+                    receiver.disconnected(false);
+                }else {
+                    close();
+                    application.lostConnection(false);
+                }
             }
         });
+    }
 
-
+    private void close(){
+        try {
+            socket.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void toogleButtons(){

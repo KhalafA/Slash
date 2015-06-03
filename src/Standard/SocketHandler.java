@@ -79,18 +79,20 @@ public class SocketHandler implements Runnable{
                     request = readRequest(is);
 
                     if (Constants.startRequest.equalsIgnoreCase(request)) {
-                            sender = new Sender(os, captureLogic);
-                            senderThread = new Thread(sender);
-                            senderThread.start();
+                        System.out.println("Recived Start");
+                        sender = new Sender(os, captureLogic);
+                        senderThread = new Thread(sender);
+                        senderThread.start();
 
-                            server.updateClientStatus(ID, true);
+                        server.updateClientStatus(ID, true);
                     } else if (Constants.pauseRequest.equalsIgnoreCase(request)) {
+                        System.out.println("Recived Pause");
                         sender.pause();
 
                         server.updateClientStatus(ID, false);
                     }
 
-                    //TODO: Disconnect msg.
+                    //Disconnected client is caught like dcing.
                 }
 
             } catch (IOException exp) {

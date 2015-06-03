@@ -44,7 +44,8 @@ public class Receiver implements Runnable {
 
                     sendRequest(os, request);
 
-                    if(!request.equals(Constants.pauseRequest) && !disconnected){
+                    if(!request.equals(Constants.pauseRequest) && !request.equals(Constants.stopRequest)&& !disconnected){
+                        System.out.println("Wtf");
                         readImage(is);
                     }else{
                         isInterrupted = true;
@@ -53,7 +54,8 @@ public class Receiver implements Runnable {
                  }
 
             } catch (IOException exp) {
-                disconnected();
+                System.out.println("Stuff");
+                disconnected(true);
             }
         }
     }
@@ -106,7 +108,6 @@ public class Receiver implements Runnable {
     }
 
     public void setRequest(String r){
-        System.out.println("Setting request to " + r);
         request = r;
         requestChanged = true;
     }
@@ -126,17 +127,17 @@ public class Receiver implements Runnable {
                 }
             }else {
                 done = true;
-                disconnected();
+                disconnected(true);
             }
         }
 
         return sb.toString();
     }
 
-    public void disconnected(){
+    public void disconnected(boolean lostConnection){
         disconnected = true;
         isInterrupted = true;
-        application.ClientDisconnected();
+        application.lostConnection(lostConnection);
         closeConnection();
     }
 
@@ -154,7 +155,7 @@ public class Receiver implements Runnable {
             os.write((request + "\n").getBytes());
             os.flush();
         } catch (IOException e) {
-           disconnected();
+           disconnected(true);
         }
     }
 

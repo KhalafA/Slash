@@ -139,9 +139,11 @@ public class Application {
     }
 
     //client got kicked from server
-    public void ClientDisconnected() {
-        applicationFrame.ClientDisconnected();
-        errorMsg(Constants.lostConnectionToServer);
+    public void lostConnection(boolean lostConnection) {
+        applicationFrame.lostConnection();
+        if(lostConnection){
+            errorMsg(Constants.lostConnectionToServer);
+        }
     }
 
     /*

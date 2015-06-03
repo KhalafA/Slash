@@ -70,7 +70,7 @@ public class ApplicationFrame extends JFrame{
         repaint();
     }
 
-    public void ClientDisconnected(){
+    public void lostConnection(){
         setResizable(false);
 
         remove(capturePane);
