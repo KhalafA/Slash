@@ -67,7 +67,7 @@ public class Server implements Runnable{
                     new Thread(socketHandler).start();
                 }
             }catch (IOException ex) {
-                application.errorMsg("Failled to setup Connection, try restarting.");
+                //Closed socket, to start new server with new connection info
             }
         }
     }

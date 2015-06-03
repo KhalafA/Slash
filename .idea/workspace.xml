@@ -4,7 +4,6 @@
     <list default="true" id="b9ff94a7-10b9-4ec1-8c45-9fa5dbadc642" name="Default" comment="">
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Standard/ApplicationConstants.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Standard/Server.java" afterPath="$PROJECT_DIR$/src/Standard/Server.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUI/View/ServerHasConnectionsPane.java" afterPath="$PROJECT_DIR$/src/GUI/View/ServerHasConnectionsPane.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Slash.iws" />
@@ -30,11 +29,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ApplicationConstants.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ApplicationConstants.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Standard/ApplicationConstants.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="289">
-              <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.57840234" vertical-offset="0" max-vertical-offset="676">
+              <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SocketHandler.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Standard/SocketHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1568" max-vertical-offset="2448">
+              <caret line="93" column="31" selection-start-line="93" selection-start-column="31" selection-end-line="93" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -43,62 +52,8 @@
       <file leaf-file-name="Server.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Standard/Server.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="612" max-vertical-offset="1989">
-              <caret line="56" column="40" selection-start-line="56" selection-start-column="40" selection-end-line="56" selection-end-column="40" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ServerHasConnectionsPane.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/GUI/View/ServerHasConnectionsPane.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.2766272" vertical-offset="765" max-vertical-offset="1496">
-              <caret line="63" column="58" selection-start-line="63" selection-start-column="58" selection-end-line="63" selection-end-column="58" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AuthenticatedMsg.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Auth/AuthenticatedMsg.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="289">
-              <caret line="11" column="34" selection-start-line="11" selection-start-column="34" selection-end-line="11" selection-end-column="34" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Sender.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Standard/Sender.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1241">
-              <caret line="53" column="48" selection-start-line="53" selection-start-column="48" selection-end-line="53" selection-end-column="48" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AuthenticationMsg.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Auth/AuthenticationMsg.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="476">
-              <caret line="7" column="30" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Verification.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Auth/Verification.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="1309">
-              <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="812" max-vertical-offset="1989">
+              <caret line="69" column="77" selection-start-line="69" selection-start-column="77" selection-end-line="69" selection-end-column="77" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -109,8 +64,8 @@
       <file leaf-file-name="Application.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Standard/Application.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1836" max-vertical-offset="3264">
-              <caret line="142" column="17" selection-start-line="142" selection-start-column="17" selection-end-line="142" selection-end-column="33" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1092" max-vertical-offset="3264">
+              <caret line="158" column="21" selection-start-line="158" selection-start-column="21" selection-end-line="158" selection-end-column="46" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -175,8 +130,8 @@
         <option value="$PROJECT_DIR$/src/GUI/View/CapturePane.java" />
         <option value="$PROJECT_DIR$/src/GUI/View/ServerHasConnectionsPane.java" />
         <option value="$PROJECT_DIR$/src/Auth/AuthenticatedMsg.java" />
-        <option value="$PROJECT_DIR$/src/Standard/Server.java" />
         <option value="$PROJECT_DIR$/src/Standard/ApplicationConstants.java" />
+        <option value="$PROJECT_DIR$/src/Standard/Server.java" />
       </list>
     </option>
   </component>
@@ -752,7 +707,13 @@
       <option name="project" value="LOCAL" />
       <updated>1433347269613</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="small changes Error msg calls.">
+      <created>1433347919542</created>
+      <option name="number" value="00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1433347919542</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -827,7 +788,6 @@
       <TodoPanelSettings />
     </option>
     <option name="SHOW_FILE_HISTORY_DETAILS" value="false" />
-    <MESSAGE value="repush - no changes" />
     <MESSAGE value="Disconnect, partly." />
     <MESSAGE value="Temporaly removed disconnect, and added application class.&#10;" />
     <MESSAGE value="Now with Defult gui (shows info, allows to connect to any port/ip)" />
@@ -852,7 +812,8 @@
     <MESSAGE value="removed debuging comment" />
     <MESSAGE value="Package Management" />
     <MESSAGE value="isVerified is not isAuthenticated&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="isVerified is not isAuthenticated&#10;" />
+    <MESSAGE value="small changes Error msg calls." />
+    <option name="LAST_COMMIT_MESSAGE" value="small changes Error msg calls." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1134,14 +1095,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Standard/SocketHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1743" max-vertical-offset="2499">
-          <caret line="93" column="31" selection-start-line="93" selection-start-column="31" selection-end-line="93" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_05/src.zip!/java/awt/Image.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-6.77071" vertical-offset="4832" max-vertical-offset="5508">
@@ -1268,38 +1221,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Standard/Application.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1836" max-vertical-offset="3264">
-          <caret line="142" column="17" selection-start-line="142" selection-start-column="17" selection-end-line="142" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/GUI/ApplicationFrame.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33284023" vertical-offset="744" max-vertical-offset="1700">
           <caret line="57" column="16" selection-start-line="57" selection-start-column="16" selection-end-line="57" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Standard/ApplicationConstants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="289">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Standard/Server.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="612" max-vertical-offset="1989">
-          <caret line="56" column="40" selection-start-line="56" selection-start-column="40" selection-end-line="56" selection-end-column="40" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1313,6 +1238,42 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Standard/SocketHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1568" max-vertical-offset="2448">
+          <caret line="93" column="31" selection-start-line="93" selection-start-column="31" selection-end-line="93" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Standard/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1092" max-vertical-offset="3264">
+          <caret line="158" column="21" selection-start-line="158" selection-start-column="21" selection-end-line="158" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Standard/Server.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="812" max-vertical-offset="1989">
+          <caret line="69" column="77" selection-start-line="69" selection-start-column="77" selection-end-line="69" selection-end-column="77" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Standard/ApplicationConstants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.57840234" vertical-offset="0" max-vertical-offset="676">
+          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
