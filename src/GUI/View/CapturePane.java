@@ -2,6 +2,7 @@ package GUI.View;
 
 import Auth.Verification;
 import Standard.Application;
+import Standard.Constants;
 import Standard.Receiver;
 
 import javax.swing.*;
@@ -19,7 +20,7 @@ public class CapturePane extends JPanel {
     private JButton pauseCapturing;
     private JButton stopCapturing;
 
-    private JPanel btnPannel;
+    private JPanel btnPanel;
 
     private Receiver receiver;
     private Thread receiverThread;
@@ -31,15 +32,15 @@ public class CapturePane extends JPanel {
 
         setLayout(new BorderLayout());
         screenPane = new ScreenPane();
-        startCaptureButton = new JButton("Capture");
-        pauseCapturing = new JButton("Pause");
-        stopCapturing = new JButton("Disconnect");
+        startCaptureButton = new JButton(Constants.startRequest);
+        pauseCapturing = new JButton(Constants.pauseRequest);
+        stopCapturing = new JButton(Constants.stopRequest);
 
-        btnPannel = new JPanel();
+        btnPanel = new JPanel();
         add(screenPane);
 
-        btnPannel.add(startCaptureButton);
-        btnPannel.add(pauseCapturing);
+        btnPanel.add(startCaptureButton);
+        btnPanel.add(pauseCapturing);
 
         socket = new Socket(ip, port);
 
@@ -52,18 +53,18 @@ public class CapturePane extends JPanel {
 
         pauseCapturing.setEnabled(false);
 
-        add(btnPannel, BorderLayout.SOUTH);
+        add(btnPanel, BorderLayout.SOUTH);
 
         startCaptureButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 toogleButtons();
 
-                receiver = new Receiver(socket, screenPane, "grab", application);
+                receiver = new Receiver(socket, screenPane, Constants.startRequest, application);
                 receiverThread = new Thread(receiver);
                 receiverThread.start();
 
-                updateTitle("Live view");
+                updateTitle(Constants.captureViewTitle + Constants.CAPTURING);
             }
         });
 
@@ -72,9 +73,9 @@ public class CapturePane extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 toogleButtons();
 
-                receiver.setRequest("stop");
+                receiver.setRequest(Constants.pauseRequest);
 
-                updateTitle("Paused... ");
+                updateTitle(Constants.captureViewTitle + Constants.PAUSED);
             }
         });
     }

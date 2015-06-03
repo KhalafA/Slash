@@ -3,6 +3,7 @@ package GUI;
 import GUI.View.CapturePane;
 import GUI.View.ServerHasConnectionsPane;
 import Standard.Application;
+import Standard.Constants;
 
 import javax.swing.*;
 import java.io.IOException;
@@ -16,7 +17,7 @@ public class ApplicationFrame extends JFrame{
     private CapturePane capturePane;
 
     public ApplicationFrame(JPanel infoPane, Application application){
-        super("Slash");
+        super(Constants.mainTitle);
         this.infoPane = infoPane;
         this.application = application;
 
@@ -35,8 +36,8 @@ public class ApplicationFrame extends JFrame{
 
         tabbedPane = new JTabbedPane();
 
-        tabbedPane.addTab("Info", infoPane);
-        tabbedPane.addTab("Clients", connectionPane);
+        tabbedPane.addTab(Constants.mainTab, infoPane);
+        tabbedPane.addTab(Constants.clientListTab, connectionPane);
 
         add(tabbedPane);
         setLocationRelativeTo(null);
@@ -48,16 +49,16 @@ public class ApplicationFrame extends JFrame{
     public void newConnection(String clientName, int ID){
         connectionPane.newClient(clientName, ID);
 
-        if(tabbedPane.getSelectedIndex() == 0){
-            tabbedPane.setSelectedIndex(1);
+        if(tabbedPane.getSelectedIndex() == Constants.mainTabID){
+            tabbedPane.setSelectedIndex(Constants.clientListTabID);
         }
     }
 
 
 
     public void setupClient(String ip, int port, String pass, String name, String clientName) throws IOException {
-        setSize(450, 350);
-        setTitle("Live Connections");
+        setSize(Constants.captureViewWidth, Constants.captureViewHeight);
+        setTitle(Constants.captureViewTitle);
         setResizable(true);
 
         capturePane = new CapturePane(ip, port, pass, name, clientName, application);

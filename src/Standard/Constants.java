@@ -26,7 +26,7 @@ public class Constants {
      */
 
     public static final String imageEncoding = "jpg";
-    public static final int sleepIntervalBetweenScreenCaptures = 1000;
+    public static final int sleepIntervalBetweenScreenCaptures = 100;
 
     /*
         GUI
@@ -60,6 +60,11 @@ public class Constants {
     public static final String PASS = "Pass";
 
     //Client Panel
+    public static final String defaultName = "Name";
+    public static final String defaultIP = "IP";
+    public static final String defaultPort = "Port";
+    public static final String defaultPass = "Pass";
+
     public static final String connectBtn = "Connect to Partner";
     public static final String clientPanelTitle = "Control Remote Computer";
 
@@ -77,9 +82,14 @@ public class Constants {
     public static final String CAPTURING = "Capturing";
     public static final String PAUSED = "Paused";
 
-    public static final String idRow = "ID";
-    public static final String nameRow = "Name";
-    public static final String statusRow = "Status";
+    public static final String idColTitle= "ID";
+    public static final int idCol = 0;
+
+    public static final String nameColTitle = "Name";
+    public static final int nameCol = 1;
+
+    public static final String statusColTitle= "Status";
+    public static final int statusCol = 2;
 
     public static final String kickBtn = "Kick";
 
@@ -91,7 +101,7 @@ public class Constants {
     public static final RenderingHints hints = null;
 
     //User input timers
-    public static final int oneFieldInputTimer = 1000; //saves input value 1 sec after last change.
-    public static final int allFieldsInputTimer = 5000; //Start setting up server 5 secs after last change in any field.
+    public static final int oneFieldInputTimer = 500; //saves input value 500ms after last change.
+    public static final int allFieldsInputTimer = 1000; //Start setting up server 1 secs after last change in any field.
 
 }

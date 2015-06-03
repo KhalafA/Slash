@@ -1,6 +1,7 @@
 package GUI.View;
 
 import Standard.Application;
+import Standard.Constants;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
@@ -34,7 +35,7 @@ public class StartPane extends JPanel{
         serverPane = new ServerPane(ip, port, name, pass);
         clientPane = new ClientPane();
 
-        setPreferredSize(new Dimension(450,220));
+        setPreferredSize(new Dimension(Constants.mainViewWidth,Constants.mainViewHeight));
         GridLayout gridLayout = new GridLayout(0,2);
 
         setLayout(gridLayout);
@@ -58,7 +59,7 @@ public class StartPane extends JPanel{
             }
         }else {
             setServerStatus(false);
-            timer = new Timer(5000, new ActionListener() {
+            timer = new Timer(Constants.allFieldsInputTimer, new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent arg0) {
                     application.restartServer(name, pass, port);
@@ -133,15 +134,15 @@ public class StartPane extends JPanel{
         }
 
         private void windowSetup(){
-            titleSetup("Allow Remote Control");
+            titleSetup(Constants.serverPanelTitle);
             serverStatus = false;
 
             fieldPane = new FieldPane(true);
             formSetup(nameString, ipString, portString, passString);
             fieldPane.setup();
 
-            screenShootButton = new JButton("Select Screenshot Area");
-            textField = new JLabel("Setting up...");
+            screenShootButton = new JButton(Constants.captureBtn);
+            textField = new JLabel(Constants.settingUpServer);
 
             add(fieldPane);
             add(screenShootButton);
@@ -181,7 +182,7 @@ public class StartPane extends JPanel{
             String statusText = "";
             Color color;
 
-            statusText = serverStatus ? "Ready for Connections!" : "Setting up...";
+            statusText = serverStatus ? Constants.readyForConnections : Constants.settingUpServer;
             color = serverStatus ? Color.GREEN : Color.RED;
 
             textField.setText(statusText);
@@ -198,14 +199,14 @@ public class StartPane extends JPanel{
         }
 
         private void formSetup(String nameString, String ipString, String portString, String passString){
-            fieldPane.addFormField("Name", nameString);
-            fieldPane.addFormField("IP", ipString, false);
-            fieldPane.addFormField("Port", portString);
-            fieldPane.addFormField("Pass", passString);
+            fieldPane.addFormField(Constants.NAME, nameString);
+            fieldPane.addFormField(Constants.IP, ipString, false);
+            fieldPane.addFormField(Constants.PORT, portString);
+            fieldPane.addFormField(Constants.PASS, passString);
         }
 
         public String getNameString() {
-            return fieldPane.getField("Name");
+            return fieldPane.getField(Constants.NAME);
         }
     }
 
@@ -222,14 +223,14 @@ public class StartPane extends JPanel{
         private FieldPane fieldPane;
 
         private ClientPane(){
-            title = "Control Remote Computer";
+            title = Constants.clientPanelTitle;
 
             setBorder(
                     BorderFactory.createCompoundBorder(
                             BorderFactory.createTitledBorder(title),
                             BorderFactory.createEmptyBorder(0, 0, 0, 0)));
 
-            startBtn = new JButton("Connect to Partner");
+            startBtn = new JButton(Constants.connectBtn);
             buildFieldPane();
 
             add(fieldPane);
@@ -238,7 +239,7 @@ public class StartPane extends JPanel{
             startBtn.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    tryConnection(fieldPane.getField("IP"), fieldPane.getField("Port"), fieldPane.getField("Pass"), fieldPane.getField("Name")
+                    tryConnection(fieldPane.getField(Constants.IP), fieldPane.getField(Constants.PORT), fieldPane.getField(Constants.PASS), fieldPane.getField(Constants.NAME)
                     );
                 }
             });
@@ -246,15 +247,15 @@ public class StartPane extends JPanel{
 
         private void buildFieldPane(){
             fieldPane = new FieldPane(false);
-            formSetup("Name", "IP", "Port", "Pass");
+            formSetup(Constants.defaultName, Constants.defaultIP, Constants.defaultPort, Constants.defaultPass);
             fieldPane.setup();
         }
 
         private void formSetup(String nameString, String ipString, String portString, String passString){
-            fieldPane.addFormField("Name", nameString);
-            fieldPane.addFormField("IP", ipString);
-            fieldPane.addFormField("Port", portString);
-            fieldPane.addFormField("Pass", passString);
+            fieldPane.addFormField(Constants.NAME, nameString);
+            fieldPane.addFormField(Constants.IP, ipString);
+            fieldPane.addFormField(Constants.PORT, portString);
+            fieldPane.addFormField(Constants.PASS, passString);
         }
     }
 
@@ -272,16 +273,16 @@ public class StartPane extends JPanel{
             this.isAServerPane = isAServerPane;
 
             list = new LinkedList<>();
-            setPostFix(": ");
+            setPostFix(Constants.fieldLabelPostFix);
         }
 
         //setup the group layout. Automaticaly builds layout from all elements in the list
         private void setup(){
-            int width = 200;
-            int height = list.size()*35;
+            int width = Constants.intputFieldWidth;
+            int height = list.size()*Constants.inputFieldHeight;
 
             if(!isAServerPane){
-                height+=20;
+                height+=Constants.serverSpace;
             }
             setPreferredSize(new Dimension(width,height));
 
@@ -416,7 +417,7 @@ public class StartPane extends JPanel{
                             fieldTimer.start();
                         }
                     } else {
-                        fieldTimer = new Timer(1000, new ActionListener() {
+                        fieldTimer = new Timer(Constants.oneFieldInputTimer, new ActionListener() {
                             @Override
                             public void actionPerformed(ActionEvent arg0) {
                                 endFrieldValue = getFieldValue();
@@ -437,7 +438,6 @@ public class StartPane extends JPanel{
 
                 private void changedHappend() {
                     if (!startFieldValue.equals(endFrieldValue)) {
-                        //System.out.println("change in: " + textString + " from: " + startFieldValue + " To: " + endFrieldValue);
                         callUpdateMethod(textString, endFrieldValue);
                     }
                 }

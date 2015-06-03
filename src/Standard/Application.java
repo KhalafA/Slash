@@ -8,7 +8,6 @@ import GUI.View.StartPane;
 import javax.swing.*;
 import java.io.IOException;
 import java.math.BigInteger;
-import java.net.ConnectException;
 import java.net.Socket;
 import java.security.SecureRandom;
 
@@ -123,17 +122,19 @@ public class Application {
     public void setupConnection(String ipField, String portField, String passField, String nameField, String clientName) {
         try {
             server.stop();
+        } catch (IOException e) {
+            errorMsg(Constants.failedToCloseServer);
+        }
+
+        try {
             isServerReadyForConnections = true;
             startPane.setServerStatus(isServerReadyForConnections);
 
             int portNumber = tryParse(portField);
 
             applicationFrame.setupClient(ipField, portNumber, passField, nameField, clientName);
-
-        }catch (ConnectException e){
+        } catch (IOException e) {
             errorMsg(Constants.serverNotFound);
-        } catch (IOException ex){
-            errorMsg(Constants.failedToCloseServer);
         }
     }
 

@@ -2,6 +2,7 @@ package GUI.View;
 
 import GUI.View.SelectionCanvas;
 import Standard.Application;
+import Standard.Constants;
 
 import javax.swing.*;
 import java.awt.*;
@@ -45,17 +46,12 @@ public class TransparentBackground extends JComponent{
             public void mousePressed(MouseEvent e) {
                 startX = e.getX();
                 startY = e.getY();
-
-                System.out.println("Pressed");
             }
 
             @Override
             public void mouseReleased(MouseEvent e) {
                 endX = e.getX();
                 endY = e.getY();
-
-                System.out.println("Released");
-
                 calcCaptureSquare(startX, startY, endX, endY);
                 updateCaptureView();
             }
@@ -141,7 +137,7 @@ public class TransparentBackground extends JComponent{
             Rectangle screenRect = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
             BufferedImage capture = new Robot().createScreenCapture(screenRect);
 
-            RescaleOp op = new RescaleOp(1.3f, 0, null);
+            RescaleOp op = new RescaleOp(Constants.scaleFactor, Constants.offset, Constants.hints);
             capture = op.filter(capture, capture);
 
             background = capture;
