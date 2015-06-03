@@ -1,3 +1,8 @@
+package Standard;
+
+import GUI.View.ScreenPane;
+import Standard.Application;
+
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.*;

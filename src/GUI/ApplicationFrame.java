@@ -1,5 +1,10 @@
+package GUI;
+
+import GUI.View.CapturePane;
+import GUI.View.ServerHasConnectionsPane;
+import Standard.Application;
+
 import javax.swing.*;
-import java.awt.*;
 import java.io.IOException;
 
 public class ApplicationFrame extends JFrame{

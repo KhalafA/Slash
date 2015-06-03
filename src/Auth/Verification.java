@@ -1,9 +1,13 @@
+package Auth;
+
+import GUI.View.CapturePane;
+
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
-public class Verify implements Runnable{
+public class Verification implements Runnable{
     private Socket socket;
     private String pass;
     private String name;
@@ -17,7 +21,7 @@ public class Verify implements Runnable{
     private ObjectOutputStream objectOutputStream;
     private ObjectInputStream objectInputStream;
 
-    public Verify(Socket socket, String pass, String name, CapturePane capturePane, String clientName) {
+    public Verification(Socket socket, String pass, String name, CapturePane capturePane, String clientName) {
         this.socket = socket;
         this.pass = pass;
         this.name = name;
@@ -37,13 +41,13 @@ public class Verify implements Runnable{
                 objectInputStream = new ObjectInputStream(socket.getInputStream());
 
                 System.out.println("Sending Verfication msg");
-                objectOutputStream.writeObject(new Verification(name, pass, clientName));
+                objectOutputStream.writeObject(new AuthenticationMsg(name, pass, clientName));
 
                 while (!isInterrupted) {
 
                     if((obj = objectInputStream.readObject()) != null){
-                        if(obj instanceof Verified){
-                            if(((Verified) obj).isVerified()){
+                        if(obj instanceof AuthenticatedMsg){
+                            if(((AuthenticatedMsg) obj).isVerified()){
                                 System.out.println("Info verified");
                                 capturePane.verified();
                                 isInterrupted = true;

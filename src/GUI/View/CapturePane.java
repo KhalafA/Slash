@@ -1,3 +1,9 @@
+package GUI.View;
+
+import Auth.Verification;
+import Standard.Application;
+import Standard.Receiver;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -37,8 +43,8 @@ public class CapturePane extends JPanel {
 
         socket = new Socket(ip, port);
 
-        Verify verify = new Verify(socket, pass, name, this, clientName);
-        new Thread(verify).start();
+        Verification verification = new Verification(socket, pass, name, this, clientName);
+        new Thread(verification).start();
 
         startCaptureButton.setEnabled(false);
         pauseCapturing.setEnabled(false);

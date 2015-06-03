@@ -1,4 +1,8 @@
-import javax.imageio.ImageIO;
+package GUI.View;
+
+import GUI.View.SelectionCanvas;
+import Standard.Application;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;

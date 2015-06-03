@@ -1,11 +1,15 @@
+package Standard;
+
+import Auth.AuthenticationMsg;
+import GUI.Logic.CaptureLogic;
+import Standard.Application;
+
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
 
 
 public class Server implements Runnable{
@@ -22,16 +26,16 @@ public class Server implements Runnable{
     private HashMap<Integer, SocketHandler> socketHandlers;
     private ServerSocket serverSocket;
 
-    private CaptureView captureView;
+    private CaptureLogic captureLogic;
 
     private int counter;
 
-    public Server(String name, String pass, int port, Application application, CaptureView captureView){
+    public Server(String name, String pass, int port, Application application, CaptureLogic captureLogic){
         this.application = application;
         this.name = name;
         this.pass = pass;
         this. port = port;
-        this.captureView = captureView;
+        this.captureLogic = captureLogic;
 
         localHostIp = getLocalHostIP();
         socketHandlers = new HashMap<>();
@@ -48,7 +52,7 @@ public class Server implements Runnable{
                 port = serverSocket.getLocalPort();
 
                 System.out.println("--------------------------------------------------");
-                System.out.println("Success, Server is ready for action");
+                System.out.println("Success, server is ready for action");
                 System.out.println("Connect on ip: " + localHostIp + ", Port: " + port + ", Name: " + name + ", Pass: " + pass);
 
 
@@ -60,7 +64,7 @@ public class Server implements Runnable{
 
                     Socket socket = serverSocket.accept();
 
-                    socketHandler = new SocketHandler(socket, name, pass, captureView, this, counter);
+                    socketHandler = new SocketHandler(socket, name, pass, captureLogic, this, counter);
                     socketHandlers.put(counter, socketHandler);
                     counter++;
                     new Thread(socketHandler).start();
@@ -88,7 +92,7 @@ public class Server implements Runnable{
         serverSocket.close();
     }
 
-    public void clientInformation(Verification v, int ID){
+    public void clientInformation(AuthenticationMsg v, int ID){
         application.incomingConnection(v, ID);
     }
 

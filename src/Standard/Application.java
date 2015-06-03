@@ -1,42 +1,39 @@
+package Standard;
+
+import Auth.AuthenticationMsg;
+import GUI.ApplicationFrame;
+import GUI.Logic.CaptureLogic;
+import GUI.View.StartPane;
+
 import javax.swing.*;
 import java.io.IOException;
 import java.math.BigInteger;
 import java.net.ConnectException;
 import java.net.Socket;
-import java.net.SocketException;
-import java.net.UnknownHostException;
 import java.security.SecureRandom;
-import java.util.HashMap;
 
 public class Application {
-    private SecureRandom random = new SecureRandom();
 
     private Server server;
     private Thread serverThread;
+    private boolean isServerReadyForConnections;
 
-    private boolean serverStatus;
-
-    private final StartPane startPane;
-
-    private int liveConnections = 0;
-    private final static CaptureView captureView = new CaptureView();
-
-    private HashMap<Integer, Socket> connections;
-
+    //Main GUI
     private ApplicationFrame applicationFrame;
+    private StartPane startPane;
 
-    //TODO: Let User select which parts he wants clients to see
+    //Capture Area
+    private CaptureLogic captureLogic = new CaptureLogic();
+
     public Application(){
         String pass = getRandomString();
         String name = getRandomString();
 
-        connections = new HashMap<>();
-
-        serverStatus = false;
+        isServerReadyForConnections = false;
         startServer(name, pass, 0);
 
         startPane = new StartPane(server.getLocalHostIP(), server.getPort() + "",name,pass, this);
-        startPane.setServerStatus(serverStatus);
+        startPane.setServerStatus(isServerReadyForConnections);
 
         applicationFrame = new ApplicationFrame(startPane, this);
     }
@@ -46,29 +43,29 @@ public class Application {
      */
 
     private void startServer(String name, String pass, int port){
-        server = new Server(name, pass, port, this, captureView);
+        server = new Server(name, pass, port, this, captureLogic);
         serverThread = new Thread(server);
         serverThread.start();
     }
 
     //Someone has connected to server
-    public void incomingConnection(Verification v, int ID){
+    public void incomingConnection(AuthenticationMsg v, int ID){
         applicationFrame.newConnection(v.getClientName(), ID);
-
-        //minimizeWindow();
     }
 
-
+    //Servers setup was succesfull
     public void serverReadyForConnections(){
-        serverStatus = true;
+        isServerReadyForConnections = true;
+
+        //this might be called before startpane is set up.
         if(startPane != null){
-            startPane.setServerStatus(serverStatus);
+            startPane.setServerStatus(isServerReadyForConnections);
         }
     }
 
     public void restartServer(String name, String pass, String port){
-        serverStatus = false;
-        startPane.setServerStatus(serverStatus);
+        isServerReadyForConnections = false;
+        startPane.setServerStatus(isServerReadyForConnections);
 
         try {
             server.stop();
@@ -96,11 +93,8 @@ public class Application {
 
             result = false;
         }
-        catch(SocketException e) {
-            // Could not connect.
-        } catch (UnknownHostException e) {
-        } catch (IOException e) {
-        }catch (IllegalArgumentException e){
+        catch(Exception e) {
+            //Socket is Available
         }
 
         return result;
@@ -129,8 +123,8 @@ public class Application {
     public void setupConnection(String ipField, String portField, String passField, String nameField, String clientName) {
         try {
             server.stop();
-            serverStatus = true;
-            startPane.setServerStatus(serverStatus);
+            isServerReadyForConnections = true;
+            startPane.setServerStatus(isServerReadyForConnections);
 
             int portNumber = tryParse(portField);
 
@@ -139,7 +133,7 @@ public class Application {
         }catch (ConnectException e){
             errorMsg("Could not locate server");
         } catch (IOException ex){
-            errorMsg("Could not close Server");
+            errorMsg("Could not close Servers");
         }
     }
 
@@ -153,6 +147,8 @@ public class Application {
        ------------------------ Util --------------------------------------
      */
     private String getRandomString(){
+        SecureRandom random = new SecureRandom();
+
         return new BigInteger(50, random).toString(32);
     }
 
@@ -173,7 +169,7 @@ public class Application {
     }
 
     public void setCaptureView(int x, int y, int xx, int yy){
-        captureView.setStats(x,y,xx,yy);
+        captureLogic.setStats(x,y,xx,yy);
     }
 
     public void setClientStatus(int id, boolean capturing) {

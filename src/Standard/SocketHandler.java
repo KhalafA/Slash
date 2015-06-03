@@ -1,3 +1,11 @@
+package Standard;
+
+import Auth.AuthenticatedMsg;
+import Auth.AuthenticationMsg;
+import GUI.Logic.CaptureLogic;
+import Standard.Sender;
+import Standard.Server;
+
 import java.io.*;
 import java.net.Socket;
 
@@ -17,16 +25,16 @@ public class SocketHandler implements Runnable{
 
     boolean verified;
 
-    private CaptureView captureView;
+    private CaptureLogic captureLogic;
     private Server server;
 
     private int ID;
 
-    public SocketHandler(Socket socket, String name, String pass, CaptureView captureView, Server server, int ID) {
+    public SocketHandler(Socket socket, String name, String pass, CaptureLogic captureLogic, Server server, int ID) {
         this.socket = socket;
         this.name = name;
         this.pass = pass;
-        this.captureView = captureView;
+        this.captureLogic = captureLogic;
         this.server = server;
 
         this.ID = ID;
@@ -45,10 +53,10 @@ public class SocketHandler implements Runnable{
 
                 while (!verified){
                     if((obj = objectInputStream.readObject()) != null){
-                        if(obj instanceof Verification){
-                            if(((Verification) obj).getServerName().equals(name) && ((Verification) obj).getServerPass().equals(pass)){
-                                objectOutputStream.writeObject(new Verified(true));
-                                server.clientInformation((Verification) obj, ID);
+                        if(obj instanceof AuthenticationMsg){
+                            if(((AuthenticationMsg) obj).getServerName().equals(name) && ((AuthenticationMsg) obj).getServerPass().equals(pass)){
+                                objectOutputStream.writeObject(new AuthenticatedMsg(true));
+                                server.clientInformation((AuthenticationMsg) obj, ID);
                                 verified = true;
                                 break;
                             }
@@ -75,7 +83,7 @@ public class SocketHandler implements Runnable{
                     System.out.println("raeding!");
 
                     if ("grab".equalsIgnoreCase(request)) {
-                            sender = new Sender(os, captureView);
+                            sender = new Sender(os, captureLogic);
                             senderThread = new Thread(sender);
                             senderThread.start();
 

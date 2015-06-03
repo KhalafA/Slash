@@ -1,12 +1,13 @@
+package Auth;
+
 import java.io.Serializable;
 
-public class Verification implements Serializable{
+public class AuthenticationMsg implements Serializable{
     private String serverName;
     private String serverPass;
-
     private String clientName;
 
-    public Verification(String serverName, String serverPass, String clientName){
+    public AuthenticationMsg(String serverName, String serverPass, String clientName){
         this.serverName = serverName;
         this.serverPass = serverPass;
         this.clientName = clientName;

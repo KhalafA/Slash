@@ -1,11 +1,13 @@
-public class CaptureView{
+package GUI.Logic;
+
+public class CaptureLogic {
     private int squareX;
     private int squareY;
     private int squareWidth;
     private int squareHeight;
     private boolean fullScreen;
 
-    public CaptureView() {
+    public CaptureLogic() {
         fullScreen = true;
     }
 

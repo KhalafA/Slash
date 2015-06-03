@@ -1,9 +1,11 @@
+package Auth;
+
 import java.io.Serializable;
 
-public class Verified implements Serializable{
+public class AuthenticatedMsg implements Serializable{
     private boolean verfied;
 
-    public Verified(boolean verified){
+    public AuthenticatedMsg(boolean verified){
         this.verfied = verified;
     }
 

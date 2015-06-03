@@ -1,3 +1,7 @@
+package Standard;
+
+import GUI.Logic.CaptureLogic;
+
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -8,16 +12,16 @@ import java.io.OutputStream;
 public class Sender implements Runnable{
     private boolean isInterrupted;
     private OutputStream outputStream;
-    private CaptureView captureView;
+    private CaptureLogic captureLogic;
 
     private int squareX;
     private int squareY;
     private int squareWidth;
     private int squareHeight;
 
-    public Sender(OutputStream outputStream, CaptureView captureView){
+    public Sender(OutputStream outputStream, CaptureLogic captureLogic){
         this.outputStream = outputStream;
-        this.captureView = captureView;
+        this.captureLogic = captureLogic;
 
         isInterrupted = false;
     }
@@ -43,13 +47,13 @@ public class Sender implements Runnable{
     public void grabScreen(OutputStream os) throws AWTException, IOException {
         Rectangle screenRect;
 
-        if(captureView.getFullScreenStatus()){
+        if(captureLogic.getFullScreenStatus()){
             screenRect = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
         }else {
-            squareX = captureView.getSquareX();
-            squareY = captureView.getSquareY();
-            squareHeight = captureView.getSquareHeight();
-            squareWidth = captureView.getSquareWidth();
+            squareX = captureLogic.getSquareX();
+            squareY = captureLogic.getSquareY();
+            squareHeight = captureLogic.getSquareHeight();
+            squareWidth = captureLogic.getSquareWidth();
 
             screenRect = new Rectangle(squareX, squareY, squareHeight, squareWidth);
         }
