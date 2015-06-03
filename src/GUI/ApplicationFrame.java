@@ -57,11 +57,11 @@ public class ApplicationFrame extends JFrame{
 
 
     public void setupClient(String ip, int port, String pass, String name, String clientName) throws IOException {
+        capturePane = new CapturePane(ip, port, pass, name, clientName, application);
+
         setSize(Constants.captureViewWidth, Constants.captureViewHeight);
         setTitle(Constants.captureViewTitle);
         setResizable(true);
-
-        capturePane = new CapturePane(ip, port, pass, name, clientName, application);
 
         remove(tabbedPane);
         add(capturePane);

@@ -44,8 +44,7 @@ public class Receiver implements Runnable {
 
                     sendRequest(os, request);
 
-                    if(!request.equals(Constants.pauseRequest) && !request.equals(Constants.stopRequest)&& !disconnected){
-                        System.out.println("Wtf");
+                    if(!request.equals(Constants.pauseRequest) && !disconnected){
                         readImage(is);
                     }else{
                         isInterrupted = true;
@@ -54,7 +53,6 @@ public class Receiver implements Runnable {
                  }
 
             } catch (IOException exp) {
-                System.out.println("Stuff");
                 disconnected(true);
             }
         }
