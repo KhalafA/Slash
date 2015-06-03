@@ -62,7 +62,6 @@ public class ServerHasConnectionsPane extends JPanel {
     }
 
     public void updateTableRow(int id, boolean capturing){
-        String name = "";
         String status = capturing ? "Capturing" : "Paused";
 
         int row = findRowWithID(id);

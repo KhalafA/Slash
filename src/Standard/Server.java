@@ -2,8 +2,6 @@ package Standard;
 
 import Auth.AuthenticationMsg;
 import GUI.Logic.CaptureLogic;
-import Standard.Application;
-
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.ServerSocket;
@@ -60,7 +58,6 @@ public class Server implements Runnable{
 
 
                 while(true){
-                    System.out.println("Get next client...");
 
                     Socket socket = serverSocket.accept();
 
@@ -70,7 +67,7 @@ public class Server implements Runnable{
                     new Thread(socketHandler).start();
                 }
             }catch (IOException ex) {
-                //Failed to setup socket, or user server needs to reset
+                application.errorMsg("Failled to setup Connection, try restarting.");
             }
         }
     }
