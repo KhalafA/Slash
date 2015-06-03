@@ -131,16 +131,16 @@ public class Application {
             applicationFrame.setupClient(ipField, portNumber, passField, nameField, clientName);
 
         }catch (ConnectException e){
-            errorMsg("Could not locate server");
+            errorMsg(Constants.serverNotFound);
         } catch (IOException ex){
-            errorMsg("Could not close Servers");
+            errorMsg(Constants.failedToCloseServer);
         }
     }
 
     //client got kicked from server
     public void iGotKicked() {
         applicationFrame.clientKicked();
-        errorMsg("You got kicked");
+        errorMsg(Constants.lostConnectionToServer);
     }
 
     /*
@@ -156,7 +156,7 @@ public class Application {
         try {
             return Integer.parseInt(text);
         } catch (NumberFormatException e) {
-            errorMsg("Port has to be a number");
+            errorMsg(Constants.illegalPortNumber);
             return -1;
         }
     }

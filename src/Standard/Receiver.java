@@ -45,7 +45,7 @@ public class Receiver implements Runnable {
 
                     sendRequest(os, request);
 
-                    if(!request.equals("stop") && !disconnected){
+                    if(!request.equals(Constants.pauseRequest) && !disconnected){
                         readImage(is);
                     }else{
                         isInterrupted = true;
@@ -94,10 +94,6 @@ public class Receiver implements Runnable {
         }
     }
 
-    public boolean getRequestStatus(){
-        return requestChanged;
-    }
-
     private int getExptectedByteCount(String size) {
         int expectedByteCount = -1;
 
@@ -138,7 +134,6 @@ public class Receiver implements Runnable {
     }
 
     private void disconnected(){
-        System.out.println("Connection closed");
         disconnected = true;
         isInterrupted = true;
         application.iGotKicked();

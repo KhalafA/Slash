@@ -32,7 +32,7 @@ public class Sender implements Runnable{
             try {
                 grabScreen(outputStream);
 
-                Thread.sleep(1000);
+                Thread.sleep(Constants.sleepIntervalBetweenScreenCaptures);
 
             } catch (AWTException e) {
                 e.printStackTrace();
@@ -62,7 +62,7 @@ public class Sender implements Runnable{
 
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
 
-        ImageIO.write(capture, "jpg", baos);
+        ImageIO.write(capture, Constants.imageEncoding, baos);
         baos.close();
 
         os.write((Integer.toString(baos.size()) + "\n").getBytes());

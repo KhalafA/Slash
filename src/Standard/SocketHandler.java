@@ -3,8 +3,6 @@ package Standard;
 import Auth.AuthenticatedMsg;
 import Auth.AuthenticationMsg;
 import GUI.Logic.CaptureLogic;
-import Standard.Sender;
-import Standard.Server;
 
 import java.io.*;
 import java.net.Socket;
@@ -80,17 +78,19 @@ public class SocketHandler implements Runnable{
                 while (!isInterrupted) {
                     request = readRequest(is);
 
-                    if ("grab".equalsIgnoreCase(request)) {
+                    if (Constants.startRequest.equalsIgnoreCase(request)) {
                             sender = new Sender(os, captureLogic);
                             senderThread = new Thread(sender);
                             senderThread.start();
 
                             server.updateClientStatus(ID, true);
-                    } else if ("stop".equalsIgnoreCase(request)) {
+                    } else if (Constants.pauseRequest.equalsIgnoreCase(request)) {
                         sender.pause();
 
                         server.updateClientStatus(ID, false);
                     }
+
+                    //TODO: Disconnect msg.
                 }
 
             } catch (IOException exp) {
