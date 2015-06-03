@@ -47,7 +47,7 @@ public class Verification implements Runnable{
 
                     if((obj = objectInputStream.readObject()) != null){
                         if(obj instanceof AuthenticatedMsg){
-                            if(((AuthenticatedMsg) obj).isVerified()){
+                            if(((AuthenticatedMsg) obj).isAuthenticated()){
                                 System.out.println("Info verified");
                                 capturePane.verified();
                                 isInterrupted = true;

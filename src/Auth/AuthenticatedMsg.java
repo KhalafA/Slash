@@ -3,13 +3,13 @@ package Auth;
 import java.io.Serializable;
 
 public class AuthenticatedMsg implements Serializable{
-    private boolean verfied;
+    private boolean authenticated;
 
-    public AuthenticatedMsg(boolean verified){
-        this.verfied = verified;
+    public AuthenticatedMsg(boolean authenticated){
+        this.authenticated = authenticated;
     }
 
-    public boolean isVerified() {
-        return verfied;
+    public boolean isAuthenticated() {
+        return authenticated;
     }
 }
