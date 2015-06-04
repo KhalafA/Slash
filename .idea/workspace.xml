@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b9ff94a7-10b9-4ec1-8c45-9fa5dbadc642" name="Default" comment="bugfix, capture pane now cast exeption before making changes to the gui">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Standard/MouseEventSender.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Standard/MouseEvents.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Standard/MouseMover.java" />
-      <change type="MOVED" beforePath="C:\Users\Khalaf\Desktop\Projects\Slash\src\Standard\Receiver.java" afterPath="$PROJECT_DIR$/src/GUI/Logic/Receiver.java" />
+    <list default="true" id="b9ff94a7-10b9-4ec1-8c45-9fa5dbadc642" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Standard/MouseEventReceiver.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Standard/Application.java" afterPath="$PROJECT_DIR$/src/Standard/Application.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUI/View/CapturePane.java" afterPath="$PROJECT_DIR$/src/GUI/View/CapturePane.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Standard/MouseEventSender.java" afterPath="$PROJECT_DIR$/src/Standard/MouseEventSender.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Standard/MouseEvents.java" afterPath="$PROJECT_DIR$/src/Standard/MouseEvents.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Standard/MouseMover.java" afterPath="$PROJECT_DIR$/src/Standard/MouseMover.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUI/Logic/Receiver.java" afterPath="$PROJECT_DIR$/src/GUI/Logic/Receiver.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUI/View/ScreenPane.java" afterPath="$PROJECT_DIR$/src/GUI/View/ScreenPane.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Standard/Server.java" afterPath="$PROJECT_DIR$/src/Standard/Server.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Standard/SocketHandler.java" afterPath="$PROJECT_DIR$/src/Standard/SocketHandler.java" />
@@ -65,7 +66,7 @@
       <file leaf-file-name="MouseMover.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Standard/MouseMover.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6277696" vertical-offset="544" max-vertical-offset="1411">
+            <state vertical-scroll-proportion="0.7640068" vertical-offset="519" max-vertical-offset="1411">
               <caret line="57" column="111" selection-start-line="57" selection-start-column="111" selection-end-line="57" selection-end-column="111" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -879,19 +880,19 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32980973" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32934782" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32934782" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32972974" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23369566" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23369566" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20208333" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -949,7 +950,6 @@
       <TodoPanelSettings />
     </option>
     <option name="SHOW_FILE_HISTORY_DETAILS" value="false" />
-    <MESSAGE value="GUI changes, update server status color + a little layout changes" />
     <MESSAGE value="Client can now pause and resume screen share" />
     <MESSAGE value="Clean up, and commenting." />
     <MESSAGE value="Server can now see a list of connected clients + now its all one JFrame" />
@@ -974,7 +974,8 @@
     <MESSAGE value="Now allows client to disconnect from server" />
     <MESSAGE value="Server now detects when client disconnects, and removes from the list" />
     <MESSAGE value="bugfix, capture pane now cast exeption before making changes to the gui" />
-    <option name="LAST_COMMIT_MESSAGE" value="bugfix, capture pane now cast exeption before making changes to the gui" />
+    <MESSAGE value="Client now sends mouse coordinates to the server, and server receives them." />
+    <option name="LAST_COMMIT_MESSAGE" value="Client now sends mouse coordinates to the server, and server receives them." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1451,7 +1452,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Standard/MouseMover.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6277696" vertical-offset="544" max-vertical-offset="1411">
+        <state vertical-scroll-proportion="0.7640068" vertical-offset="519" max-vertical-offset="1411">
           <caret line="57" column="111" selection-start-line="57" selection-start-column="111" selection-end-line="57" selection-end-column="111" />
           <folding>
             <element signature="imports" expanded="true" />
