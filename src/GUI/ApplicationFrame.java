@@ -92,11 +92,14 @@ public class ApplicationFrame extends JFrame{
     }
 
     public void updateTableStatus(int id, boolean capturing) {
-        connectionPane.updateTableRow(id, capturing);
+        connectionPane.updateClientStatus(id, capturing);
     }
 
     public void updateTitle(String s) {
         setTitle(s);
     }
 
+    public void updateRequest(int id, boolean s) {
+        connectionPane.updateRequestField(id, s);
+    }
 }

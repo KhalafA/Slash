@@ -1,9 +1,7 @@
 package GUI.View;
 
-import Standard.Constants;
 import Standard.MouseEventSender;
 import Standard.MouseEvents;
-import javafx.scene.input.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,33 +16,33 @@ public class ScreenPane extends JPanel {
 
     private MouseEventSender mouseEventSender;
 
-    private boolean capture;
+    private boolean isControlling;
 
     public ScreenPane() {
         setLayout(new BorderLayout());
         background = new JLabel();
         add(new JScrollPane(background));
 
-        capture = false;
+        isControlling = false;
 
         background.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                if(capture){
+                if(isControlling){
                     buildEvent("Clicked", e.getX(), e.getY());
                 }
             }
 
             @Override
             public void mousePressed(MouseEvent e) {
-                if(capture){
+                if(isControlling){
                     buildEvent("Pressed", e.getX(), e.getY());
                 }
             }
 
             @Override
             public void mouseReleased(MouseEvent e) {
-                if(capture){
+                if(isControlling){
                     buildEvent("Released", e.getX(), e.getY());
                 }
             }
@@ -63,7 +61,7 @@ public class ScreenPane extends JPanel {
         background.addMouseMotionListener(new MouseMotionAdapter() {
             @Override
             public void mouseDragged(MouseEvent e) {
-                if(capture){
+                if(isControlling){
                     super.mouseDragged(e);
                     mouseDraggedTimer(e);
                 }
@@ -71,7 +69,7 @@ public class ScreenPane extends JPanel {
 
             @Override
             public void mouseMoved(MouseEvent e) {
-                if(capture){
+                if(isControlling){
                     super.mouseMoved(e);
                     mouseMovedTimer(e);
                 }
@@ -178,10 +176,14 @@ public class ScreenPane extends JPanel {
         repaint();
     }
 
+    public void setControlling(boolean isControlling) {
+        this.isControlling = isControlling;
+    }
+
     public void setMouseEventSender(MouseEventSender mouseEventSender){
         this.mouseEventSender = mouseEventSender;
 
-        capture = true;
+        isControlling = true;
     }
 
 }

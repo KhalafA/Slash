@@ -177,6 +177,11 @@ public class Application {
         applicationFrame.updateTableStatus(id, capturing);
     }
 
+    public void requestControl(int id, boolean s) {
+        applicationFrame.updateRequest(id, s);
+    }
+
+
     public void updateTitle(String s) {
         applicationFrame.updateTitle(s);
     }
@@ -196,4 +201,15 @@ public class Application {
         new Application();
     }
 
+    public void grantControl(Object valueAt) {
+        int id = (int) valueAt;
+
+        server.grantControl(id, true);
+    }
+
+    public void declineControl(Object valueAt) {
+        int id = (int) valueAt;
+
+        server.grantControl(id, false);
+    }
 }

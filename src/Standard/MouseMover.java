@@ -57,12 +57,20 @@ public class MouseMover implements Runnable{
         double[] pos = calcMouseLocation(mouseEvents);
 
         callEventMethod(e.getAction(), pos[0], pos[1]);
-        /*
-            Todo: now reciving mouse inputs from the clients, next step is to move the mouse with those inputs.
-            Also, alot client to deciede weather someone should have control, and never let two people at once.
-         */
+    }
 
-        //System.out.println("Do: " + mouseEvents.getAction() + ", At x: "+ pos[0] + ", y: " + pos[1]);
+    protected void callEventMethod(String action, double x, double y){
+        Method method = null;
+        try {
+            method = getClass().getDeclaredMethod("mouse"+action, double.class, double.class);
+            method.invoke(this, x,y);
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -98,20 +106,5 @@ public class MouseMover implements Runnable{
     public void mouseMoved(double x, double y) {
         robot.mouseMove((int)x,(int)y);
     }
-
-    protected void callEventMethod(String action, double x, double y){
-        Method method = null;
-        try {
-            method = getClass().getDeclaredMethod("mouse"+action, double.class, double.class);
-            method.invoke(this, x,y);
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
-    }
-
 
 }

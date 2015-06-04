@@ -20,6 +20,8 @@ public class MouseEventSender implements Runnable {
 
     private boolean eventReady;
 
+    private Socket socket;
+
     private LinkedBlockingQueue<MouseEvents> list;
 
     public MouseEventSender(String ip, int port, JPanel screenPane) {
@@ -36,7 +38,7 @@ public class MouseEventSender implements Runnable {
     @Override
     public void run() {
         try{
-            Socket socket = new Socket(ip,port);
+            socket = new Socket(ip,port);
 
             ObjectInputStream objectInputStream = new ObjectInputStream(socket.getInputStream());
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
@@ -60,6 +62,16 @@ public class MouseEventSender implements Runnable {
             list.put(e);
         } catch (InterruptedException e1) {
             e1.printStackTrace();
+        }
+    }
+
+    public void close(){
+        running = false;
+
+        try {
+            socket.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

@@ -72,6 +72,10 @@ public class Server implements Runnable{
         socketHandlers.remove(id);
     }
 
+    public void grantControl(int id, boolean state){
+         socketHandlers.get(id).controlRequestGranted(state);
+    }
+
 
     public void stop() throws IOException {
         running = false;
@@ -102,6 +106,10 @@ public class Server implements Runnable{
 
     public void updateClientStatus(int id, boolean capturing) {
         application.setClientStatus(id, capturing);
+    }
+
+    public void requestControl(int ID, boolean s){
+        application.requestControl(ID, s);
     }
 
     public void clientDisconnected(int id) {

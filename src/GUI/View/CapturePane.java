@@ -5,15 +5,12 @@ import Standard.Application;
 import Standard.Constants;
 import GUI.Logic.Receiver;
 import Standard.MouseEventSender;
-import javafx.scene.input.*;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.awt.event.MouseEvent;
 import java.io.*;
 import java.net.Socket;
-import java.net.UnknownHostException;
+
 
 public class CapturePane extends JPanel {
     private Socket socket;
@@ -47,7 +44,6 @@ public class CapturePane extends JPanel {
         setLayout(new BorderLayout());
         screenPane = new ScreenPane();
         add(screenPane);
-
 
         startCaptureButton = new JButton(Constants.startRequest);
         pauseCapturingButton = new JButton(Constants.pauseRequest);
@@ -101,19 +97,20 @@ public class CapturePane extends JPanel {
         requestControlButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if(controlStatus){
+                    stopEventSender();
+                    receiver.stopTrackingMouseEvents();
+                }
 
                 boolean temp = !controlStatus;
                 controlStatus = temp;
 
-                System.out.println("Clicked Control " + controlStatus);
+                String btnText = controlStatus ? "Stop Controlling" : "Control";
 
-                if(controlStatus){
-                    receiver.setRequest("Control");
+                receiver.setWantControl();
+                receiver.setRequest("Control");
 
-                    requestControlButton.setText("Stop Controlling");
-                }else {
-                    requestControlButton.setText("Control");
-                }
+                requestControlButton.setText(btnText);
             }
         });
 
@@ -176,5 +173,11 @@ public class CapturePane extends JPanel {
         eventSender = new MouseEventSender(ip, port, screenPane);
         eventSenderThread = new Thread(eventSender);
         eventSenderThread.start();
+    }
+
+    private void stopEventSender(){
+        if(eventSender != null){
+            eventSender.close();
+        }
     }
 }

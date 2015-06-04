@@ -34,6 +34,8 @@ public class SocketHandler implements Runnable{
 
     private int ID;
 
+    private boolean control;
+
     public SocketHandler(Socket socket, String name, String pass, CaptureLogic captureLogic, Server server, int ID) {
         this.socket = socket;
         this.name = name;
@@ -46,6 +48,7 @@ public class SocketHandler implements Runnable{
         isInterrupted = false;
         verified = false;
 
+        control = false;
     }
 
     @Override
@@ -98,14 +101,12 @@ public class SocketHandler implements Runnable{
 
                         server.updateClientStatus(ID, false);
                     } else if ("Control".equalsIgnoreCase(request)){
-                        System.out.println("Recvied Control");
-                        eventReciver = new MouseEventReceiver(socket, this);
-                        mouseEventThread = new Thread(eventReciver);
-                        mouseEventThread.start();
 
-                        mouseMover = new MouseMover();
-                        moverThread = new Thread(mouseMover);
-                        moverThread.start();
+                        boolean temp = !control;
+                        control = temp;
+
+                        server.requestControl(ID, control);
+
                     }
 
                     //Disconnected client is caught like any disconnect.
@@ -114,6 +115,23 @@ public class SocketHandler implements Runnable{
             } catch (IOException exp) {
                 disconnected();
             }
+        }
+    }
+
+    public void controlRequestGranted(boolean state){
+
+        if(state){
+            writeRequest(os, "Request Granted");
+
+            eventReciver = new MouseEventReceiver(socket, this);
+            mouseEventThread = new Thread(eventReciver);
+            mouseEventThread.start();
+
+            mouseMover = new MouseMover();
+            moverThread = new Thread(mouseMover);
+            moverThread.start();
+        }else {
+            writeRequest(os, "Request Declined");
         }
     }
 
@@ -162,5 +180,14 @@ public class SocketHandler implements Runnable{
     public void mouseAction(MouseEvents mouseEvents) {
         //Got new Event
         mouseMover.newEvent(mouseEvents);
+    }
+
+    public void writeRequest(OutputStream os, String request) {
+        try {
+            os.write((request + "\n").getBytes());
+            os.flush();
+        } catch (IOException e) {
+            e.printStackTrace(); //connection is closed
+        }
     }
 }

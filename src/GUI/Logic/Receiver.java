@@ -25,6 +25,8 @@ public class Receiver implements Runnable {
 
     private boolean disconnected;
 
+    private boolean wantControl;
+
     public Receiver(Socket socket, ScreenPane screenPane, String request, Application application, CapturePane capturePane) {
         this.socket = socket;
         this.screenPane = screenPane;
@@ -35,6 +37,7 @@ public class Receiver implements Runnable {
         isInterrupted = false;
         requestChanged = true;
         disconnected = false;
+        wantControl = false;
     }
 
     @Override
@@ -141,11 +144,28 @@ public class Receiver implements Runnable {
             //Recived free port from client, now start using it
             capturePane.startSendingEvents(result);
             result = readResponse(is);
+        }else if(result.contains("Request")){
+
+            if(result.equalsIgnoreCase("Request Granted") && wantControl){
+                screenPane.setControlling(true);
+            }else {
+                screenPane.setControlling(false);
+            }
+
+            result = readResponse(is);
         }
 
         return result;
     }
 
+    public void stopTrackingMouseEvents(){
+        screenPane.setControlling(false);
+    }
+
+    public void setWantControl(){
+        boolean temp = wantControl;
+        wantControl = !temp;
+    }
 
 
     public void disconnected(boolean lostConnection){
