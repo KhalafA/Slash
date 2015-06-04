@@ -1,7 +1,9 @@
-package Standard;
+package GUI.Logic;
 
+import GUI.View.CapturePane;
 import GUI.View.ScreenPane;
-
+import Standard.Application;
+import Standard.Constants;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.*;
@@ -19,14 +21,16 @@ public class Receiver implements Runnable {
     private boolean requestChanged;
 
     private Application application;
+    private CapturePane capturePane;
 
     private boolean disconnected;
 
-    public Receiver(Socket socket, ScreenPane screenPane, String request, Application application) {
+    public Receiver(Socket socket, ScreenPane screenPane, String request, Application application, CapturePane capturePane) {
         this.socket = socket;
         this.screenPane = screenPane;
         this.request = request;
         this.application = application;
+        this.capturePane = capturePane;
 
         isInterrupted = false;
         requestChanged = true;
@@ -62,6 +66,7 @@ public class Receiver implements Runnable {
 
             String size = readResponse(is);
             int expectedByteCount = getExptectedByteCount(size);
+
             if(!disconnected) {
                 ByteArrayOutputStream baos = new ByteArrayOutputStream(expectedByteCount);
                 byte[] buffer = new byte[1024];
@@ -129,8 +134,19 @@ public class Receiver implements Runnable {
             }
         }
 
-        return sb.toString();
+        String result = sb.toString();
+
+        if(result.contains("Port")){
+
+            //Recived free port from client, now start using it
+            capturePane.startSendingEvents(result);
+            result = readResponse(is);
+        }
+
+        return result;
     }
+
+
 
     public void disconnected(boolean lostConnection){
         disconnected = true;

@@ -4,8 +4,6 @@ import Auth.AuthenticationMsg;
 import GUI.ApplicationFrame;
 import GUI.Logic.CaptureLogic;
 import GUI.View.StartPane;
-
-
 import javax.swing.*;
 import java.io.IOException;
 import java.math.BigInteger;
