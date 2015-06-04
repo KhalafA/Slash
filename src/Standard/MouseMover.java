@@ -22,7 +22,6 @@ public class MouseMover implements Runnable{
 
         try {
             robot = new Robot();
-            robot.setAutoDelay(1000);
 
             screenWidth = Toolkit.getDefaultToolkit().getScreenSize().width;
             screenHeight = Toolkit.getDefaultToolkit().getScreenSize().height;

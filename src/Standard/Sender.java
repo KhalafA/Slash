@@ -6,6 +6,7 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
 
@@ -59,6 +60,13 @@ public class Sender implements Runnable{
         }
 
         BufferedImage capture = new Robot().createScreenCapture(screenRect);
+
+        Image cursor = ImageIO.read(new File("cursor.png"));
+        int x = MouseInfo.getPointerInfo().getLocation().x;
+        int y = MouseInfo.getPointerInfo().getLocation().y;
+
+        Graphics2D graphics2D = capture.createGraphics();
+        graphics2D.drawImage(cursor, x, y, 16, 16, null); // cursor.gif is 16x16 size.
 
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
 

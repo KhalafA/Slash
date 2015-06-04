@@ -1,17 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b9ff94a7-10b9-4ec1-8c45-9fa5dbadc642" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Standard/Application.java" afterPath="$PROJECT_DIR$/src/Standard/Application.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUI/ApplicationFrame.java" afterPath="$PROJECT_DIR$/src/GUI/ApplicationFrame.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUI/View/CapturePane.java" afterPath="$PROJECT_DIR$/src/GUI/View/CapturePane.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Standard/MouseEventSender.java" afterPath="$PROJECT_DIR$/src/Standard/MouseEventSender.java" />
+    <list default="true" id="b9ff94a7-10b9-4ec1-8c45-9fa5dbadc642" name="Default" comment="No">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Standard/MouseEventReceiver.java" afterPath="$PROJECT_DIR$/src/Standard/MouseEventReceiver.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Standard/MouseMover.java" afterPath="$PROJECT_DIR$/src/Standard/MouseMover.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUI/Logic/Receiver.java" afterPath="$PROJECT_DIR$/src/GUI/Logic/Receiver.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUI/View/ScreenPane.java" afterPath="$PROJECT_DIR$/src/GUI/View/ScreenPane.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Standard/Server.java" afterPath="$PROJECT_DIR$/src/Standard/Server.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUI/View/ServerHasConnectionsPane.java" afterPath="$PROJECT_DIR$/src/GUI/View/ServerHasConnectionsPane.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Standard/SocketHandler.java" afterPath="$PROJECT_DIR$/src/Standard/SocketHandler.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Standard/Sender.java" afterPath="$PROJECT_DIR$/src/Standard/Sender.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Slash.iws" />
@@ -76,36 +69,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Server.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Standard/Server.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1033" max-vertical-offset="2040">
-              <caret line="75" column="41" selection-start-line="75" selection-start-column="41" selection-end-line="75" selection-end-column="41" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#2009#2010#0" expanded="true" />
-                <element signature="e#2077#2078#0" expanded="true" />
-                <element signature="e#2808#2809#0" expanded="true" />
-                <element signature="e#2866#2867#0" expanded="true" />
-                <element signature="e#2918#2919#0" expanded="true" />
-                <element signature="e#2967#2968#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MouseEventSender.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Standard/MouseEventSender.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="581" max-vertical-offset="1394">
-              <caret line="68" column="24" selection-start-line="68" selection-start-column="24" selection-end-line="68" selection-end-column="24" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Application.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Standard/Application.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -131,11 +94,46 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ServerHasConnectionsPane.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ServerHasConnectionsPane.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GUI/View/ServerHasConnectionsPane.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.82422453" vertical-offset="1941" max-vertical-offset="2686">
-              <caret line="172" column="47" selection-start-line="172" selection-start-column="47" selection-end-line="172" selection-end-column="47" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1305" max-vertical-offset="2720">
+              <caret line="110" column="0" selection-start-line="110" selection-start-column="0" selection-end-line="110" selection-end-column="0" />
+              <folding>
+                <element signature="e#3625#3626#0" expanded="true" />
+                <element signature="e#3666#3667#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MouseMover.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Standard/MouseMover.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="1751">
+              <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MouseEventReceiver.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Standard/MouseEventReceiver.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="591" max-vertical-offset="1343">
+              <caret line="62" column="5" selection-start-line="62" selection-start-column="5" selection-end-line="62" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Sender.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Standard/Sender.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.67355984" vertical-offset="581" max-vertical-offset="1360">
+              <caret line="69" column="3" selection-start-line="69" selection-start-column="3" selection-end-line="69" selection-end-column="3" />
               <folding />
             </state>
           </provider>
@@ -148,22 +146,6 @@
               <caret line="123" column="33" selection-start-line="123" selection-start-column="33" selection-end-line="123" selection-end-column="33" />
               <folding>
                 <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Sender.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Standard/Sender.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="564" max-vertical-offset="1241">
-              <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#2094#2095#0" expanded="false" />
-                <element signature="e#2130#2131#0" expanded="false" />
-                <element signature="e#2157#2158#0" expanded="false" />
-                <element signature="e#2193#2194#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -205,7 +187,6 @@
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/Auth/AuthenticatedMsg.java" />
         <option value="$PROJECT_DIR$/src/Standard/ApplicationConstants.java" />
-        <option value="$PROJECT_DIR$/src/Standard/Sender.java" />
         <option value="$PROJECT_DIR$/src/GUI/View/StartPane.java" />
         <option value="$PROJECT_DIR$/src/Auth/Verification.java" />
         <option value="$PROJECT_DIR$/src/GUI/View/TransparentBackground.java" />
@@ -216,9 +197,7 @@
         <option value="$PROJECT_DIR$/src/Standard/s.java" />
         <option value="$PROJECT_DIR$/src/Standard/MouseEvent.java" />
         <option value="$PROJECT_DIR$/src/Standard/MouseEvents.java" />
-        <option value="$PROJECT_DIR$/src/Standard/MouseEventReceiver.java" />
         <option value="$PROJECT_DIR$/src/Standard/Constants.java" />
-        <option value="$PROJECT_DIR$/src/Standard/MouseMover.java" />
         <option value="$PROJECT_DIR$/src/Standard/Server.java" />
         <option value="$PROJECT_DIR$/src/Standard/SocketHandler.java" />
         <option value="$PROJECT_DIR$/src/Standard/Application.java" />
@@ -228,6 +207,9 @@
         <option value="$PROJECT_DIR$/src/GUI/ApplicationFrame.java" />
         <option value="$PROJECT_DIR$/src/GUI/View/CapturePane.java" />
         <option value="$PROJECT_DIR$/src/GUI/View/ServerHasConnectionsPane.java" />
+        <option value="$PROJECT_DIR$/src/Standard/MouseMover.java" />
+        <option value="$PROJECT_DIR$/src/Standard/MouseEventReceiver.java" />
+        <option value="$PROJECT_DIR$/src/Standard/Sender.java" />
       </list>
     </option>
   </component>
@@ -936,7 +918,13 @@
       <option name="project" value="LOCAL" />
       <updated>1433436049672</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="Server now decides whether to allow/decline clients request to control">
+      <created>1433446473555</created>
+      <option name="number" value="00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1433446473555</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1011,7 +999,6 @@
       <TodoPanelSettings />
     </option>
     <option name="SHOW_FILE_HISTORY_DETAILS" value="false" />
-    <MESSAGE value="Server can now see a list of connected clients + now its all one JFrame" />
     <MESSAGE value="Server can now kick clients" />
     <MESSAGE value="Client is sent back to start frame, when kicked" />
     <MESSAGE value="bugfix, client can now reconnect after kick." />
@@ -1036,7 +1023,8 @@
     <MESSAGE value="Client now sends mouse coordinates to the server, and server receives them." />
     <MESSAGE value="Method for all recived mouseevents&#10;" />
     <MESSAGE value="Client can not control servers's computer" />
-    <option name="LAST_COMMIT_MESSAGE" value="Client can not control servers's computer" />
+    <MESSAGE value="Server now decides whether to allow/decline clients request to control" />
+    <option name="LAST_COMMIT_MESSAGE" value="Server now decides whether to allow/decline clients request to control" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1053,6 +1041,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="535" max-vertical-offset="7004">
           <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1060,13 +1051,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="212" max-vertical-offset="918">
           <caret line="28" column="14" selection-start-line="28" selection-start-column="14" selection-end-line="28" selection-end-column="14" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#2094#2095#0" expanded="false" />
-            <element signature="e#2130#2131#0" expanded="false" />
-            <element signature="e#2157#2158#0" expanded="false" />
-            <element signature="e#2193#2194#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1121,13 +1106,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="264" max-vertical-offset="935">
           <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#2094#2095#0" expanded="false" />
-            <element signature="e#2130#2131#0" expanded="false" />
-            <element signature="e#2157#2158#0" expanded="false" />
-            <element signature="e#2193#2194#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1147,6 +1126,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="561">
           <caret line="8" column="60" selection-start-line="8" selection-start-column="60" selection-end-line="8" selection-end-column="60" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1161,6 +1143,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="34" max-vertical-offset="255">
           <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding>
+            <element signature="e#276#277#0" expanded="false" />
+            <element signature="e#312#313#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1241,6 +1227,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1575" max-vertical-offset="15232">
           <caret line="127" column="0" selection-start-line="127" selection-start-column="0" selection-end-line="127" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1262,6 +1249,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.63461536" vertical-offset="14412" max-vertical-offset="21658">
           <caret line="922" column="0" selection-start-line="922" selection-start-column="0" selection-end-line="922" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1284,6 +1272,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-6.77071" vertical-offset="4832" max-vertical-offset="5508">
           <caret line="45" column="22" selection-start-line="45" selection-start-column="22" selection-end-line="45" selection-end-column="22" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1305,6 +1294,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.22633137" vertical-offset="0" max-vertical-offset="676">
           <caret line="11" column="34" selection-start-line="11" selection-start-column="34" selection-end-line="11" selection-end-column="34" />
+          <folding>
+            <element signature="e#276#277#0" expanded="false" />
+            <element signature="e#312#313#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1343,6 +1336,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.32692307" vertical-offset="425" max-vertical-offset="2788">
           <caret line="38" column="8" selection-start-line="38" selection-start-column="8" selection-end-line="38" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1374,6 +1370,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.41928253" vertical-offset="714" max-vertical-offset="7089">
           <caret line="88" column="0" selection-start-line="88" selection-start-column="0" selection-end-line="102" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1381,13 +1380,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.20964126" vertical-offset="0" max-vertical-offset="892">
           <caret line="11" column="57" selection-start-line="11" selection-start-column="57" selection-end-line="11" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Standard/MouseEventReceiver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="544" max-vertical-offset="1343">
-          <caret line="51" column="64" selection-start-line="51" selection-start-column="64" selection-end-line="51" selection-end-column="64" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1396,27 +1389,6 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="1210" max-vertical-offset="1887">
           <caret line="94" column="0" selection-start-line="94" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Standard/MouseMover.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="20" max-vertical-offset="1972">
-          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Standard/Sender.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="561" max-vertical-offset="1241">
-          <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#2094#2095#0" expanded="false" />
-            <element signature="e#2130#2131#0" expanded="false" />
-            <element signature="e#2157#2158#0" expanded="false" />
-            <element signature="e#2193#2194#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1510,10 +1482,39 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Standard/MouseMover.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="1751">
+          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/GUI/View/ServerHasConnectionsPane.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.82422453" vertical-offset="1941" max-vertical-offset="2686">
-          <caret line="172" column="47" selection-start-line="172" selection-start-column="47" selection-end-line="172" selection-end-column="47" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1305" max-vertical-offset="2720">
+          <caret line="110" column="0" selection-start-line="110" selection-start-column="0" selection-end-line="110" selection-end-column="0" />
+          <folding>
+            <element signature="e#3625#3626#0" expanded="true" />
+            <element signature="e#3666#3667#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Standard/MouseEventReceiver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="591" max-vertical-offset="1343">
+          <caret line="62" column="5" selection-start-line="62" selection-start-column="5" selection-end-line="62" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Standard/Sender.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.67355984" vertical-offset="581" max-vertical-offset="1360">
+          <caret line="69" column="3" selection-start-line="69" selection-start-column="3" selection-end-line="69" selection-end-column="3" />
           <folding />
         </state>
       </provider>
