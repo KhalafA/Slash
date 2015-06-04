@@ -26,7 +26,7 @@ public class Constants {
      */
 
     public static final String imageEncoding = "jpg";
-    public static final int sleepIntervalBetweenScreenCaptures = 100;
+    public static final int sleepIntervalBetweenScreenCaptures = 1000;
 
     /*
         GUI
@@ -93,15 +93,13 @@ public class Constants {
 
     public static final String kickBtn = "Kick";
 
-
-
     //Image manipulation
     public static final float scaleFactor = 1.3f;
     public static final float offset = 0;
     public static final RenderingHints hints = null;
 
     //User input timers
-    public static final int oneFieldInputTimer = 500; //saves input value 500ms after last change.
-    public static final int allFieldsInputTimer = 1000; //Start setting up server 1 secs after last change in any field.
+    public static final int oneFieldInputTimer = 1000; //saves input value 500ms after last change.
+    public static final int allFieldsInputTimer = 5000; //Start setting up server 1 secs after last change in any field.
 
 }

@@ -1,6 +1,7 @@
 package Standard;
 
 import java.awt.*;
+import java.awt.event.InputEvent;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -21,6 +22,7 @@ public class MouseMover implements Runnable{
 
         try {
             robot = new Robot();
+            robot.setAutoDelay(1000);
 
             screenWidth = Toolkit.getDefaultToolkit().getScreenSize().width;
             screenHeight = Toolkit.getDefaultToolkit().getScreenSize().height;
@@ -77,23 +79,24 @@ public class MouseMover implements Runnable{
     }
 
     private void mouseClicked(double x, double y){
-        System.out.println("Got clicked");
+        robot.mousePress(InputEvent.BUTTON1_MASK);
+        robot.mouseRelease(InputEvent.BUTTON1_MASK);
     }
 
     public void mousePressed(double x, double y) {
-        System.out.println("Got pressed");
+        robot.mousePress(InputEvent.BUTTON1_MASK);
     }
 
     public void mouseReleased(double x, double y) {
-        System.out.println("Got Released");
+        robot.mouseRelease(InputEvent.BUTTON1_MASK);
     }
 
     public void mouseDragged(double x, double y) {
-        System.out.println("Got Dragged");
+        robot.mouseMove((int)x,(int)y);
     }
 
     public void mouseMoved(double x, double y) {
-        System.out.println("Got Moved");
+        robot.mouseMove((int)x,(int)y);
     }
 
     protected void callEventMethod(String action, double x, double y){

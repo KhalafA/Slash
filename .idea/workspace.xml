@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b9ff94a7-10b9-4ec1-8c45-9fa5dbadc642" name="Default" comment="">
+    <list default="true" id="b9ff94a7-10b9-4ec1-8c45-9fa5dbadc642" name="Default" comment="Method for all recived mouseevents&#10;">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Standard/Constants.java" afterPath="$PROJECT_DIR$/src/Standard/Constants.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Standard/MouseMover.java" afterPath="$PROJECT_DIR$/src/Standard/MouseMover.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUI/View/ScreenPane.java" afterPath="$PROJECT_DIR$/src/GUI/View/ScreenPane.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Slash.iws" />
@@ -56,21 +56,29 @@
       <file leaf-file-name="MouseMover.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Standard/MouseMover.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.0797637" vertical-offset="1275" max-vertical-offset="2040">
-              <caret line="32" column="51" selection-start-line="32" selection-start-column="51" selection-end-line="32" selection-end-column="51" />
+            <state vertical-scroll-proportion="0.64844906" vertical-offset="1244" max-vertical-offset="2091">
+              <caret line="99" column="5" selection-start-line="99" selection-start-column="5" selection-end-line="99" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2182#2183#0" expanded="true" />
-                <element signature="e#2231#2232#0" expanded="true" />
-                <element signature="e#2283#2284#0" expanded="true" />
-                <element signature="e#2332#2333#0" expanded="true" />
-                <element signature="e#2385#2386#0" expanded="true" />
-                <element signature="e#2435#2436#0" expanded="true" />
-                <element signature="e#2487#2488#0" expanded="true" />
-                <element signature="e#2536#2537#0" expanded="true" />
-                <element signature="e#2586#2587#0" expanded="true" />
-                <element signature="e#2633#2634#0" expanded="true" />
+                <element signature="e#2416#2417#0" expanded="true" />
+                <element signature="e#2473#2474#0" expanded="true" />
+                <element signature="e#2526#2527#0" expanded="true" />
+                <element signature="e#2585#2586#0" expanded="true" />
+                <element signature="e#2637#2638#0" expanded="true" />
+                <element signature="e#2683#2684#0" expanded="true" />
+                <element signature="e#2733#2734#0" expanded="true" />
+                <element signature="e#2779#2780#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Constants.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Standard/Constants.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1210" max-vertical-offset="1887">
+              <caret line="94" column="0" selection-start-line="94" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -163,7 +171,6 @@
         <option value="$PROJECT_DIR$/src/Auth/Verification.java" />
         <option value="$PROJECT_DIR$/src/GUI/View/TransparentBackground.java" />
         <option value="$PROJECT_DIR$/src/GUI/ApplicationFrame.java" />
-        <option value="$PROJECT_DIR$/src/Standard/Constants.java" />
         <option value="$PROJECT_DIR$/src/Standard/Server.java" />
         <option value="$PROJECT_DIR$/src/Standard/Receiver.java" />
         <option value="$PROJECT_DIR$/src/Standard/Application.java" />
@@ -179,6 +186,7 @@
         <option value="$PROJECT_DIR$/src/Standard/MouseEventReceiver.java" />
         <option value="$PROJECT_DIR$/src/Standard/SocketHandler.java" />
         <option value="$PROJECT_DIR$/src/GUI/View/ScreenPane.java" />
+        <option value="$PROJECT_DIR$/src/Standard/Constants.java" />
         <option value="$PROJECT_DIR$/src/Standard/MouseMover.java" />
       </list>
     </option>
@@ -876,7 +884,13 @@
       <option name="project" value="LOCAL" />
       <updated>1433428138510</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="Method for all recived mouseevents&#10;">
+      <created>1433435478329</created>
+      <option name="number" value="00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1433435478329</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -951,7 +965,6 @@
       <TodoPanelSettings />
     </option>
     <option name="SHOW_FILE_HISTORY_DETAILS" value="false" />
-    <MESSAGE value="Client can now pause and resume screen share" />
     <MESSAGE value="Clean up, and commenting." />
     <MESSAGE value="Server can now see a list of connected clients + now its all one JFrame" />
     <MESSAGE value="Server can now kick clients" />
@@ -976,7 +989,8 @@
     <MESSAGE value="Server now detects when client disconnects, and removes from the list" />
     <MESSAGE value="bugfix, capture pane now cast exeption before making changes to the gui" />
     <MESSAGE value="Client now sends mouse coordinates to the server, and server receives them." />
-    <option name="LAST_COMMIT_MESSAGE" value="Client now sends mouse coordinates to the server, and server receives them." />
+    <MESSAGE value="Method for all recived mouseevents&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Method for all recived mouseevents&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1003,7 +1017,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="212" max-vertical-offset="918">
           <caret line="28" column="14" selection-start-line="28" selection-start-column="14" selection-end-line="28" selection-end-column="14" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1049,7 +1065,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="264" max-vertical-offset="935">
           <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1290,13 +1308,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Standard/Constants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.10059172" vertical-offset="0" max-vertical-offset="1921">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/GUI/View/TransparentBackground.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.32692307" vertical-offset="425" max-vertical-offset="2788">
@@ -1424,22 +1435,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Standard/Constants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1210" max-vertical-offset="1887">
+          <caret line="94" column="0" selection-start-line="94" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Standard/MouseMover.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.0797637" vertical-offset="1275" max-vertical-offset="2040">
-          <caret line="32" column="51" selection-start-line="32" selection-start-column="51" selection-end-line="32" selection-end-column="51" />
+        <state vertical-scroll-proportion="0.64844906" vertical-offset="1244" max-vertical-offset="2091">
+          <caret line="99" column="5" selection-start-line="99" selection-start-column="5" selection-end-line="99" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2182#2183#0" expanded="true" />
-            <element signature="e#2231#2232#0" expanded="true" />
-            <element signature="e#2283#2284#0" expanded="true" />
-            <element signature="e#2332#2333#0" expanded="true" />
-            <element signature="e#2385#2386#0" expanded="true" />
-            <element signature="e#2435#2436#0" expanded="true" />
-            <element signature="e#2487#2488#0" expanded="true" />
-            <element signature="e#2536#2537#0" expanded="true" />
-            <element signature="e#2586#2587#0" expanded="true" />
-            <element signature="e#2633#2634#0" expanded="true" />
+            <element signature="e#2416#2417#0" expanded="true" />
+            <element signature="e#2473#2474#0" expanded="true" />
+            <element signature="e#2526#2527#0" expanded="true" />
+            <element signature="e#2585#2586#0" expanded="true" />
+            <element signature="e#2637#2638#0" expanded="true" />
+            <element signature="e#2683#2684#0" expanded="true" />
+            <element signature="e#2733#2734#0" expanded="true" />
+            <element signature="e#2779#2780#0" expanded="true" />
           </folding>
         </state>
       </provider>
