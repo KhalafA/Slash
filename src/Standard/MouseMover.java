@@ -1,6 +1,8 @@
 package Standard;
 
 import java.awt.*;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.concurrent.LinkedBlockingQueue;
 
 public class MouseMover implements Runnable{
@@ -29,7 +31,6 @@ public class MouseMover implements Runnable{
     }
 
     public void newEvent(MouseEvents mouseEvents) {
-        System.out.println("adding action to list");
         try {
             list.put(mouseEvents);
         } catch (InterruptedException e) {
@@ -48,22 +49,22 @@ public class MouseMover implements Runnable{
     }
 
     private void executeEvent(MouseEvents e){
-        System.out.println("Executing action");
+        //System.out.println("Executing action");
         MouseEvents mouseEvents = e;
 
         double[] pos = calcMouseLocation(mouseEvents);
 
+        callEventMethod(e.getAction(), pos[0], pos[1]);
         /*
             Todo: now reciving mouse inputs from the clients, next step is to move the mouse with those inputs.
             Also, alot client to deciede weather someone should have control, and never let two people at once.
          */
 
-        System.out.println("Do: " + mouseEvents.getAction() + ", At x: "+ pos[0] + ", y: " + pos[1]);
+        //System.out.println("Do: " + mouseEvents.getAction() + ", At x: "+ pos[0] + ", y: " + pos[1]);
     }
 
     @Override
     public void run() {
-        System.out.println("Started thread");
         try {
             while (running) {
                 if (list.size() >= 1) {
@@ -74,4 +75,40 @@ public class MouseMover implements Runnable{
             e.printStackTrace();
         }
     }
+
+    private void mouseClicked(double x, double y){
+        System.out.println("Got clicked");
+    }
+
+    public void mousePressed(double x, double y) {
+        System.out.println("Got pressed");
+    }
+
+    public void mouseReleased(double x, double y) {
+        System.out.println("Got Released");
+    }
+
+    public void mouseDragged(double x, double y) {
+        System.out.println("Got Dragged");
+    }
+
+    public void mouseMoved(double x, double y) {
+        System.out.println("Got Moved");
+    }
+
+    protected void callEventMethod(String action, double x, double y){
+        Method method = null;
+        try {
+            method = getClass().getDeclaredMethod("mouse"+action, double.class, double.class);
+            method.invoke(this, x,y);
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 }

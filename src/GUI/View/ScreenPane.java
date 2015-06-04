@@ -116,7 +116,7 @@ public class ScreenPane extends JPanel {
             dragTimer = new Timer(100, new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent arg0) {
-                    buildEvent("Drag", mouseDragX, mouseDragY);
+                    buildEvent("Dragged", mouseDragX, mouseDragY);
                     dragTimer.stop();
                 }
             });
@@ -137,7 +137,7 @@ public class ScreenPane extends JPanel {
             movedTimer = new Timer(100, new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent arg0) {
-                    buildEvent("Move", mouseMoveX, mouseMoveY);
+                    buildEvent("Moved", mouseMoveX, mouseMoveY);
                     movedTimer.stop();
                 }
             });
