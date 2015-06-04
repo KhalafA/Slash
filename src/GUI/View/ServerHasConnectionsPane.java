@@ -108,12 +108,14 @@ public class ServerHasConnectionsPane extends JPanel {
 
                 kick.setVisible(true);
 
-                if(tableModel.getValueAt(row, 3).toString().equals("Requested")){
-                    allowControl.setVisible(true);
-                    declineControl.setVisible(true);
-                }else {
-                    allowControl.setVisible(false);
-                    declineControl.setVisible(false);
+                if(row != -1){
+                    if(tableModel.getValueAt(row, 3).toString().equals("Requested")){
+                        allowControl.setVisible(true);
+                        declineControl.setVisible(true);
+                    }else {
+                        allowControl.setVisible(false);
+                        declineControl.setVisible(false);
+                    }
                 }
             }
         });

@@ -75,7 +75,7 @@ public class SocketHandler implements Runnable{
                 run();
 
             } catch (IOException e) {
-                e.printStackTrace();
+                disconnected();
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             }
