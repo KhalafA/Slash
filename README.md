@@ -2,8 +2,7 @@
 
 Simple  remote control, desktop sharing application. 
 
-remote control is partialy implemented. Screen sharing seems to work for the moment.
-
+Still very buggy (otherwise everything seems to be working). Lots of refractoring to do.
 
 ###The MIT License (MIT)
 
