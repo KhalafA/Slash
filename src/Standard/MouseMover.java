@@ -1,5 +1,7 @@
 package Standard;
 
+import GUI.Logic.CaptureLogic;
+
 import java.awt.*;
 import java.awt.event.InputEvent;
 import java.lang.reflect.InvocationTargetException;
@@ -15,7 +17,13 @@ public class MouseMover implements Runnable{
     private double screenWidth;
     private double screenHeight;
 
-    public MouseMover(){
+    private int deltaX = 0, deltaY = 0; //Where the server is capturing
+
+    private CaptureLogic captureLogic;
+
+    public MouseMover(CaptureLogic captureLogic){
+        this.captureLogic = captureLogic;
+
         list = new LinkedBlockingQueue<>();
 
         running = true;
@@ -23,13 +31,29 @@ public class MouseMover implements Runnable{
         try {
             robot = new Robot();
 
-            screenWidth = Toolkit.getDefaultToolkit().getScreenSize().width;
-            screenHeight = Toolkit.getDefaultToolkit().getScreenSize().height;
+
+            if(!isSet()){
+                screenWidth = Toolkit.getDefaultToolkit().getScreenSize().width;
+                screenHeight = Toolkit.getDefaultToolkit().getScreenSize().height;
+            }
 
         } catch (AWTException e) {
             e.printStackTrace();
         }
     }
+
+    private boolean isSet(){
+        if(!captureLogic.getFullScreenStatus()){
+            deltaX = captureLogic.getSquareX();
+            deltaY = captureLogic.getSquareY();
+
+            screenWidth = captureLogic.getSquareWidth();
+            screenHeight = captureLogic.getSquareHeight();
+            return true;
+        }
+        return false;
+    }
+
 
     public void newEvent(MouseEvents mouseEvents) {
         try {
@@ -42,9 +66,10 @@ public class MouseMover implements Runnable{
     private double[] calcMouseLocation(MouseEvents mouseEvents) {
         double[] pos = new double[2];
 
+        isSet();
 
-        pos[0] = (mouseEvents.getWidthPos() * screenWidth)/100;
-        pos[1] = (mouseEvents.getHeightPos() * screenHeight)/100;
+        pos[0] = ((mouseEvents.getWidthPos() * screenWidth)/100 ) + deltaX;
+        pos[1] = ((mouseEvents.getHeightPos() * screenHeight)/100) + deltaY;
 
         return pos;
     }

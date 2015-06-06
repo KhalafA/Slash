@@ -127,7 +127,7 @@ public class SocketHandler implements Runnable{
             mouseEventThread = new Thread(eventReciver);
             mouseEventThread.start();
 
-            mouseMover = new MouseMover();
+            mouseMover = new MouseMover(captureLogic);
             moverThread = new Thread(mouseMover);
             moverThread.start();
         }else {

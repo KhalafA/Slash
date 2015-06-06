@@ -2,6 +2,7 @@ package Standard;
 
 import Auth.AuthenticationMsg;
 import GUI.Logic.CaptureLogic;
+
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.ServerSocket;
@@ -9,22 +10,16 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.HashMap;
 
-
 public class Server implements Runnable{
     private String name;
     private String pass;
     private int port;
-
     private boolean running;
-
     private Application application;
     private SocketHandler socketHandler;
-
     private HashMap<Integer, SocketHandler> socketHandlers;
     private ServerSocket serverSocket;
-
     private CaptureLogic captureLogic;
-
     private int counter;
 
     public Server(String name, String pass, int port, Application application, CaptureLogic captureLogic){
@@ -73,7 +68,7 @@ public class Server implements Runnable{
     }
 
     public void grantControl(int id, boolean state){
-         socketHandlers.get(id).controlRequestGranted(state);
+        socketHandlers.get(id).controlRequestGranted(state);
     }
 
 

@@ -390,7 +390,6 @@ public class StartPane extends JPanel{
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     updateInOneField();
-
                 }
 
                 @Override
