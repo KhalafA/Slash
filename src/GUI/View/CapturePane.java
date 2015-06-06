@@ -3,7 +3,7 @@ package GUI.View;
 import Auth.Verification;
 import Standard.Application;
 import Standard.Constants;
-import GUI.Logic.Receiver;
+import Standard.Receiver;
 import Standard.MouseEventSender;
 import javax.swing.*;
 import java.awt.*;
@@ -114,7 +114,6 @@ public class CapturePane extends JPanel {
             }
         });
 
-
         stopCapturingButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -126,6 +125,11 @@ public class CapturePane extends JPanel {
                 }
             }
         });
+    }
+
+    public void requestToControlDecliend(){
+        requestControlButton.doClick();
+        application.errorMsg("Your Request to control was declined");
     }
 
 

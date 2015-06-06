@@ -95,6 +95,7 @@ public class ServerHasConnectionsPane extends JPanel {
 
                 if(row != -1){
                     application.declineControl(tableModel.getValueAt(row, Constants.idCol));
+                    updateRequestField((int)tableModel.getValueAt(row, Constants.idCol), false);
                 }
             }
         });

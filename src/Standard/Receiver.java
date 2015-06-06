@@ -1,4 +1,4 @@
-package GUI.Logic;
+package Standard;
 
 import GUI.View.CapturePane;
 import GUI.View.ScreenPane;
@@ -150,6 +150,7 @@ public class Receiver implements Runnable {
                 screenPane.setControlling(true);
             }else {
                 screenPane.setControlling(false);
+                capturePane.requestToControlDecliend();
             }
 
             result = readResponse(is);
